@@ -1,0 +1,16 @@
+<meta charset="UTF-8">
+<script>
+    // 변수 범위(variable scope)
+    // function 밖에서 선언되었으면 전역, 안에서 선언되었으면 지역!!!!
+    var v_aaa = "흥!";      // 전역변수 (global)
+    function f_scope(p_arg){
+       // var v_aaa = "치!";  // 지역변수 (local)
+       // alert(v_aaa);
+       for(var i=1; i<=3; i++){
+            var v_kyh = "김영훈";
+       }
+       alert("for문 밖 i=" + i + v_kyh);
+    }
+    f_scope();
+    alert(v_aaa);
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>전통적방식 게시판</h1>
+    <form action="write_action.html">
+        제목<input type="text" name="nm_title" value=""><br>
+        글쓴이<input type="text" name="nm_writer" value=""><br>
+        권한
+        <select name="nm_auth">
+            <option value="manager">관리자</option>
+            <option value="member">일반사용자</option>
+        </select><br>
+        글쓴이 보유기술<br>
+        js<input type="checkbox" name="nm_skills" value="js">
+        jsp<input type="checkbox" name="nm_skills" value="jsp">
+        oracle<input type="checkbox" name="nm_skills" value="oracle">
+        인공지능<input type="checkbox" name="nm_skills" value="ai"><br>
+        내용<br>
+        <textarea name="nm_content" cols="20" rows="10"></textarea><br>
+        <input type="submit" value="글등록"><input type="reset" value="다시쓰기">
+    </form>
+    <script>
+        CKEDITOR.replace( 'nm_content' );
+    </script>
+</body>
+</html>

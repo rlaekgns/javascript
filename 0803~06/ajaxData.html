@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id_disp"></div>
+    이름<input type="text" id="id_name" value=""><br>
+    나이<input type="text" id="id_age" value=""><br>
+    <input type="button" value="눌렁" id="id_btn">
+    <script>
+        var v_div = document.getElementById("id_disp");
+        var v_name = document.getElementById("id_name");
+        var v_age = document.getElementById("id_age");
+        var v_btn = document.getElementById("id_btn");
+        function f_ajax(){
+            var v_ajax = new XMLHttpRequest();
+            // get방식에 data추가로 넘기기
+            var v_queryStr = "p_name=" + v_name.value + "&p_age=" + v_age.value;
+            // v_ajax.open("get", "test1.php?" + v_queryStr, true);
+            v_ajax.open("get", "http://www.naver.com/index.html", true);
+            v_ajax.send();
+            
+            v_ajax.onreadystatechange = function(){
+                if(v_ajax.readyState == 4 && v_ajax.status == 200){
+                    v_div.innerHTML = "<h1>응답내용 : " + v_ajax.responseText + "</h1>";
+                }
+            }
+        }
+        v_btn.addEventListener("click",f_ajax);
+    </script>
+</body>
+</html>
+<!-- 
+    Origin (3개로 구성)
+        프로토콜 + 서버명(도메인) + 포트번호
+        3개중에 1개라도 다르면 origin이 다름!!
+    http://localhost:80
+    https://localhost:80  -> 프로토콜이 달라 서로 다른 origin
+    http://lty.com:80 -> 도메인이 달라 서로 다른 origin
+    http://localhost:8080 -> 포트번호가 달라 서로 다른 origin
+ -->

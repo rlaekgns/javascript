@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id_disp"></div>
+    <input type=button value="눌렁" id="id_btn">
+<script>
+    var v_btn = document.getElementById("id_btn");
+    function f_ajax(){
+        var v_ajax = new XMLHttpRequest();
+        v_ajax.open("get","../AJAX/data.xml",true);
+        v_ajax.send();
+
+        v_ajax.onreadystatechange = function(){
+            if(v_ajax.readyState == 4 && v_ajax.status == 200){
+                var v_xmlDoc = v_ajax.responseXML;  // xml문자열을 xml문서로 바꿔서 줌
+                var v_names = v_xmlDoc.getElementsByTagName("상세")[0];
+                for(var i=0; i<v_names.children.length; i++){
+                    alert(v_names.childrent[i].nodeName);   //nodeName -> 태그명
+                }
+                // var v_arr = JSON.parse(v_ajax.responseText);
+                // 가져온 문자열이 스크립트 배열/JSON 문법에 어긋나지 않는 문자열이라서 변환이 가능
+                // alert(v_arr[0].content.point);
+            }
+        }
+    }
+    v_btn.addEventListener("click",f_ajax);
+</script>
+</body>
+</html>

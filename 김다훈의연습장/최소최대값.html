@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    var v_arr = [3,8,1,6,9,2,3,2];
+    // 위 배열 요소중에서 최소값을 찾아 출력하시오.
+    var v_min = v_arr[0];
+    for(var i=1; i<v_arr.length; i++){
+        if(v_min > v_arr[i]){
+            v_min = v_arr[i]
+        }
+    }
+    alert(v_min);
+    var v_max = v_arr[0];
+    for(var i=1; i<v_arr.length; i++){
+        if(v_max < v_arr[i]){
+            v_max = v_arr[i]
+        }
+    }
+    alert(v_max);
+</script>

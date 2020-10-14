@@ -1,0 +1,121 @@
+ /* 메인화면 상단 레이아웃 부분 */
+ *{
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    /* border: 1px solid black; */
+}
+.ex-layout{
+    width: 1900px;
+}
+/* 메인화면 상단 사진 출력부분 */
+.ex-layout .gnb{
+    background-image: url(../images/jeju.jpg);
+    width: 1900px;
+    height: 350px;
+}
+/* 메인화면 상단 헤더 부분 */
+header {
+    position: fixed;
+    width: 1850px;
+    background-color: rgba(250, 250, 250, 0);
+    color: #FFFF99;
+    font-size: 30px;
+    text-align: center;
+}
+/* 메인화면 컨텐츠 출력용 */
+nav{
+    width: 1900px;
+}
+nav ul{
+    background-color: rgba(250, 250, 250, 0);
+    float: right;
+    width: 1900px;
+    position: absolute;
+    top: 100px;
+}
+nav ul li{
+    background-color: rgba(0, 0, 0, 0);
+    display: inline-block;
+    font: bold 20px Dotum;
+    padding: 10px 20px;
+    margin: 0 50px;
+}
+nav ul li:hover{
+    background-color: rgba(51, 102, 51, 0.3);
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: white;
+}
+/* 메인화면 하단 레이아웃 부분 */
+.ex-layout .main{
+    background-color: white;
+    /* border: 1px solid black; */
+}
+/* 메인화면 공지사항, 달력, 행사 전체 div 부분 */
+.nav1{
+    font-size: 16px;
+    padding: 10px;
+    margin: auto;
+}
+.content{
+    width: 1900px;
+}
+/* 메인화면 공지사항 부분 */
+.ex-layout .main .left{
+    float: left;
+    width: 600px;
+    height: 400px;
+    background-color: white;
+    padding: 10px;
+    margin: autos;
+}
+/* 메인화면 달력 부분 */
+.ex-layout .main .center{
+    float: left;
+    width: 600px;
+    height: 400px;
+    padding: 10px;
+    margin: auto;
+}
+/* 메인화면 이달의 행사 부분 */
+.ex-layout .main .right{
+    float: left;
+    width: 600px;
+    height: 400px;
+    padding: 10px;
+    margin: auto;
+}
+/* 메인화면 footer 부분 */
+.footer{
+    width: 1900px;
+    height: 40px;
+    background-color: #ddd;
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+    margin: auto;
+}
+.dropbtn{
+    background-color: rgba(0, 0, 0, 0);
+    display: inline-block;
+    font: bold 25px bold;
+    padding: 10px 10px;
+    margin: 0 100px;
+    border: none;
+}
+#dropdown{
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    min-width: 300px;
+}

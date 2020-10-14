@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // this값을 직접 컨트롤할수 있는 메소드 3개
+    // call, apply, bind
+    function f_ckThis(p_arg, p_arg2){
+        console.log("매개변수값:", p_arg, p_arg2);
+        console.log(this);
+    }
+    //call의 첫번째 매개변수값이 this에 할당되고,
+    // 두번째 값부터 매개변수로 넘어감
+    // f_ckThis.call(document, "나 이태영이야! 알아?", "흥치피");
+    f_ckThis.apply(document, ["나 이태영이야! 알아?", "흥치피"]); // apply는 꼭 배열로 묶어서 넘겨줘야함
+    var v_lty = {};
+    v_lty.name="나야 낭";
+    f_ckThis.apply(v_lty, ["나 이태영이야! 알아?", "흥치피"]);
+</script>

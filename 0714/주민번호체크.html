@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<body>
+    주민번호체크<br>
+    <input type="text" id="jumin1" value="110326">-<input type="text" id="jumin2" value="4432618"><br>
+    <input id="id_btn" type="button" value="체크">
+    <script>
+        var v_btn = document.getElementById("id_btn");
+        var v_jumin1 = document.querySelector("#jumin1");
+        var v_jumin2 = document.querySelector("#jumin2");
+        function f_checkjumin(){
+            // 만약 문자열을 split메소드를 이용해서 한 글자씩 나누려면
+            var v_preVal = v_jumin1.value;
+            var v_postVal = v_jumin2.value;
+
+            var v_preChars = v_preVal.split("");
+            alert(v_preChars);
+            
+            var A = v_preVal.substr(0,1)-0;
+            var B = v_preVal.substr(1,1)-0;
+            var C = v_preVal.substr(2,1)-0;
+            var D = v_preVal.substr(3,1)-0;
+            var E = v_preVal.substr(4,1)-0;
+            var F = v_preVal.substr(5,1)-0;
+
+            var G = v_postVal.substr(0,1)-0;
+            var H = v_postVal.substr(1,1)-0;
+            var I = v_postVal.substr(2,1)-0;
+            var J = v_postVal.substr(3,1)-0;
+            var K = v_postVal.substr(4,1)-0;
+            var L = v_postVal.substr(5,1)-0;
+            var M = v_postVal.substr(6,1)-0;
+            // A*2 + B*3 + ... + H*9 + I*2 + ... + L*5 의 총합을 구한다.
+
+            var v_total = (A*2) + (B*3) + (C*4) + (D*5) + (E*6) + (F*7);
+            v_total += (G*8) + (H*9) + (I*2) + (J*3) + (K*4) + (L*5);
+            
+            // 1번의 합을 11로 나눈 나머지를 구한다.
+
+            var v_namug = v_total % 11;
+
+            // 11에서 2번의 결과를 뺀다.
+
+            var v_check = 11 - v_namug;
+
+            // 3번의 결과가 0~9이면 값 그대로, 10이면 0, 11이면 1로 변환
+            
+            v_check = v_check % 10;
+
+            // 4번의 결과와 M자리의 값이 같으면 맞는 번호이다.
+
+            if(v_check == M){
+                alert("너 한국사람 맞구낭?");
+            }else {
+                alert("Where are you from?");
+            }
+        }
+        v_btn.addEventListener("click",f_checkjumin);
+    </script>
+
+</body>

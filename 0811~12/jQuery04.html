@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="id_disp"></div>
+    <input type="button" id="id_btn" value="눌렁봐!">
+    <input type="button" id=id_mv value="누를까">
+    <input type="button" id=id_empty value="innerHTML지우기">
+    <script>
+        $("#id_empty").on("click",function(){
+            $("#id_disp").empty();  // 둘이 같음
+            document.getElementById("id_disp").innerHTML = "";
+        });
+        var i = 1;
+        $("#id_mv").on("click",function(){
+            // 이미 존재하는 객체를 어떤 곳에 붙이면 이동효과가 나타남
+            // $("img").eq(0).appendTo($("#id_disp"));
+            $("img").eq(0).remove();
+        });
+        $("#id_btn").on("click",function(){
+            // 이미지 추가
+            $("<img></img>").attr("src","../images/IU"+i+".jpg")
+                            .attr("width","100")
+                            .attr("height","100")
+                            .css("border","2px solid red")
+                            .appendTo($("#id_disp"));
+            i++;
+        });
+    </script>
+</body>
+</html>

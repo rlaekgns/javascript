@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인 홈페이지</title>
+    <link href="./css/main.css" rel="stylesheet">
+</head>
+<body>
+    <div class="ex-layout">
+        <div class="gnb">
+            <!-- <img id="id_img" src="./images/jeju.jpg" alt="" width="1900px" height="350px"> -->
+            <header>
+                <a href="./main.html">제주도 소개 사이트</a>
+            </header>
+            <nav>
+                <div id="dropdown">
+                    <ul>
+                        <li onmouseover="f_show()" onmouseout="f_none()">
+                            <button id="dropbtn1" class=dropbtn>관광</button>
+                            <div id="dropdown-content1" class="dropdown-content">
+                                <a href="./place.html">관광지</a><br>
+                                <a href="./festival.html">축제</a>
+                            </div>
+                        </li>
+                        <li  onmouseover="f_show()" onmouseout="f_none()">
+                            <button id="dropbtn2" class=dropbtn>숙박</button>
+                            <div id="dropdown-content2" class="dropdown-content">
+                                <a href="./motel.html">모텔</a><br>
+                                <a href="./hotel.html">리조트&호텔</a><br>
+                                <a href="./guesthouse.html">게스트하우스</a>
+                            </div>
+                        </li>
+                        <li  onmouseover="f_show()" onmouseout="f_none()">
+                            <button id="dropbtn3" class=dropbtn>먹거리</button>
+                            <div id="dropdown-content3" class="dropdown-content">
+                                <a href="./food.html">맛집소개</a><br>
+                                <a href="./specialties.html">특산물소개</a>
+                            </div>
+                        </li>
+                        <li  onmouseover="f_show()" onmouseout="f_none()">
+                            <button id="dropbtn4" class=dropbtn>자유게시판</button>
+                            <div id="dropdown-content4" class="dropdown-content">
+                                <a href="../ProJect2/freeboardList.html">자유게시판</a><br>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="main">
+            <div class="nav1">▶ 메인화면</div>
+            <div id="nav1" style="text-align: center;"></div>
+            <div class="content">
+                <div id="left" class="left">
+                    <iframe width="580px" height="380px" src="../ProJect2/freeboardList.html"></iframe>
+                </div>
+                <div class="center">
+                    <iframe width="580px" height="380px" src="./calendar.html"></iframe>
+                </div>
+                <div id="right" class="right">
+                    <iframe width="580px" height="380px" src="../ProJect2/ajax날씨.html"></iframe>
+                </div>  
+            </div>
+        </div>
+        <div id="id_img"></div>
+        <footer class="footer">Copyright by KIMDAHUN 2020.07</footer>
+    </div>
+    <!-- <style>
+        table{
+            /* 테이블 style */
+            background-color: white;
+            width: 98%;
+            border: 1px cellspacing=1 cellpadding=3;
+        }
+        /* 테이블 맨위 style */
+        #id_td{
+            background-color: yellow;
+            text-align: center;
+        }
+    </style> -->
+    <script>
+        // 공지사항 스크립트
+        // var v_left = document.getElementById("left");
+        // var v_tblleft = "<table><tbody><tr><td id=id_td>공지사항</td></tr>";
+        // for(var i=1; i<=10; i++){
+        //     v_tblleft += "<tr><td class=cl_td"+i+">공지사항("+i+")</td></tr>";
+        // }
+        // v_tblleft += "</tbody></table>";
+        // v_left.innerHTML = v_tblleft;
+        
+        // 이달의 행사 스크립트
+        // var v_right = document.getElementById("right");
+        // var v_tblright = "<table><tbody><tr><td id=id_td>이달의 행사</td></tr>";
+        // for(var i=1; i<=10; i++){
+        //     v_tblright += "<tr><td>이달의 행사입니다("+i+")</td></tr>";
+        // }
+        // v_tblright += "</tbody></table>";
+        // v_right.innerHTML = v_tblright;
+
+        // 이미지 움직이기
+        var v_img = document.getElementById("id_img");
+        var v_marquee = "<marquee scrollamount=8 direction=right>";
+        for(var i=1; i<=16; i++){
+            v_marquee += "<img src=./images/제주"+i+".jpg width=450 height=200>";
+        }
+        v_marquee +="</marquee>";
+        v_img.innerHTML = v_marquee;
+
+        // 달력 위 시계
+        var v_clock = document.getElementById("nav1");
+        function f_clock(){
+            var v_today = new Date(); // 시스템의 현재 날짜 시간을 읽어옴.
+            var v_hour = v_today.getHours();
+            var v_minute = v_today.getMinutes();
+            var v_second = v_today.getSeconds();
+            var v_timeMsg = v_hour + ":" + v_minute + ":" + v_second;
+            v_clock.innerHTML = v_timeMsg;
+            setTimeout(f_clock,1000);   // 1초 마다 다시 부르기
+        }
+        f_clock();
+
+        var v_drct1 = document.getElementById("dropdown-content1");
+        var v_drct2 = document.getElementById("dropdown-content2");
+        var v_drct3 = document.getElementById("dropdown-content3");
+        var v_drct4 = document.getElementById("dropdown-content4");
+        function f_none() {
+            v_drct1.style.display="none";
+            v_drct2.style.display="none";
+            v_drct3.style.display="none";
+            v_drct4.style.display="none";
+        }
+        function f_show() {
+            v_drct1.style.display="block";
+            v_drct2.style.display="block";
+            v_drct3.style.display="block";
+            v_drct4.style.display="block";
+        }
+    </script>
+</body>
+</html>

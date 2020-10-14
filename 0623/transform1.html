@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type=button value="눌러" onclick="f_rot()"><br>
+    <img id="IU1" src="images/IU1.jpg" width=200 heigth=200>
+    <img id="IU2" src="images/IU2.jpg" width=200 heigth=200>
+    <img id="IU3" src="images/IU3.jpg" width=200 heigth=200>
+    <script>
+        var v_iu1 = document.getElementById("IU1");
+        var v_iu2 = document.getElementById("IU2");
+        var v_iu3 = document.getElementById("IU3");
+        var v_gak = 0;
+        function f_rot(){
+            v_gak = (v_gak + 15) % 360;
+            v_iu1.style.transform = "rotateX(" +v_gak + "deg)";
+            v_iu2.style.transform = "rotateY(" +v_gak + "deg)";
+            v_iu3.style.transform = "rotateZ(" +v_gak + "deg)";  // Z가 기본축 안붙이면 디폴트로 Z축을 중심으로 돈다.
+            setTimeout(f_rot, 1000/60);
+        }
+    </script>
+</body>
+</html>

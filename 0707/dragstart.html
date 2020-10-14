@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_disp {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <img id="id_img" src="../images/IU3.jpg" width="100" height="100">
+    <div id="id_disp"></div>
+    <script>
+        var v_img = document.getElementById("id_img");
+        var v_target;
+        v_img.addEventListener("dragstart",function(){
+            v_target = event.target; // 이벤트를 발생시킨 객체 event.target
+        });
+        var v_disp = document.getElementById("id_disp");
+        // drop 이벤트가 먹지 않을 때, dragover 이벤트가 문제
+        // dragover 이벤트 막아버리기
+        v_disp.addEventListener("dragover",function(){
+            event.preventDefault();
+            event.stopPropagation();
+        });
+        v_disp.addEventListener("drop",function(){
+            v_disp.appendChild(v_target);
+        });
+    </script>
+</body>
+</html>

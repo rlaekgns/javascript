@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="이태영1"><br>
+    <input type="text" value="이태영2"><br>
+    <input type="text" value="이태영3"><br>
+    <input type="button" value="눌렁">
+    <script>
+        // alert($("input[type=text]").val());
+        // $("input[type=text]").val("정봉경흥");
+        $("input[type=text]").val(function(p_index, p_value){
+            if(p_index==2){
+                return p_value + "바봉zzz";
+            }else{
+                return p_value;
+            }
+        });
+        // window.onload에 대응, 정확히는 DomContentLoaded 이벤트에 대응
+        /* 잘 안쓰지만 용우샘은 이걸 좋아함
+        $(document).ready(function(){
+            alert("페이지 로딩 후 자동시작");
+        });
+        */
+        $(function(){
+            console.log("보통 여기에 초기화 작업을 많이 함");
+            alert("나도 페이지 로딩 후 자동시작");
+        });
+    </script>
+</body>
+</html>

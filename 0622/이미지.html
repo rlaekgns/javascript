@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="id_img" src="images/IU1.jpg" width="100" height="100"><br>
+    <input type=button value="따음" onclick="f_next()">
+    <script>
+        var v_img = document.getElementById("id_img");
+        var v_imgs = []; // 빈 배열 선언
+        for(var i=1; i<=7; i++){
+            v_imgs[v_imgs.length] = "images/IU" + i + ".jpg";
+        }
+        // alert(v_imgs); // 배열 요소 값 확인
+        var v_startIndex = 1;
+        function f_next(){
+            var v_index = v_startIndex++;
+            if(v_index == v_imgs.length){
+                v_startIndex = 1;
+            }
+            // if(v_startIndex > 7){
+            //     v_startIndex = 1;
+            // }
+            v_img.src = "images/IU" + v_index +".jpg"; // 이미지 소스 바꾸기
+            // v_img.width = v.img.width * 2;
+            // v_img.height = v_img.height *2;
+        }
+        //여기서 괜히 문제 마지막 이미지넘버 넘어가면 첫번째 이미지로 오게 해보세요.
+    </script>
+</body>
+</html>

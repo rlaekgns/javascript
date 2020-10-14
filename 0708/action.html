@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        alert("김태연씨 많이 졸려!");
+    </script>
+    <!-- 전달되는 값을 받아줄 페이지를 지정하는 속성 -->
+    <!-- action의 default값은 자기 자신 곧 여기서는 action.html -->
+    <form action="test2.php" method="POST">
+        아이디 <input type="text" name="nm_aidi" value=""><br>
+        암호 <input type="password" name="nm_pass" value=""><br>
+        <input type="submit" value="가랑 서버로!">
+    </form>
+</body>
+</html>

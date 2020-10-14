@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // AJAX Asynchronouse JavaScript (XML -> JSON의 시대)
+        // 낯설어도 일단 1번은 외워야 함.
+        var v_ajax = new XMLHttpRequest();  // 통신객체생성, 대신 통신해줄 사람
+        v_ajax.open("get","../AJAX/data.txt",true);   // 통신 방식은 무조건 비동기방식(true 고정, false는 사용자에게 안좋은 영향을 끼친다고 함)
+        v_ajax.send();  // 실행하라
+
+        // 통신객체의 state변화를 체크
+        v_ajax.onreadystatechange = function(){
+            // 상태값 0,1,2,3에는 관심없음, 완료되었다는 4번에만 관심 있음
+            // 통신은 최소 2개의 객체가 통신하는 것이므로 서버의 응답코드도 확인
+            if(v_ajax.readyState == 4 && v_ajax.status == 200){
+                alert(v_ajax.responseText); // 서버로부터 전달받은 내용
+            }
+            // console.log(v_ajax.readyState);     // 통신객체의 상태값
+        }
+        // 체크가 먼저 나오기 때문에 비동기 방식임을 알 수 있음
+        console.log("체크");
+        
+    </script>
+</body>
+</html>

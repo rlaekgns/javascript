@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 사용자가 0을 입력하기전까진 계속 루핑 돌아야 하므로, 무한 루핑
+        // 종료 조건 0 (제로 입력)
+        var v_sum = 0;
+        for(;"이것은 무한 루핑";){
+            // 사용자 입력, prompt로 받은 값은 type이 문자열임에 주의
+            var v_input = prompt("숫자를 입력해주세용, 종료하면 0","5")-0;
+            v_sum += v_input;
+            // 종료 조건
+            if(v_input == 0){
+                alert("입력하신 값들의 합은 " + v_sum + "입니다.");
+                break;
+            }
+        }
+    </script>
+</body>
+</html>

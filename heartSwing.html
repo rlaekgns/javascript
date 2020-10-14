@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_bar {
+            position: relative;
+            left: 150px;
+            top: 150px;
+            width: 20px;
+            height: 150px;
+            background-color: red;
+            transform-origin: center top;
+            /* 기본값 center center */
+        }
+
+        .heart {
+            position: relative;
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            margin: 15px 15px;
+            /* border: 1px solid black; */
+            transform: rotate(45deg);
+            top: 90px;
+            right: 80px;
+        }
+
+        .nemo {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            left: 50px;
+            top: 50px;
+        }
+
+        .nleft {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50px 50px;
+            top: 50px;
+        }
+
+        .ntop {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50px 50px;
+            left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type=button value="눌러!" onclick="f_rot()">
+    <input type=button value="크기조정" onclick="f_scale()">
+    <script>
+        var v_parent;
+        function f_scale() {
+            v_parent = document.getElementById("id_bar");
+            // v_parent.style.transform = "scale(0.5)";  // 절반으로 줄이기
+            v_parent.style.transform = "scale(2, 1.5)";  // 폭 2배, 높이 1.5배
+        }
+    </script>
+    <div id="id_bar" onmouseover="f_scale()">
+        <div class="heart">
+            <div class="nemo"></div>
+            <div class="nleft"></div>
+            <div class="ntop"></div>
+        </div>
+    </div>
+    
+    <script>
+        var v_bar = document.getElementById("id_bar");
+        var v_gak = 0;
+        var v_mv = 3;
+        function f_rot() {
+            v_gak = (v_gak + v_mv) % 360;  // 360 넘는 값은 필요없음
+            v_bar.style.transform = "rotate(" + v_gak + "deg)";
+            if (v_gak >= 40 || v_gak <= -40) {
+                v_mv = -v_mv;      // 방향전환
+            }
+
+            setTimeout(f_rot, 1000 / 60);
+        }
+
+    </script>
+</body>
+
+</html>

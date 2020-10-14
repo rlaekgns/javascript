@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper {
+            position: relative;
+            margin: 0px auto;
+            width: 500px;
+            height: 90vh;
+            background-color: pink;
+        }
+        #id_bar {
+            position: absolute;
+            top: 700px;
+            width: 80px;
+            height: 20px;
+            background-color: red;
+        }
+        #id_ball {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 100px;
+            top: 100px;
+            border-radius: 50px 50px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper" tabindex="0" onkeydown="f_lrMove()">
+        <div id="id_bar"></div>
+        <div id="id_ball" style="left: 30px; top: 30px;"></div>
+    </div>
+    <script>
+        var v_ball = document.getElementById("id_ball");
+        var v_wrapper = document.getElementById("wrapper");
+        var v_bar = document.getElementById("id_bar");
+        var v_wWidth = v_wrapper.clientWidth;
+        var v_hHeight = v_wrapper.clientHeight;
+        var v_mv = 10;
+        var v_mvW = 10;
+        var v_mvH = 10;
+        function f_mv(){
+            var v_left = parseInt(v_ball.style.left);
+            var v_top = parseInt(v_ball.style.top);
+            var v_bar_left = parseInt(v_bar.style.left);
+            var v_bar_top = parseInt(v_bar.style.top);
+            v_ball.style.left = v_left + v_mvW + "px";
+            v_ball.style.top = v_top + v_mvH + "px";
+            v_left = parseInt(v_ball.style.left);
+            v_top = parseInt(v_ball.style.top);
+            
+            if((v_left + 50) >= v_wWidth || v_left <= 0) {
+                v_mvW = -v_mvW;
+            }
+            if(((v_top + 50)  >= v_bar_top) && ((v_left+50) >= v_bar_left) && (v_left <= (v_bar_left+80)) || ((v_top + 50) >= v_hHeight) || v_top <= 0) {
+                v_mvH = -v_mvH;
+            }
+            setTimeout(f_mv,50);
+        }
+        
+
+        
+        function f_lrMove() {
+            if(event.keyCode == 37) { 
+                if(parseInt(v_bar.style.left) > 0){
+                    v_bar.style.left = parseInt(v_bar.style.left) - v_mv + "px";
+                }
+            }
+            if(event.keyCode == 39) {
+                if(parseInt(v_bar.style.left)+80 < 500){
+                    v_bar.style.left = parseInt(v_bar.style.left) + v_mv + "px";
+                }
+            }
+        }
+        window.onload = function() {
+            if(!v_bar.style.left){
+                v_bar.style.left = "30px";
+            }
+            if(!v_bar.style.top){
+                v_bar.style.top = "700px";
+            }
+        }
+        f_mv();
+        // 여기서 문제 막대가 좌우로 움직이는데 부모(wrapper)를 벗어나지 않게 해주세요.
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 주의사항1 문서를 덮어쓰지 않도록
+        // 기억할 건 write는 권장되지 않고, innerHTML 사용이 권장됨
+        document.write("<table border = 1>");
+        document.write("<tr>");
+        document.write("<td>흥치핑</td>");
+        document.write("</tr>");
+        document.write("</table>");
+        // 아래 방법이 더 좋은 방법
+        var v_tblStr ="<table border = 1>";
+        v_tblStr +="<tr>";
+        v_tblStr +="<td>흥치핑</td>";
+        v_tblStr +="</tr></tabe>";
+        document.write(v_tblStr);
+    </script>
+</body>
+</html>

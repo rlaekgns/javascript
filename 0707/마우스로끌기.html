@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_lty {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="id_lty" onmousedown="f_down()" onmousemove="f_move()" onmouseup="f_up()" onmouseout="f_out()">나 태영이야!</div>
+    <script>
+        window.onload = function(){
+            v_lty.style.left = "100px";
+            v_lty.style.top = "100px";
+        }
+        var v_lty = document.getElementById("id_lty");
+        var v_isLeftDown = false; // 왼쪽 버튼 누르지 않은 상황
+        var v_ltyPosX;  // 마우스 눌렀을 때 div 좌표 저장할 변수
+        var v_ltyPosY;
+        var v_mouseX;   // 마우스 눌렀을 때 그때 마우스 좌표 저장할 변수
+        var v_mouseY;
+        function f_down(){
+            if(event.button == 0){
+                v_ltyPosX = parseInt(v_lty.style.left);
+                v_ltyPosY = parseInt(v_lty.style.top);
+                v_mouseX = event.clientX;
+                v_mouseY = event.clientY;
+                v_isLeftDown = true;
+            }
+        }
+        function f_move(){
+            console.log(v_isLeftDown);
+            if(v_isLeftDown){
+                /* 마우스가 움직인 폭과 넓이 */
+                var v_width = event.clientX - v_mouseX;
+                var v_height = event.clientY - v_mouseY;
+                v_lty.style.left = v_ltyPosX + v_width + "px";
+                v_lty.style.top = v_ltyPosY + v_height + "px";
+                // v_lty.style.left = event.clientX -v_lty.clientWidth/2 + "px";
+                // v_lty.style.top = event.clientY -v_lty.clientHeight/2 + "px";
+            }
+        }
+        function f_up(){
+            v_isLeftDown = false;
+        }
+        function f_out(){
+            v_isLeftDown = false;
+        }
+        // 오늘의 과제 마우스가 움직이는 만큼 div도 움직임
+        // 곧 제대로 된 마우스 끌기 (산수문제)
+    </script>
+</body>
+</html>

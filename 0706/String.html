@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    /* 
+        자주 쓰는 문자열 속성과 메소드
+        속성: length
+        메소드: indexOf, replace, substr, trim, split
+    */
+    var v_str = "배동환 만만세 이태영 흥 이태영 치 이태영 피";
+
+    /*
+    v_str = v_str.substr(1,6); // index 1번부터 2개
+    alert(v_str); // 원본에 영향을 미치는가 확인 결과: 영향을 안미침
+    */
+    alert("ppp"+v_str.trim()+"ppp");    // 양쪽 공백 빼주기
+    /*
+    // alert(v_str.split(" "));      // 매개변수값이 구분자,  배열 리턴
+    // alert(v_str);       // 원본에 영향을 미치는가 확인 결과: 영향을 안미침
+    var v_strArr = v_str.split("이태영 치");
+    ( 배동환 만만세 , 흥 , 치 , 피 )
+    alert("ppp"+v_strArr[0]+"ppp");
+    */
+    
+    // var v_str = v_str.replace("이태영","최승주");   // replace는 원본을 바꾸지 않고 새로운 문자열을 리턴해 줍니다.
+    var v_str = "이태영 만만세 이태영 흥 이태영 치 이태영 피";
+    var v_str = v_str.replace("이태영","최승주");
+        // replace는 맨 처음 찾은거 하나만 바꾼다.
+   
+    // 그럼 여기서 괜히 문제 이태영이 전부 바뀌게 해보세요(indexOf를 활용)
+    for(;v_str.indexOf("이태영") != -1;) {
+        v_str = v_str.replace("이태영","최승주");
+        alert(v_str);
+    }
+    while(v_str.indexOf("이태영") != -1) {
+        v_str = v_str.replace("이태영","최승주");
+        alert(v_str);
+    }
+    
+    
+    
+    // alert(v_str);       // 원본 그대로 살아있고
+    // alert(v_str2);      // 바뀐 문자열을 리턴해준다!
+    // alert(v_str.indexOf("망세"));   // 없으면 -1, 찾으면 시작 index번호
+    // alert(v_str.length);    // 문자열 길이
+    // alert(v_str[4]);        // 배열처럼 이렇게 접근하는 것도 가능
+    // v_str[4] = "흥";        // 이것은 불가능 primitive(원시) 타입이라서
+    // alert(v_str.charAt(6)); // index 3번 글자
+    /*
+        원시타입에 메소드가 왔어요? HOW?
+        메소드를 붙이는 순간 자동으로 wrapper 객체(원시 타입 객체를 편하게 쓰려고)
+        String으로 바뀜(내부적으로)
+    */
+    // v_str = new String(v_str);  // string String
+    //                             // class -> 기술적인 정의( 사용자 정의 데이터형 )
+
+</script>

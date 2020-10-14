@@ -1,0 +1,33 @@
+<meta charset="UTF-8">
+<script>
+    // 반복문은 continue와 break를 잘 알아둡시다
+    // 초기값;조건;증감식
+    var i=1;
+    var a = i++;
+    /*
+    a = i;
+    i = i+1;
+    */
+    a = ++i;
+    /*
+    i = i+1;
+    a = i;
+    */
+    /*
+    for(;"이렇게하면 무한루핑";){    // 이렇게 쓰면 while문과 같아짐
+        if(i==5) break;            // 무한루핑 종료조건
+        alert(i++);
+    }
+    */
+    var v_bool = true;
+    alert(!v_bool);         // !는 뒤집기
+    for(var i=1; i<=10; i++){
+        if(!(i%2)){         // 초보때 몽둥이를 많이 써보는 습관을 ... -> 연봉상승
+            continue;       // 증감식 부분으로 돌아감
+        }
+        alert(i);
+    }
+
+    // 조건문 java same
+    // switch문은 아주 가끔 
+</script>

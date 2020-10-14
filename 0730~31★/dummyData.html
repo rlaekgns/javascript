@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // 더미 데이터 만들기, 페이지 나누기 하려면 많은 데이터가 필요!
+    localStorage.clear();   // 일단 localStorage 지우기
+    var v_dataMax = 108;    // 108번뇌
+    var v_dataArr = [];     // json을 담을 빈 배열
+    for(var i=0; i<v_dataMax; i++){
+        var v_gul = {};     // 게시글 묶음을 위한 빈 객체
+        v_gul.num = (i+1);
+        v_gul.title = "제목" + (i+1);
+        v_gul.writer = "김다훈" + (i+1);
+        v_gul.content = "억지내용" + (i+1);
+        v_gul.auth = "manager";
+
+        // js, jsp, oracle, ai 4개중에 1~4개가 랜덤하게 들어가도록
+        var v_dataSkill = ["js","jsp","oracle","ai"];
+        var v_ranCnt = Math.floor(Math.random()*4) + 1;
+        var v_selSkill = []; // 랜덤값 다음 배열
+        for(var j=0; j<v_ranCnt; j++){
+            var v_ranIndex = Math.floor(Math.random()*v_dataSkill.length);
+            v_selSkill.push(v_dataSkill[v_ranIndex]);
+            // 중복선택을 막기 위해서 선택된 배열 요소를 지워버림
+            v_dataSkill.splice(v_ranIndex,1);
+            // 값의 변화를 눈으로 보려면, 항상 로그를 찍어서
+            console.log(v_ranCnt, v_selSkill, v_dataSkill);
+        }
+        v_gul.skills = v_selSkill;   
+        v_dataArr.push(v_gul);
+    }
+    localStorage.setItem("볼품게시",JSON.stringify(v_dataArr));
+</script>

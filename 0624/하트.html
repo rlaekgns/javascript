@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .heart {
+            position: relative;
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            margin: 15px 15px;
+            /* border: 1px solid black; */
+            transform: rotate(45deg);
+        }
+
+        .nemo {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            left: 50px;
+            top: 50px;
+        }
+
+        .nleft {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50px 50px;
+            top: 50px;
+        }
+
+        .ntop {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50px 50px;
+            left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> 하트주기 </h1>
+    <input type=button value="하트추가" onclick="f_add()">
+    <div id="container">
+        <div class="heart">
+            <div class="nemo"></div>
+            <div class="nleft"></div>
+            <div class="ntop"></div>
+        </div>
+    </div>
+    <script>
+        var v_container = document.getElementById("container");
+        var v_heartStr = v_container.innerHTML;
+        var v_cnt = 1;
+        function f_add() {
+            v_container.innerHTML += v_heartStr;
+            v_cnt++;
+            if(v_cnt == 11) { // 10번 출력했으면
+                v_container.innerHTML = ""; // 클리어
+                v_cnt = 0;  // 카운터 다시 0으로 초기화
+            }
+            setTimeout(f_add,1000);
+        }
+        f_add();
+    </script>
+</body>
+
+</html>

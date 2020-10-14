@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_ball {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            left: 100px;
+            top: 100px;
+            border-radius: 50px 50px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <input type=button value="움직이기" onclick="f_proxy()">
+    <div id="id_ball" style="left: 60px; top: 60px;
+                            background-image: url('images/YZ1.jpg');
+                            background-size: 100px 100px;"></div>
+    <script>
+        var v_ball = document.getElementById("id_ball");
+        var v_wWidth = window.innerWidth;
+        var v_hHeight = window.innerHeight;
+        var v_mvW = 10;
+        var v_mvH = 10;
+        var v_value = false;
+        function f_proxy(){
+            if(!v_value){
+                f_go();
+                v_value = true;
+            }
+        }
+        
+        var v_number = 1;
+        var v_gak = 0;
+        function f_go() {
+            var v_left = parseInt(v_ball.style.left);
+            var v_top = parseInt(v_ball.style.top);
+            v_ball.style.left = v_left + v_mvW + "px";
+            v_ball.style.top = v_top + v_mvH + "px";
+            v_left = parseInt(v_ball.style.left);
+            v_top = parseInt(v_ball.style.top);
+            if((v_left + 100) >= v_wWidth || v_left <= 0){
+                v_mvW = -v_mvW;
+            }
+            if((v_top + 100) >= v_hHeight || v_top <= 0){
+                v_mvH = -v_mvH;
+            }
+            var v_path = "./images/YZ" + v_number + ".jpg";
+            v_ball.style.backgroundImage = "url("+v_path+")";
+            v_number++;
+            if(v_number > 5) v_number = 1;
+            v_gak = (v_gak + 20) % 360;
+            v_ball.style.transform = "rotate(" + v_gak + "deg)";
+            setTimeout(f_go, 1000);
+        }
+    </script>
+</body>
+</html>

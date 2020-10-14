@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function f_concat(p_arr1, p_arr2) {
+            for (var i = 0; i < p_arr2.length; i++) {
+                p_arr1.push(p_arr2[i]);
+            }
+        }
+        var v_arrA = [1, 2, 3, 3, 4, 3, 2, 5, 5, 7, 9, 0, 1];
+        var v_arrB = [4, 5, 6, 7, 6, 9, 1, 3, 5, 7, 8, 1, 5];
+
+        f_concat(v_arrA, v_arrB);
+        // alert(v_arrA);
+
+        v_arrC = [];
+        var num=0;
+        for(;"참";){
+            if(v_arrA.length == num){
+                break;
+            }
+            var v_check = false;
+            for(var i=0; i<v_arrC.length; i++){
+                if(v_arrC[i] == v_arrA[num]){
+                    v_check = true;
+                    break;
+                }
+            }
+            if(!v_check){
+                v_arrC.push(v_arrA[num]);
+            }
+            num++;
+        }
+        // alert(v_arrC);
+        console.log(v_arrC);
+        v_arrA = [1, 2, 3, 3, 4, 3, 2, 5, 5, 7, 9, 0, 1];
+        v_arrB = [4, 5, 6, 7, 6, 9, 1, 3, 5, 7, 8, 1, 5];
+        // alert(v_arrA);
+        // alert(v_arrB);
+
+         //v_arrA에만 있고 v_arrB에는 없는 값 만을 담은 배열 v_arrD를 구하시오
+        v_arrD = [];
+        var compare = 0;
+        for(; "참"; ){
+            if(v_arrA.length == compare){
+                break;
+            }
+            var v_check1 = false;
+            for(var i=0; i<v_arrA.length; i++){
+                if(v_arrB[i] == v_arrA[compare]||v_arrD[i] == v_arrA[compare]){
+                    v_check1 = true;
+                    break;
+                }
+            }
+            if(!v_check1){
+                v_arrD.push(v_arrA[compare]);
+            }
+            compare++;
+        }
+        // alert(v_arrD);
+        console.log(v_arrD);
+
+        function f_compare(p_arr1,p_arr2) {
+            var v_array = [];
+            var compare = 0;
+            for(; "참"; ){
+                if(p_arr1.length == compare){
+                    break;
+                }
+                var v_check2 = false;
+                for(var i=0; i<p_arr1.length; i++){
+                    if(p_arr2[i] == p_arr1[compare]||v_array[i] == p_arr1[compare]){
+                        v_check2 = true;
+                        break;
+                    }
+                }
+                if(!v_check2){
+                    v_array.push(p_arr1[compare]);
+                }
+                compare++;
+            }
+            return v_array;
+        }
+        var a = [1,2,3,4,5,6,7,2,3];
+        var b = [4,0,9,8,1];
+        // alert(f_compare(a,b));
+        document.write("첫번째 배열에만 있는 수는 "+f_compare(a,b)+" 이다.");
+    </script>
+</body>
+
+</html>

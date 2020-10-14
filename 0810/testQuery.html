@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./MyQuery.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="lty">흥</div>
+    <div class="lty">뿡</div>
+    <div class="lty">학</div>
+    <img src="../images/IU1.jpg" width="100">
+    <img src="../images/IU2.jpg">
+    <img src="../images/IU3.jpg" width="100">
+    <script>
+        // $(".lty").eq(1).innerHTML = "이태영 망만세";
+        $(".lty")[1].innerHTML = "<h1>비오는 날도 테니스가 가능해요</h1>";
+
+        $("img").attr("width", function(p_index, p_oldVal){
+            if(!p_oldVal){
+                // this.setAttribute("width", "200");  // 짜증나게 Window
+                return "300";
+            }else{
+                return "100";
+            }
+        });
+
+        $("div").html(function(p_inx, p_str){
+            if(p_inx == 1){
+                return "정봉견 바보";
+            }
+            return p_str;
+        });
+        /*
+        $("img").attr({
+            "width": 200,
+            "height": 100
+        });
+        */
+        /*
+        $("img").attr("width",function(p_index){
+            if(p_index == 0){
+                return "400";
+            }else{
+                return "100";
+            }
+        });
+        */
+        // $("img").attr("width", "100").attr("height", "100");
+        // $("img").attr("height", "100");
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: static; /* 기본 값 브라우저가 알아서 */
+            display: inline-block; /* 옆자리 허락 */
+            color: yellow;
+            background-color: black;
+            width: 100px;
+            height: 100px;
+        }
+        #id_yim {
+            position: relative;
+            left: 50px;
+            top: 50px;
+            /* static으로 만들어진 그 지점 기준으로 움직임 */
+        }
+        #id_lee {
+            position: absolute; /* 브라우저 왼쪽 모서리 기준 */
+            left: 50px;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div>최승주</div>
+    <div id="id_lee">이태영</div>
+    <div>서나리</div>
+    <div id="id_yim">임이랑</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 웹개발자는 form태그를 모르는 폼이 나지 않습니다.
+        서버로부터 전송하려는 값은 form태그로 둘러싸고, 꼭 name 속성을 가져야 합니다.
+        ? QueryString 이라고 부르고, name=값&name=값 형태로 전달됨 
+        전송방식은 GET과 POST가 있음, default는 GET 
+        GET과 POST는 외관적 차이, 보이고 안보이고, 상대적으로 보안에 POST가 유리
+        POST방식은 전달여부를 서버프로그램으로 확인해야 해서 개발자를 미치게 함
+        GET방식은 주소줄에 바로 보이니까, 디버깅도 편함
+        보이면 안되는 중요한 데이터를 보낼때는 GET방식으로 검증한 다음에
+        POST방식으로 바꿔야 그나마 안전하다! -->
+
+    <form method="GET">
+        메세지1<input type="text" name="msg1" value="이태영만만세"><br>
+        암호 <input type="password" name="password" value=""><br>
+        메세지2<input type="text" name="msg2" value="이태영안만세"><br>
+        메세지3<input type="text" name="msg3" value="이태영안안만세"><br>
+        <div name="div1">흥</div> <!-- 프로그램적으로 의미가 없음 -->
+        <!-- submit은 버튼인데 form 태그 안의 내용을 서버로 전달하는 기능 -->
+        <input type="submit" value="서버로전달">
+    </form>
+</body>
+</html>

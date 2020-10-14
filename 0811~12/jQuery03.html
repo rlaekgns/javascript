@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="id_disp"></div>
+    <input type="button" id="id_btn" value="눌렁봐!">
+    <input type="button" id="id_btn1" value="프리팬드" onclick="f_pre()">
+    <script>
+        var v_disp = document.getElementById("id_disp");
+        var i=0;
+        function f_pre(){
+            i++;
+            var v_msg = "<h1>김다훈 만만세!" + i + "</h1>";
+            v_disp.innerHTML = v_msg + v_disp.innerHTML;
+        }
+        // jQuery를 이용한 element(요소)생성, document.createElement에 대응
+        $("#id_btn").on("click",function(){
+            i++;
+            // $("<h1></h1>").html("최승주 망망세!"+i).appendTo($("#id_disp"));
+            $("<h1></h1>").html("최승주 망망세!"+i).prependTo($("#id_disp"));
+            // console.log($("#id_disp").append($("<h1>김하은 만만세</h1>")).html());
+            
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<meta charset="UTF-8">
+<script src="../js/jsp.js"></script>
+<script>
+
+    var v_aidi = request.getParameter("nm_aidi");
+    var v_password = request.getParameter("nm_password");
+    var v_skills = request.getParameterValues("nm_skills");
+
+    out.print("당신의 아이디는 " +v_aidi+ " 이고");
+    out.print("암호는 " +v_password+ " 이며");
+    out.print("보유기술은 " +v_skills+ "이군용");
+
+
+
+/*
+    // name값을 매개변수로 넘기면 value를 return 하도록
+    // 일반화(볌용화) 성공 짝짝짝!
+
+    // 하나의 name만 넘어올 때 사용할 함수
+    function getParameter(p_name){
+        var v_url = location.href;
+        if(v_url.indexOf("?") == -1) return;
+        v_url = decodeURIComponent(v_url) // 디코딩
+        var v_queryString = v_url.split("?")[1];
+        var v_nameValues = v_queryString.split("&");
+        for(var i=0; i<v_nameValues.length; i++){
+            var v_nameValue = v_nameValues[i].split("=");
+            if(v_nameValue[0] == p_name) {
+                return v_nameValue[1];
+            }
+        }
+        return null;  // 못찾았다는 표시, 개발자 맘
+    }
+    // 같은 이름으로 여러값이 넘어올때 사용할 함수
+    function getParameterValues(p_name){
+        var v_url = location.href;
+        if(v_url.indexOf("?") == -1) return;
+        v_url = decodeURIComponent(v_url) // 디코딩
+        var v_retArr = [];      // 값을 담을 빈배열 생성
+        var v_queryString = v_url.split("?")[1];
+        var v_nameValues = v_queryString.split("&");
+        for(var i=0; i<v_nameValues.length; i++){
+            var v_nameValue = v_nameValues[i].split("=");
+            if(v_nameValue[0] == p_name) {
+                v_retArr[v_retArr.length] = v_nameValue[1];
+            }
+        }
+        if(v_retArr.length == 0) {
+            return null;    // 찾은게 없다면 null 리턴
+        }
+        return v_retArr;    // 찾은게 있다면 배열을 리턴
+    }
+    // 함수 테스트
+    alert(getParameterValues("nm_skills"));
+    // alert(getParameterValues("nm_password"));
+    // var v_urlValue = location.href.split("?")[1]; // ? 오른쪽 값만 뽑아내기
+    /* encoding/decoding 관련 메소드
+        escape                  unescape                    아주 옛날꺼
+        encodeURI               decodeURI                   적당히 옛날꺼
+        encodeURIComponent      decodeURIComponent          최신꺼 (대부분 이걸 사용)
+    */
+//    alert("인코딩값: " + v_urlValue);
+//    alert("디코딩된값: " + decodeURIComponent(v_urlValue));
+/*
+v_urlValue = decodeURIComponent(v_urlValue);
+var v_aidi = v_urlValue.split("&")[0].split("=")[1];
+var v_password = v_urlValue.split("&")[1].split("=")[1];
+alert(v_aidi + "님 당신의 암호는 " + v_password + "군용 ㅋㅋ");
+*/
+</script>

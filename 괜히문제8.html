@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_disp {
+            width: 300px;
+            height: 300px;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <!-- csv = Comma Seperated Value -->
+    <!-- myDate.csv 파일을 drop하면 그 내용을
+        id_disp에 table 형식으로 출력하시오 -->
+    <div id="id_disp" ondragover="f_dragover()" ondrop="f_drop()"></div>
+    <script>
+        var v_disp = document.getElementById("id_disp");
+        function f_dragover() {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        function f_drop() {
+            var v_file = event.dataTransfer.files[0]; // file 객체
+            var v_fileReader = new FileReader();    // 파일 읽어주는 사람 생성
+            v_fileReader.readAsText(v_file);    // 파일을 읽으라고 파일을 매개변수로 넘겨주고 텍스트 파일이니 readAsText 메소드로 읽음
+            v_fileReader.onload = function(){
+                var v_content =v_fileReader.result;     // 읽은 내용 확인
+                var v_lines = v_content.split("\n");
+                var v_tblStr = "<table border = 2>";    // table 시작 문자열
+                for(var i=0; i<v_lines.length; i++){
+                    v_tblStr += "<tr>";
+                    var v_columns = v_lines[i].split(",");  // ,로또 자름
+                    
+                    for(var j=0; j<v_columns.length; j++){
+                        v_tblStr += "<td>" + v_columns[j].trim() + "</td>";
+                    }
+                    v_tblStr += "</tr>";
+                }
+                v_tblStr += "</table>";
+                v_disp.innerHTML = v_tblStr;
+            }
+        }
+        window.ondragover = function(){
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        window.ondrop = function() {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+    </script>
+</body>
+</html>

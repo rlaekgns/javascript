@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th,td {
+            font-size: 1.2em;
+            border: 5px solid blue;
+        }
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 align=center>자바스크립트 데이타 타입간 비교(자동형변환) 테이블!</h1>
+    <h1 align=center>== 는 자동 형변환이 발생하고, ===는 형변환이 없어용!</h1>
+        <table>
+                <thead>
+                 <tr>
+                  <th>&nbsp;</th>
+                  <th colspan="7" style="text-align: center;">피연산자 B</th>
+                 </tr>
+                </thead>
+                <tbody>
+                 <tr>
+                  <th>&nbsp;</th>
+                  <td>&nbsp;</td>
+                  <td >Undefined</td>
+                  <td >Null</td>
+                  <td >Number</td>
+                  <td >String</td>
+                  <td >Boolean</td>
+                  <td >Object</td>
+                 </tr>
+                 <tr>
+                  <th colspan="1" rowspan="6" >피연산자 A</th>
+                  <td>Undefined</td>
+                  <td ><code>true</code></td>
+                  <td ><code>true</code></td>
+                  <td ><code>false</code></td>
+                  <td ><code>false</code></td>
+                  <td ><code>false</code></td>
+                  <td ><code>false</code></td>
+                 </tr>
+                 <tr>
+                  <td>Null</td>
+                  <td ><code>true</code></td>
+                  <td ><code>true</code></td>
+                  <td ><code>false</code></td>
+                  <td ><code>false</code></td>
+                  <td ><code>false</code></td>
+                  <td ><code>false</code></td>
+                 </tr>
+                 <tr>
+                  <td>Number</td>
+                  <td ><code>false</code></td>
+                  <td ><code>false</code></td>
+                  <td ><code>A === B</code></td>
+                  <td ><code>A === ToNumber(B)</code></td>
+                  <td ><code>A === ToNumber(B)</code></td>
+                  <td ><code>A == ToPrimitive(B)</code></td>
+                 </tr>
+                 <tr>
+                  <td>String</td>
+                  <td ><code>false</code></td>
+                  <td ><code>false</code></td>
+                  <td ><code>ToNumber(A) === B</code></td>
+                  <td ><code>A === B</code></td>
+                  <td ><code>ToNumber(A) === ToNumber(B)</code></td>
+                  <td ><code>A == ToPrimitive(B)</code></td>
+                 </tr>
+                 <tr>
+                  <td>Boolean</td>
+                  <td ><code>false</code></td>
+                  <td ><code>false</code></td>
+                  <td ><code>ToNumber(A) === B</code></td>
+                  <td ><code>ToNumber(A) === ToNumber(B)</code></td>
+                  <td ><code>A === B</code></td>
+                  <td ><code>ToNumber(A) == ToPrimitive(B)</code></td>
+                 </tr>
+                 <tr>
+                  <td>Object</td>
+                  <td ><code>false</code></td>
+                  <td ><code>false</code></td>
+                  <td ><code>ToPrimitive(A) == B</code></td>
+                  <td ><code>ToPrimitive(A) == B</code></td>
+                  <td ><code>ToPrimitive(A) == ToNumber(B)</code></td>
+                  <td ><code>A === B</code></td>
+                 </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                      <td colspan=8>&copy; 넥스트IT 교육센터</td>
+                    </tr>
+                </tfoot>
+               </table>
+</body>
+</html>

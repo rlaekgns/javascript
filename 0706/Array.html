@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    /*
+        배열은 속성 length가 제일 중요 - 이걸 이용하면 거의 다 만들어 쓸수 있음
+        기억해야할 메소드 indexOf,splice;
+    */
+
+    // 주의 해야함!
+    var v_arr = ["3","3","7","5"];
+    function f_check(p_arr) {
+        p_arr = [];     // 매개변수로 받은 배열을 강제로 빈걸로 덮어쓰려면 안됨 
+        // v_arr = [];     // 빈배열 생성해서 강제교체
+    }
+    f_check(v_arr); // 함수 콜, 매개변수로 배열을 넘김
+    alert(v_arr);
+    
+    /*
+    // var v_arr1 = new Array("1","3","5","4");    // ["1","3","5","4"]와 같음
+    var v_arr1 = new Array(5);      // [5]와 같지 않음, 매개변수 1개일때 배열 갯수의미
+    alert(v_arr1.length);
+    */
+    /*
+    var v_arr = ["이태영","최승주","서나리","임이랑"];
+    // v_arr[2] = ""; 
+    // delete v_arr[2];
+    v_arr.splice(2,2);      // index 2번부터 1개를 지워라!
+    alert(v_arr);
+    */
+    /*
+    // alert(v_arr.indexOf("서나링")); // 못 찾으면 -1
+    var v_arr2 = v_arr.sort();
+    alert(v_arr2);
+    alert(v_arr); // 원본 변화 검증, 문자열과 다르게 원본에 직접 변화 발생
+    */
+</script>

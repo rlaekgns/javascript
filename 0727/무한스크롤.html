@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        모바일에서 특히 많이 씀
+        페이지가 바닥에 닿으면 새로운 데이타가 페이지 끝에 추가됨.
+        거의 오늘 만드는 방식으로만 쓰이니 이 소스를 잘 가지고 있어야 합니다.
+     -->
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <p>이태영 만만세</p>
+     <script>
+        //  스크롤 이벤트
+        var v_index = 0;
+        function f_endless(){
+            // 사용자가 얼마큼 스크롤 했는지
+            console.log("스크롤탑:",document.documentElement.scrollTop);
+            // 사용자가 보는 화면높이(화면에 보이는 높이)
+            console.log("보이는문서높이",document.documentElement.clientHeight);
+            // 스크롤한 높이(스크롤바 바닥)(scrolltop + clientHeight)
+            console.log("",document.documentElement.scrollHeight);
+            
+            // 사용자가 스크롤바를 끝까지 내렸을 때
+            // scrollTop + clientHeight = scrollHeight 일 때
+
+            var v_scrollTop = document.documentElement.scrollTop;
+            var v_clientHeight = document.documentElement.clientHeight;
+            var v_scrollHeight = document.documentElement.scrollHeight;
+
+            // 일반적으로 약간의 튜닝값을 주어서 바닥에 닿기 전에 처리
+            if((v_scrollTop + v_clientHeight) > v_scrollHeight-20){
+                // alert("바닥에 닿기 20px 전!");
+                v_index++;
+                if(v_index > 9){
+                    v_index = 1;
+                }
+                var v_img = document.createElement("img");
+                v_img.src = "../images/IU"+v_index+".jpg";
+                v_img.width=100;
+                v_img.height=100;
+                document.body.appendChild(v_img);
+                document.body.innerHTML += "<br>"
+            }
+        }
+
+        window.addEventListener("scroll",f_endless);
+     </script>
+</body>
+</html>

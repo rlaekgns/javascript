@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id_disp"></div>
+    <input id="id_btn" type=button value="누르셩~!">
+    <script>
+        var v_btn = document.getElementById("id_btn");
+        function f_msg(p_msg){
+            console.log(this);
+            alert(p_msg);
+        }
+        /*
+            call, apply는 ()가 와도 되는 자리에, 단지 this값을 세팅하고 싶을때
+            bind는 ()가 오면 안되는 자리에 this나 매개변수값을 세팅하고 싶을때
+        */
+        // setTimeout(f_msg.bind(document, "이태영 만만세!"), 1000); //개발자들이 setTimeout을 많이 사용하는데 쓸때마다 bind를 써야되냐해서
+        setTimeout(f_msg,1000,"첫번째 매개변수얌");
+
+        // window.onload = f_msg("aa"); //? 이것이 옳은 사용방법인가용? X 함수 이름만 와야함 f_msg
+        // v_btn.onclick=f_msg("aaa"); // 함수가 콜되어서 바로 실행됨 버튼을눌러 함수를 부르고 싶으면 함수 이름만 와야함 f_msg
+        /* this = v_btn 내부적으로 실행됨 */
+        v_btn.onclick=f_msg.bind(v_btn, "나 이태영이얌마!") // 매개변수없는 함수만 써야되냐! 따져서 만든 bind, call과 겉모양은 비슷하나 동작이 다름
+        /*
+            call은 함수를 실행시켜주고
+            bind는 내부적으로 새로운함수를 만들어서 그 함수의 포인터를
+            리턴해주기 때문에 자동실행되지 않음!
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    /*
+    var v_arrName=["임구현","소리엘","배동환","김하은"];
+    var v_arrAge = [100,90,80,70];
+    // 위 내용을 짝(JSON)을 지어서 localStorage에 저장해보기
+
+    var v_arrJSON = []; // json객체를 담을 빈배열
+    for(var i=0; i<v_arrName.length; i++){
+        var v_json = {}; // 빈 객체 생성
+        v_json.name = v_arrName[i];
+        v_json.age = v_arrAge[i];
+        v_arrJSON.push(v_json);
+    }
+    
+    // 로컬스토리지에 저장
+    localStorage.setItem("test", JSON.stringify(v_arrJSON));
+    // alert(v_arrJSON[2].age);
+    
+
+    // 로컬스토리지에서 꺼내기, 배열을 표현한 문자열이기 때문에 배열로 바뀜
+    var v_arrLTY = JSON.parse(localStorage.getItem("test"));
+    alert(v_arrLTY[0].name);
+    alert(v_arrLTY[1].name);
+    */
+
+    // 현 상태에서 데이타 추가하려면
+    var v_newJson ={};
+    v_newJson.name = "김다훈";
+    v_newJson.age = 60;
+
+    // 담겨 있는 값을 먼저 빼냄
+    var v_arrLTY = JSON.parse(localStorage.getItem("test"));
+    v_arrLTY.push(v_newJson);   // 꺼내온 배열에 새 정보를 추가하고
+    // 다시 같은 key값으로 덮어쓰기
+    localStorage.setItem("test",JSON.stringify(v_arrLTY));
+</script>

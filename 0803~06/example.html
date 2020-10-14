@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="눌렁!" id="id_btn">
+    <script>
+        var v_btn = document.getElementById("id_btn");
+        v_btn.onclick = function(){
+            var v_xhr = new XMLHttpRequest();
+            v_xhr.open("get", "https://api.exchangeratesapi.io/history?start_at=2020-01-01&end_at=2020-08-01&base=USD", true);
+            v_xhr.send();
+
+            v_xhr.onreadystatechange = function(){
+                if(v_xhr.readyState == 4 && v_xhr.status == 200){
+                    var v_data = JSON.parse(v_xhr.responseText);
+                    var v_rates = v_data.rates;
+                    var v_myData = [];  // 골라 담을 배열
+                    var v_tblName = "환율";
+                    // 객체 속성수만큼 loop 돌리기, for in문
+                    for(var v_attr in v_rates){
+                        // console.log(v_attr);
+                        // console.log(v_rates[v_attr].KRW);
+                        // console.log(v_rates[v_attr].JPY);
+                        // console.log("===============================");
+                        var v_single = {};  // 빈객체 생성
+                        v_single.date = v_attr;
+                        v_single.KRW = v_rates[v_attr].KRW;
+                        v_single.JPY = v_rates[v_attr].JPY;
+                        /*
+                        v_single[v_attr] = {};  // 날짜 속성에 빈객체 생성
+                        v_single[v_attr].KRW = v_rates[v_attr].KRW;
+                        v_single[v_attr].JPY = v_rates[v_attr].JPY;
+                        */
+                        v_myData.push(v_single);
+                        v_myData.sort(function(a,b){
+                            // 힌트: 2020-01-08 -> 20200108로 변환해서 비교하면 어떨까용?
+                            var v_dateA = a.date.replace("-","").replace("-","");
+                            var v_dateB = b.date.replace("-","").replace("-","");
+                            
+                            /*
+                            for(var v_dateA in a){};
+                            for(var v_dateB in b){};
+                            v_dateA = v_dateA.replace("-","");  // 두번 한 이유가 "-"이 두번 들어가기 때문
+                            v_dateA = v_dateA.replace("-","");
+                            v_dateB = v_dateB.replace("-","");
+                            v_dateB = v_dateB.replace("-","");
+                            console.log("a날짜변환값: ", v_dateA);
+                            console.log("b날짜변환값: ", v_dateB);
+                            console.log("===============================");
+                            */
+                            return v_dateB - v_dateA;
+                        });
+
+                        localStorage.setItem(v_tblName, JSON.stringify(v_myData));    
+                        
+                    }
+                    // alert("1달러당" + v_data.rates["2020-01-02"].KRW + "원");
+                    // alert("1달러당" + v_data.rates["2020-01-02"].JPY + "엔");
+                    // KRW와 JPY값만 날짜별로 빼서 localStorage에 저장해 주세용
+                    /*
+                    [
+                        {"날짜" : {
+                            "KRW":값,
+                            "JPY":값
+                            }
+                        },
+                        {...},
+                    ]
+                    */
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //마우스 글자따라다니기는 20년전에 자바스크립트를 한다고 자부하는 사람은
+        //모두 만들수 있어야 했음.
+        var v_msg = "◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶";
+    
+        v_msg = v_msg.split("");  // 문자열을 쪼개 글자 1개씩 배열에 담기
+        //글자 1개씩 움직일수 있게 div태그로 감싸줌
+        var v_leftPos = [];  // left좌표를 위한 빈 배열 생성
+        var v_topPos = [];   // top좌표을 위한 빈 배열 생성
+        var v_msX, v_msY;    // 마우스 좌표 읽어올 전역변수
+        for(var i=0; i<v_msg.length; i++){
+            v_leftPos[i] = -50;
+            v_topPos[i] = -50;
+            var v_char = document.createElement("span");
+            v_char.setAttribute("id","csj"+i); // 편하게 접근하기 위한 글자별 id
+            v_char.style.position = "absolute"; // default static은 움직이지 않음
+            v_char.style.left = v_leftPos[i] + "px";
+            v_char.style.top = v_topPos[i] + "px";
+            v_char.innerHTML = v_msg[i];
+            document.body.appendChild(v_char);  // body에 붙여넣기
+        }
+
+        //랜덤 칼라
+        function f_ranColor(){
+            return "rgb(" + Math.floor(Math.random()*256) + "," +
+                          + Math.floor(Math.random()*256) + "," +
+                          + Math.floor(Math.random()*256) + ")";
+        }
+        // 글자들이 마우스를 따라다니려면 mousemove 이벤트가 필요
+        function f_msMove(){
+           v_msX = event.clientX;  // 마우스 x(left) 좌표
+           v_msY = event.clientY;  // 마우스 y(top) 좌표
+        }
+
+        //실제 글자들을 움직일 함수
+        var v_charGan = 30;   // 글자사이 간격, 일단 대충
+        function f_charMove(){
+            //첫번째 글자를 위한 좌표
+            v_leftPos[0] = v_msX+v_charGan;
+            v_topPos[0] = v_msY;
+
+            //두번째 글자부터 좌표
+            /*
+            for(var i=1; i<v_msg.length; i++){
+                v_leftPos[i] = v_leftPos[i-1] + v_charGan;
+                v_topPos[i] = v_topPos[i-1];
+            }
+            */
+            // 좌표값 할당을 맨 뒤 글자부터 ....
+            // 시간차 공격
+            for(var i=v_msg.length-1; i>0; i--){
+                v_leftPos[i] = v_leftPos[i-1] + v_charGan;
+                v_topPos[i] = v_topPos[i-1];
+            }
+
+
+            //배열에 담은 값을 각 글자의 좌표에 할당
+            for(var i=0; i<v_msg.length; i++){
+                var v_char = document.getElementById("csj"+i);
+                v_char.style.left = v_leftPos[i] + "px";
+                v_char.style.top = v_topPos[i] + "px";
+                v_char.style.color = f_ranColor();
+                v_char.style.fontSize = Math.floor(Math.random()*3) +1 +"em";
+            }
+            //마우스 좌표의 변하는 값을 읽어오기 위해 반복실행이 필요
+            setTimeout(f_charMove,50);
+        }
+        window.onload = f_charMove;
+        window.addEventListener("mousemove",f_msMove)
+    </script>
+</body>
+</html>

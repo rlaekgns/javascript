@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_ball {
+            position: absolute; /* 움직이려면 relative나 absolute여야 함 */
+            width: 100px;
+            height: 100px;
+            left: 100px;
+            top: 100px;
+            /*
+            right: 20px;
+            bottom: 30px;
+            */
+            border-radius: 50px 50px; /* width height의 절반값이면 원이 만들어짐 */
+            background-color: violet;
+        }
+    </style>
+</head>
+<body>
+    <input type=button value="움직여봐" onclick="f_proxy()">
+    <div id="id_ball" style="left: 60px; top: 60px; 
+                            background-image: url('./images/IU1.jpg');
+                            background-size: 100px 100px;"></div>
+    <script>
+        // 새로운 키워드 javascript 브라우저를 참조하는 식별자 window
+        var v_ball = document.getElementById("id_ball");
+        // 인라인 스타일 접근법(-하이픈 들어간거)
+        // alert(v_ball.style.backgroundImage);
+        // alert(v_ball.style.backgroundSize);
+        // 하이픈빼고 대문자로 나옴
+        // alert(v_ball.style["background-image"]);  // 배열접근법
+        // alert(v_ball.style["background-size"]);   // 스타일속성명 그대로
+        var v_wWidth = window.innerWidth;
+        var v_hHeight = window.innerHeight;
+        var v_mvW = 10; // 좌우 방향 컨트롤
+        var v_mvH = 10; // 상하 방향 컨트롤
+        // 소프트웨어 프로그래밍 기법 중에 proxy pattern 이라고 불림!
+        var isRun = false;   // 아직 실행되고 있지 않은 상황
+        function f_proxy() { // proxy는 대리인이라는 뜻
+            if(!isRun){      // isRundl false일때만
+               f_mv1();
+               isRun = true;
+            }
+        }
+        var v_number = 1;
+        var v_gak = 0; // 각도 초기값 0
+        function f_mv1(){
+            var v_left = parseInt(v_ball.style.left);
+            var v_top = parseInt(v_ball.style.top);
+            // alert("사용자가 보는 넓이: "+window.innerWidth);
+            // alert("사용자가 보는 높이: "+window.innerHeight);
+            v_ball.style.left = v_left + v_mvW + "px";
+            v_ball.style.top = v_top + v_mvH + "px";
+            v_left =  parseInt(v_ball.style.left);
+            v_top = parseInt(v_ball.style.top);
+
+            // 오른쪽 벽에 닿거나 넘어선다면
+            if((v_left + 100) >= v_wWidth || v_left <= 0){
+                v_mvW = -v_mvW;  // +10을 -10으로 바꾸어 줌!
+            }
+            if((v_top + 100) >= v_hHeight || v_top <= 0){
+                v_mvH = -v_mvH;
+            }
+            var v_path = "./images/IU" + v_number + ".jpg";
+            v_ball.style.backgroundImage = "url(" + v_path + ")";
+            v_number++;
+            v_gak = (v_gak + 20) % 360;    // 10도씩 추가
+            v_ball.style.transform = "rotate(" + v_gak + "deg)";
+            if(v_number > 7) v_number = 1;
+            setTimeout(f_mv1,300);
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div class="csj">
+            <div class="lty1">정종안</div>
+            <div class="lty2">김수정</div>
+            <div class="lty1">정봉경</div>
+        </div>
+    </div>
+    <input type="button" value="눌렁" onclick="f_clk()">
+    <script>
+        function f_clk(){
+            // 선택된것 한 단계 위로 올리기 end
+            // $("div").find(".lty1").css("backgroundColor","red");
+            // $("div").find(".lty2").css("backgroundColor","blue");
+            // $("div").find(".lty1").css("backgroundColor","red")
+                    // .end().find(".lty2").css("backgroundColor","blue");
+            // $("div").first();   // $("div").eq(0)
+            // $("div").last();    // $("div").eq($("div").length -1)
+            console.log($(".lty2").add(".lty1"));   // 선택한거에 더 추가하고 싶을 때 add
+        }
+    </script>
+</body>
+</html>

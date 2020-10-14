@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+            동적페이지 구현을 위해 개발자가 알아두어야 할 css 속성
+            display, visibility, overflow, position, transform, z-index
+        */
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid pink;
+            font-size: 1.5em;
+            text-align: center; /* 수평중앙 정렬 */
+        }
+        /*#kyj {
+            /*display: none; /* 존재하지만 보이지도 않고 공간도 안차지 */
+            /*visibility: hidden; /* 보이진 않지만 공간은 차지 
+
+        } */
+    </style>
+</head>
+<body>
+    <input type=button value="안보이기" onclick="f_none()">
+    <input type=button value="보이기" onclick="f_block()">
+    <input type=button value="토글" onclick="f_toggle()">
+    <div>김영훈</div>
+    <div id="kyj">김은주</div> 
+    <div>김다훈</div>
+    <div>김하은</div>
+    <script>
+        var v_kyj = document.getElementById("kyj");
+        // 일반적 토글 구현 방법
+        var v_isShow = true;  // 현재 보이고 있는 상태를 true로 설정
+        // 멋진 말로 flag변수, 또는 상태변수라고 함!
+        function f_toggle(){
+            if(v_isShow){
+                // f_none();
+                v_kyj.style.display = "none";
+                v_isShow = false;
+            }else{
+                // f_block();
+                v_kyj.style.display = "block";
+                v_isShow = true;
+            }
+        }
+        // div에 style="display: bolck;" 넣기
+        // function f_toggle(){
+        //     // 작성! 안보이면 보이게, 보이면 안보이게!
+        //     if(v_kyj.style.display == "block"){
+        //         f_none();
+        //         return;
+        //     }
+        //     if(v_kyj.style.display == "none"){
+        //         f_block();
+        //     }
+        // }
+        
+        function f_block(){
+            v_kyj.style.display = "block";
+            v_isShow = true;
+        }
+        function f_none(){
+            v_kyj.style.display = "none";
+            v_isShow = false;
+        }
+    </script>
+</body>
+</html>

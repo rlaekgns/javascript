@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_disp{
+            width: 600px;
+            height: 300px;
+            border: 1px solid black;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- 
+        focus 받을 수 없는 거에 focus 줄때 tableindex=0
+        focus 받을 수 없는거를 focus 못주게 할때 tableinex=-1
+        그외 넘버는 사용자가 tab키 눌렀을 때 foucus이동하는 순서
+     -->
+    <img tabindex="0" src="../images/IU1.jpg" width="100" height="100" onclick="f_icp(this.src)">
+    <img tabindex="0" src="../images/IU2.jpg" width="100" height="100" onclick="f_icp(this.src)">
+    <img tabindex="0" src="../images/IU3.jpg" width="100" height="100" onclick="f_icp(this.src)"> <br>
+    <!-- 복사되는것처럼 사용할 사기용 textarea -->
+     <textarea id="id_ta" style="display: none;"></textarea>
+    <input type="text" id="id_txt" value="이태영 만만세"><br>
+    <input type="button" value="클립보드로 복사" onclick="f_cp()"><br>
+    <div id="id_disp" contenteditable>기본은 편집 안됨</div>
+    <script>
+        var v_ta = document.getElementById("id_ta");
+        function f_icp(p_src){
+            v_ta.value=p_src;
+        }
+        // 클립보드 복사는 기본적으로 텍스트만 가능.(표준스펙)
+        // 그 외 기능은 브라우져마다 차이가 있음
+        var v_txt = document.getElementById("id_txt");
+        function f_cp(){
+            // 복사를 위해서는 먼저 선택해야함
+            // v_txt.select();  // 텍스트 박스의 선택 메소드
+            // ctrl+c 버튼 기능
+            // display:none은 선택할 수 없음, 변칙이 필요
+            v_ta.style.display="block";
+            v_ta.select();
+            document.execCommand("copy");
+            v_ta.style.display="none";
+        }
+        var v_disp = document.getElementById("id_disp");
+        // 붙여넣기 이벤트 paste;
+        v_disp.addEventListener("paste",function(){
+            event.preventDefault(); // 기본 제공이벤트 막아버리기
+            var v_img = document.createElement("img");
+            // 클립보드에 담겨있는 문자열데이타 가져오기
+            v_img.src = event.clipboardData.getData("text"); //이미지 경로
+            v_img.width = 30;
+            v_img.height = 30;
+            v_disp.appendChild(v_img);
+        })
+    </script>
+</body>
+</html>

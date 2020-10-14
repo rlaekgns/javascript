@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관광지</title>
+    <link href="./css/place.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <div class="ex-layout">
+        <div class="gnb">
+            <header>
+                <a href="./main.html">제주도 소개 사이트</a>
+            </header>
+            <nav>
+                <div id="dropdown">
+                    <ul>
+                        <li onmouseover="f_show()" onmouseout="f_none()">
+                            <button id="dropbtn1" class=dropbtn>관광</button>
+                            <div id="dropdown-content1" class="dropdown-content">
+                                <a href="./place.html">관광지</a><br>
+                                <a href="./festival.html">축제</a>
+                            </div>
+                        </li>
+                        <li  onmouseover="f_show()" onmouseout="f_none()">
+                            <button id="dropbtn2" class=dropbtn>숙박</button>
+                            <div id="dropdown-content2" class="dropdown-content">
+                                <a href="./motel.html">모텔</a><br>
+                                <a href="./hotel.html">리조트&호텔</a><br>
+                                <a href="./guesthouse.html">게스트하우스</a>
+                            </div>
+                        </li>
+                        <li  onmouseover="f_show()" onmouseout="f_none()">
+                            <button id="dropbtn3" class=dropbtn>먹거리</button>
+                            <div id="dropdown-content3" class="dropdown-content">
+                                <a href="./food.html">맛집소개</a><br>
+                                <a href="./specialties.html">특산물소개</a>
+                            </div>
+                        </li>
+                        <li  onmouseover="f_show()" onmouseout="f_none()">
+                            <button id="dropbtn4" class=dropbtn>자유게시판</button>
+                            <div id="dropdown-content4" class="dropdown-content">
+                                <a href="./free.html">자유게시판</a><br>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="main">
+            <div class="nav1">▶ 먹거리 ▶ 특산물소개
+            </div>
+            <div class="content">
+                <div class="left">
+                    <ul>
+                        <li><a href="./food.html">  맛집소개</a></li>
+                        <li><a href="./specialties.html"> ▶ 특산물소개</a></li>
+                    </ul>
+                </div>
+                <div class="center">
+                    <table align="center">
+                        <tr>
+                            <td><img src="./images/감귤.jpg" width="500px" height="200px"></td>
+                            <td width="100px"></td>
+                            <td width="500px" height="200px">
+                                <h3>감귤</h3>
+                                 알칼리성 식품으로 다이어트에 좋으며, 비타민C가 풍부해서 피로회복, 피부미용에 짱이지요.
+                                그리고 칼슘의 흡수를 도와주고 신진대사를 원활히 해주는 고마운 녀석으로 저렴하기까지!
+                            </td>
+                        </tr>
+                        <tr height="50px"></tr>
+                        <tr>
+                            <td><img src="./images/고사리.jpg" width="500px" height="200px"></td>
+                            <td width="100px"></td>
+                            <td width="500px" height="200px"> 
+                                <h3>고사리</h3>
+                                단백질, 섬유소, 단백질, 칼륨, 칼슘 등 각종 무기질이 풍부한 고사리는  참기름 넣고 무쳐 드셔도 맛있지만 제주 돼지고기,
+                                추자도 굴비와 특히 궁합이 잘 맞는 음식 재료가 된답니다.
+                                </td>
+                        </tr>
+                        <tr height="50px"></tr>
+                        <tr>
+                            <td><img src="./images/자리돔.jpg" width="500px" height="200px"></td>
+                            <td width="100px"></td>
+                            <td width="500px" height="200px"> 
+                                <h3>자리돔</h3>
+                                맛은 담백하고 기름기가 적어서 소화하기에도 좋고 병후 회복기 환자는 물론이거니와 열량이 낮아 비만인 사람에게도 적합한 생선이랍니다.
+                                자리돔을 이용한 요리는 자리물회, 강회, 조림이 있고 젓갈을 담그거나 굵은소금을 뿌려서 통째로 구워 먹어도 그 맛이 일품입니다.
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var v_drct1 = document.getElementById("dropdown-content1");
+        var v_drct2 = document.getElementById("dropdown-content2");
+        var v_drct3 = document.getElementById("dropdown-content3");
+        var v_drct4 = document.getElementById("dropdown-content4");
+        function f_none() {
+            v_drct1.style.display="none";
+            v_drct2.style.display="none";
+            v_drct3.style.display="none";
+            v_drct4.style.display="none";
+        }
+        function f_show() {
+            v_drct1.style.display="block";
+            v_drct2.style.display="block";
+            v_drct3.style.display="block";
+            v_drct4.style.display="block";
+        }
+    </script>
+    </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+    <script src="./js/jsp.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="./css/heroic-features.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">ProJect KDH</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./freeboardList.html">Board</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <form action="modify_action.html" onsubmit="return f_true()">
+        <input type="hidden" name="nm_num" value="">
+        제목<input type="text" name="nm_title" value=""><br>
+        작성자<input type="text" name="nm_writer" value="" readonly><br>
+        비밀번호<input type="text" name="nm_pass" value=""><br>
+        분류<select name="nm_category">
+            <option value="free">자유소통</option>
+            <option value="review">여행후기</option>
+        </select><br>
+        내용<br><textarea name="nm_content" cols="20" rows="10"></textarea><br>
+        <input type="submit" value="글수정"><input type="reset" value="다시쓰기"><br>
+        <a href="./free.html" class="btn btn-primary btn-lg">리스트로 돌아가기</a>
+    </form>
+    <script>
+        var v_title = document.getElementsByName("nm_title")[0];
+        var v_writer = document.getElementsByName("nm_writer")[0];
+        var v_pass = document.getElementsByName("nm_pass")[0];
+        var v_category = document.getElementsByName("nm_category")[0];  // select
+        var v_content = document.getElementsByName("nm_content")[0];
+        var v_tblName = "게시판";
+        function f_true() {
+            var v_arr = JSON.parse(localStorage.getItem(v_tblName));
+            var v_num = document.getElementsByName("nm_num")[0].value;
+
+            for (var i = 0; i < v_arr.length; i++) {
+                if (v_arr[i].num == v_num) {
+                    if (v_arr[i].pass == v_pass.value) {
+                        return true;
+                    }
+                }
+            }
+            alert("비밀번호가 일치하지 않습니다.");
+            v_pass.focus();
+            return false;
+        }
+        function f_init() {
+            var v_gnum = request.getParameter("g_num");
+            document.getElementsByName("nm_num")[0].value = v_gnum;
+            var v_arrDatas = JSON.parse(localStorage.getItem(v_tblName));
+            // 넘어온 넘버값에 해당하는 글 찾기
+            for (var i = 0; i < v_arrDatas.length; i++) {
+                if (v_arrDatas[i].num == v_gnum) {
+                    v_title.value = v_arrDatas[i].title;
+                    v_writer.value = v_arrDatas[i].writer;
+                    v_category.value = v_arrDatas[i].category;
+                    v_content.value = v_arrDatas[i].content;
+                    break;
+                }
+            }
+        }
+        window.onload = f_init;
+        CKEDITOR.replace('nm_content');
+    </script>
+    <script src="./vendor/jquery/jquery.min.js"></script>
+    <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

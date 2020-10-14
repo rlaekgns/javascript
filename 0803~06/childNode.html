@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id_lty">
+        <div>흥</div>
+        <div>치</div>
+        <div>뿡</div>
+    </div>
+    <input type="button" value="체크" onclick="f_check()">
+    <script>
+        var v_lty = document.getElementById("id_lty");
+        // childNodes는 텍스트포맷에도 영향을 받기 때문에 (정확히는 node변화)
+        // 사용하지 않는것이 중요합니다. 
+        function f_check(){
+            alert("childNodes : " + v_lty.childNodes[1].innerHTML);
+            alert("children : " + v_lty.children[1].innerHTML);
+        }
+    </script>
+</body>
+</html>

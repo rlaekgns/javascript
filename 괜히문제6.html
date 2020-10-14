@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper {
+            position: relative;
+            margin: 0px auto;
+            width: 500px;
+            height: 90vh;
+            background-color: pink;
+        }
+        #id_bar {
+            position: absolute;
+            bottom: 50px;
+            width: 80px;
+            height: 20px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper" tabindex="0" onkeydown="f_lrMove()">
+        <div id="id_bar"></div>
+    </div>
+    <script>
+            // 좌우 화살표 눌렀을 때 막대 움직이기
+        var v_wrapper = document.getElementById("wrapper");
+        var v_bar = document.getElementById("id_bar");
+        var v_mv = 10;
+        function f_lrMove() {
+            if(event.keyCode == 37) { // 왼쪽 화살표
+                if(parseInt(v_bar.style.left) > 0){
+                    v_bar.style.left = parseInt(v_bar.style.left) - v_mv + "px";
+                }
+            }
+            if(event.keyCode == 39) { // 오른쪽 화살표
+                if(parseInt(v_bar.style.left)+80 < 500){
+                    v_bar.style.left = parseInt(v_bar.style.left) + v_mv + "px";
+                }
+            }
+        }
+        // 초기세팅이 필요한 일들은 window.onload 이벤트에 모아서
+        window.onload = function() {
+            if(!v_bar.style.left){ // 초기값 없을때 초기값 강제 세팅
+                    v_bar.style.left = "30px";
+                }
+        }
+        // 여기서 문제 막대가 좌우로 움직이는데 부모(wrapper)를 벗어나지 않게 해주세요.
+    </script>
+</body>
+</html>

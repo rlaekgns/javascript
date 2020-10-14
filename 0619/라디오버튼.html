@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    남<input type="radio" name="nm_sb" id="" value="M" checked>
+    여<input type="radio" name="nm_sb" id="" value="F">
+    <input type=button value="당신의 성별은" onclick="f_sb()">
+    <script>
+        var v_rdos = document.getElementsByName("nm_sb"); // s붙으면 배열이라고 생각
+        function f_sb(){
+            if(v_rdos[0].checked){
+                alert("당신은 남자군요");
+            }else{
+                alert("당신은 여자군요");
+            }
+            // alert(v_rdos[0].value);
+            // alert(v_rdos[1].checked);
+        }
+    </script>
+</body>
+</html>

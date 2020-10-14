@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/myStyle.css">
+    <title>웹디자이너 입장에서 본 CSS</title>
+    <style>
+        /* basic selector */
+        /* 전체 선택자 */
+        * {
+            border: 2px solid black;
+        }
+        /* 태그(또는 type이라고 부름) 선택자 */
+        input {
+            border: 5px dashed pink;
+        }
+        /* ID 선택자 # */
+        #lty {
+            font-size: 2em;
+        }
+        /* class 선택자 . */
+        .aaa {
+            background-color: tomato;
+        }
+        /* 속성 포함 선택자 [] */
+        input[type=button] {  /* input 태그중에 type이 버튼인거 */
+            color: yellowgreen;
+            background-color: black;
+        }
+        /* 여러개 선택, 콤마는 or */
+        div, input {
+            background-color: black;
+        }
+        /* 붙여쓰면 and */
+        input[type=button]#id_a{
+            font-size: 3em;
+        }
+        /* 우선 순위가 id가 class보다 높다 -서나리 */
+        input[type=button][class=kkk]{
+            font-size: 5em;
+        }
+        /* 후손 선택자 빈 공백 */
+        #parent {
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+        }
+        #parent div {   /* parent뒤 공백이 있으면 parent의 후손(자손포함) */
+            width: 200px;
+            height: 20px;
+            border: 1px solid pink;
+            margin: 3px;
+        }
+        /* 직계 자손만 선택 */
+        #parent > div {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div>
+            <div></div>
+        </div>
+        <div>
+            <div></div>
+        </div>
+        <div>
+            <div></div>
+        </div>
+        <div>
+            <div></div>
+        </div>
+    </div>
+    <div class="fgBlue" id="lty">이태영</div>
+    <div class="fgYellow aaa">최승주</div>
+    <input class="fgPink" type=text value="임이랑"><br>
+    <input type=button id="id_a" class="kkk" value="나얌 버튼"><br>
+    <input type=button value="나얌 버튼"><br>
+    <input type=button class="kkk" value="나얌 버튼">
+</body>
+</html>

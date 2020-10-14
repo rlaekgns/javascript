@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        /* nth-child 함수는 가끔 쓸만함 */
+        /*
+        table > tbody > tr > td:nth-child(1){
+            background-color: red;
+        }
+        */
+        table > tbody > tr:nth-child(2n+1){
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <table border=1>
+        <tr><td>이름</td><td>연봉</td></tr>
+        <tr><td>이태영</td><td>1000</td></tr>
+        <tr><td>최승주</td><td>1100</td></tr>
+        <tr><td>합계</td><td>가격</td></tr>
+    </table>
+    <script>
+        var v_sum = 0;
+        $("table td:nth-child(2)").each(function(p_index, p_item){
+            // console.log(p_index, p_item);   // 확인
+            if(p_index >= 1 && p_index <= 2){
+                v_sum += parseInt(p_item.innerHTML);
+            }
+            if(p_index == 3){
+                p_item.innerHTML = v_sum;
+            }
+        })
+    </script>
+</body>
+</html>

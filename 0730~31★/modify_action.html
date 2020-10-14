@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script src="../js/jsp.js"></script>
+<script>
+    var v_gNum = request.getParameter("nm_num");    // 수정하려는 글(json)의 num값
+    var v_skills = request.getParameterValues("nm_skills"); // 배열
+    var v_content = request.getParameter("nm_content");
+    v_content = v_content.replace("+"," ");
+
+    var v_tblName="볼품게시";   // key값 임의로 정한 테이블명
+    // var v_arrData = [];     // json을 담아줄 배열 선언, 실제 테이블 역할
+
+    var v_record = {};      // 받아온 값 전부를 1개의 JSON으로 묶기위한 json
+    v_record.skills = v_skills; // 배열임에 주의
+    v_record.content = v_content;
+
+    // 수정하려는 글 찾기 (num이용)
+    var v_arrData = JSON.parse(localStorage.getItem(v_tblName));
+    for(var i=0; i<v_arrData.length; i++){
+        if(v_arrData[i].num == v_gNum){
+            v_arrData[i].skills = v_record.skills;
+            v_arrData[i].content = v_record.content;
+        }
+    }
+
+    // localStorage에 실제로 저장
+    localStorage.setItem(v_tblName, JSON.stringify(v_arrData));
+
+    alert("해당글 수정이 잘 되었습니다");
+    location.href = "list.html";    // 목록으로 이동
+
+    // v_arrData.push(v_record);   // 배열에 묶어준 json 추가(VO역할)
+    // localStorage.setItem(v_tblName, JSON.stringify(v_arrData));
+</script>

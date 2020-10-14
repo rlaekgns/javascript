@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        "multipart/form-data"
+        이것은 정확히는 인코딩이 아니고, 데이터가 섞여서 들어간다고 알려주는 의미
+        보통 파일등은 바이너리(0,1) 파일
+        boundary라고 경계선을 붙여서 서버쪽으로 넘겨줘영
+    -->
+    <input type=file id="id_file" accept=".jpg,.jpeg,.png,.gif"><br>
+    <input type=button value="아작스파일업로드" onclick="f_up()">
+    <div id="id_disp"></div>
+<script>
+    // 아작스 파일업로드는 특별한 CASE이니 주의
+    var v_file = document.getElementById("id_file");
+    var v_disp = document.getElementById("id_disp");
+    function f_up(){
+        // 사용자 선택 파일, 파일객체가 중요
+        console.log(v_file.files[0]);
+
+        // 처음보지만 낯설지 않은 
+        var v_formData = new FormData();
+        v_formData.append("fileToUpload", v_file.files[0]); // 메소드는 많지만 이것만 알면 99% OK
+
+        var v_xhr = new XMLHttpRequest();
+        v_xhr.open("post", "upload.php", true);
+
+        v_xhr.send(v_formData);           // 전송
+        v_xhr.onreadystatechange = function(){
+            if(v_xhr.readyState == 4 && v_xhr.status == 200){
+                var v_img = document.createElement("img");
+                v_img.src = v_xhr.responseText;
+                v_img.width = 100;
+                v_img.height = 100;
+                v_disp.appendChild(v_img);
+                alert(v_xhr.responseText);
+            }
+        }
+    }
+</script>
+</body>
+</html>

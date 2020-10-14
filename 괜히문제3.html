@@ -1,0 +1,37 @@
+<meta charset="UTF-8">
+<script>
+    function f_arrSort(p_arr) {
+        for (var i = 0; i < v_arr.length; i++) {
+            for (var j = i + 1; j < v_arr.length; j++) {
+                if (v_arr[i] > v_arr[j]) { // 요소값이 0번째 값보다 크다면 값 체인지
+                    var temp = v_arr[i];
+                    v_arr[i] = v_arr[j];
+                    v_arr[j] = temp;
+                }
+            }
+        }
+    }
+    var v_arr = [4, 9, 8, 3, 5, 7];
+    f_arrSort(v_arr);
+    alert(v_arr);
+    var v_arr1 = [3, 8, 7, 9, 4, 2, 1, 0, 5];
+    f_arrSort(v_arr1);
+    alert("정렬된 값은" + v_arr1);
+    // 첫번째에 가장 작은 값이 오도록 하기!
+    // 버블정렬 - 면접때 꽤 많이 묻고 잘 답변하면 거의 합격
+    // for (var i = 0; i < v_arr.length; i++) {
+    //     for (var j = i + 1; j < v_arr.length; j++) {
+    //         if (v_arr[i] > v_arr[j]) { // 요소값이 0번째 값보다 크다면 값 체인지
+    //             var temp = v_arr[i];
+    //             v_arr[i] = v_arr[j];
+    //             v_arr[j] = temp;
+    //         }
+    //     }
+    // }
+
+    // alert(v_arr);
+    // 두번째 index에 두번째로 작은 값(4)가 오도록
+    // 세번째 index에 세번째로 작은 값(5)가 오도록
+    // 그렇다면 정렬
+
+</script>

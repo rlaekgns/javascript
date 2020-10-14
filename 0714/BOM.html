@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- document와 location이 제일 중요해요, 나머지는 별로 별로... 상황에 따라서 -->
+    <input type="button" value="뒤로 가기" onclick="f_back()"><br>
+    <input type="button" value="앞으로 가기" onclick="f_go()">
+    <script>
+        // alert(navigator.userAgent);     // navigator는 userAgent 속성밖에 사용안함
+        // 사용자 부라우져 구분할때 사용, 브라우져마다 뜨는 문자열이 다름
+        // 인터넷 진흥원처럼 브라우져별 사용통계를 내는 곳에서 많이 사용, 그외는 거의 안씀
+
+        alert(screen.colorDepth);   // screen은 모니터 화면을 나타냄!
+        alert(screen.availWidth);   // 모니터 넓이
+      
+        function f_go(){
+            history.go(1);      // 요즘은 잘 사용하지 않음, location 객체로 정확히 제어
+        }
+        function f_back(){
+            history.go(-1);
+        }
+    </script>
+</body>
+</html>

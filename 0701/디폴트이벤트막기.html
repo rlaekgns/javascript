@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- a href= "javascript:f_ck2()" 구데기 방식 javascript 코드를 연결시키면 디버깅이 아주 어려워져서 안씀 -->
+    <a href="#" onclick="f_check()">넥스트아이티</a>
+    <script>
+        function f_ck2() {
+            alert("나도 실행 될껄?!");
+        }
+        function f_check() {
+            // event.preventDefault(); // 내장된 기본 이벤트 막기
+            // event.stopPropagation(); // 이벤트 전파 막기
+            alert("하이루~");
+        }
+    </script>
+</body>
+</html>

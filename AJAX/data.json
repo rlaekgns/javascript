@@ -1,0 +1,23 @@
+[
+    {
+        "lang": "HTML5",
+        "content": {
+            "full": "Hyper Text Markup Language",
+            "point": "WWW의 기본 태그 언어 "
+        }
+    },
+    {
+        "lang": "CSS",
+        "content": {
+            "full": "Cascading Style Sheet",
+            "point": "레이아웃과 장식을 위한언어"
+        }
+    },
+    {
+        "lang": "JS",
+        "content": {
+            "full": "JavaScript",
+            "point": "HTML과 CSS의 컨트롤을 위한 언어"
+        }
+    }    
+]

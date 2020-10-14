@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>난 최고의 프로그래머다</h1>
+    <input type=button value="문서에 쓰기" onclick="f_wrt()">
+    <script>
+        function f_wrt(){
+            document.write("<h1>전 어떻게 될까요?</h1>");
+            // 이미 닫힌 문서(/html)에 적용하면 새문서를 작성하게 됨!
+        }
+        // document.write()  권장되지 않음 : 이유: 개발자들이 잘 못써서 잘 쓰면 장점 있음.
+        // 최근 스크립트 엔진들은 내부적으로 자동 체크 하는게 많아서 잘못 쓸거면 안 쓰는 분위기
+        for(var i=1; i<=10; i++){
+            document.write("<h1>난 최고의 프로그래머다</h1>");
+        }
+    </script>
+</body>
+</html> <!-- 문서(document)가 닫힘, 문서작성 끝났음 -->

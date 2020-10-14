@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<style>
+    .cl_num {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border: 2px solid black;
+        text-align: center;
+        line-height: 50px;
+        /* 글자들 수직 중앙정렬 */
+    }
+</style>
+
+<body>
+    <input type=button value="금주의 당첨예상번호는" onclick="f_lotto()">
+    <div class="cl_num">?</div>
+    <div class="cl_num">?</div>
+    <div class="cl_num">?</div>
+    <div class="cl_num">?</div>
+    <div class="cl_num">?</div>
+    <div class="cl_num">?</div>
+</body>
+<script>
+    // 중복 체크 로직은 무지 중요합니다. 아주 익숙해져야 함.
+    // 안되면 이해 될때까지 외워서....
+
+    var v_lottoNums = []; // 로또번호 담을 빈 배열
+    function f_ranNum(p_start, p_end) {
+        return Math.round(Math.random() * (p_end - p_start)) + p_start;
+    }
+    // 언제 중복된 숫자가 몇번 발생할지 알 수 없으므로
+    // 반복문의 횟수를 정할 수 없음
+    // 무한루핑사용할 땐 서버프로그램이 아니면 꼭 종료조건을 생각해야함
+    for (; "로또번호발생은무한루핑";) {
+        if (v_lottoNums.length == 6) {
+            break;
+        }
+        var v_num = f_ranNum(1, 45);   // 랜덤 숫자 발생
+        // 배열에 넣기 전에 배열에 이미 같은 값이 존재하는지 체크
+        var v_check = false;  // 같은 값이 있다고 가정
+        for (var i = 0; i < v_lottoNums.length; i++) {
+            if (v_lottoNums[i] == v_num) {
+                v_check = true;         // 없다고 가정했는데 있음!
+                break;                  // 같은 값이 있으면 더 이상 체크할 필요없음
+            }                           // 초보자들의 실수 여기에 else가 들어감
+        }
+        // 같은 값이 없을때 곧 v_check가 false일때만 배열에 값을 넣음!
+        // v_check가 true일때는 아무일도 하지 않음!
+        if (!v_check) {
+            v_lottoNums[v_lottoNums.length] = v_num;
+        }
+    }
+    // alert(v_lottoNums); // 숫자 6개 확인
+    var v_divs = document.getElementsByClassName("cl_num");
+    function f_lotto() {
+        for (var i = 0; i < v_lottoNums.length; i++) {
+            v_divs[i].innerHTML = v_lottoNums[i];  // 배열요소값을 div에 넣어주기
+        }
+    }
+</script>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   타이틀검색<input type="text" id="id_text" value="" >
+   <input type="button" value="검색" onclick="f_search()" >
+   <div id="id_disp"></div>
+    <script>
+        var v_arr = JSON.parse(localStorage.getItem("게시판"));
+        var v_disp = document.getElementById("id_disp");
+        var v_text = document.getElementById("id_text");
+        function f_search(){
+            var p_value = v_text.value;
+            for(var i=0; i<v_arr.length; i++){
+               if(v_arr[i].title.indexOf(p_value) != -1){
+                v_disp.innerHTML += v_arr[i].content;
+               } 
+            }
+        }
+    </script>
+</body>
+</html>

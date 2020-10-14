@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // this? 우리말로 하면 나! context -> 문맥
+    // console.log(this); // 누구? -> 최상위객체 window를 가리킴
+    
+    // function f_check() {
+    //     console.log(this); //? 역시 window
+    // }
+    // f_check();
+
+    var v_lty = {} // 빈 객체 생성
+    v_lty.myMeth = function(p_msg) {
+        console.log(this); //?
+        return this;        // method 체인닝을 구현
+    }
+    // v_lty.myMeth("A").myMeth("B").myMeth("C");
+    var v_csj = v_lty.myMeth;
+    v_csj("뭐얌");
+    /*
+     해당속성을 가지고 있는 객체가 this! (문맥상 context)
+     js 개발자의 반발로 인해 뭔가를 만들어줌
+    */
+</script>

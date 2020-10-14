@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+  <title>글 작성</title>
+  <!-- Bootstrap core CSS -->
+  <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="./css/heroic-features.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">ProJect KDH</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./freeboardList.html">Board</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <h1>자유 게시판</h1>
+  <form action="write_action1.html">
+    제목<input type="text" name="nm_title" value=""><br>
+    작성자<input type="text" name="nm_writer" value=""><br>
+    비밀번호<input type="text" name="nm_pass" value=""><br>
+    분류<select name="nm_category">
+      <option value="free">자유소통</option>
+      <option value="review">여행후기</option>
+    </select><br>
+    내용<br><textarea name="nm_content" cols="20" rows="10"></textarea><br>
+    <input type="submit" value="글등록"><input type="reset" value="다시쓰기"><br>
+    <a href="./freeboardList.html" class="btn btn-primary btn-lg">리스트로 돌아가기</a>
+  </form>
+  <script>
+    CKEDITOR.replace('nm_content');
+  </script>
+  <script src="./vendor/jquery/jquery.min.js"></script>
+  <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="id_form">
+        이름<input type=text name="nm_name" value="이태연"><br>
+        별명1<input type=text name="nm_al1" value="바보1"><br>
+        별명2<input type=text name="nm_al2" value="바보2"><br>
+        별명3<input type=text name="nm_al3" value="금연실패"><br>
+        별명4<input type=text name="nm_al4" value="금주실패"><br>
+        별명5<input type=text name="nm_al5" value="계속실패"><br>
+        별명6<input type=text name="nm_al6" value="실패왕"><br>
+        별명7<input type=text name="nm_al7" value="시행착오왕"><br>
+        별명8<input type=text name="nm_al8" value="암거나왕"><br>
+    </form>
+    <script>
+        /*
+            form객체를 받아서 그 안의 element(요소)의 name과 value쌍으로 문자열
+            만들어주는 함수를 만들어 두면 편함
+        */
+        function f_serialize(p_form){
+            var v_elems = p_form.elements;
+            var v_queryString = "";
+            for(var i=0; i < v_elems.length; i++){
+                v_queryString += v_elems[i].name + "=" + v_elems[i].value + "&";
+            }
+            return v_queryString;
+        }
+        // ajax get 방식
+        var v_xhr = new XMLHttpRequest();
+        var v_form = document.getElementById("id_form");
+        v_xhr.open("get", "check.php?"+f_serialize(v_form), true);
+        v_xhr.send();
+        v_xhr.onreadystatechange = function(){
+            if(v_xhr.readyState == 4 && v_xhr.status == 200){
+                // alert(v_xhr.responseText);
+            }
+        }
+    </script>
+</body>
+</html>

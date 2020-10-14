@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_lty {
+            width: 200px;
+            height: 200px;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="id_lty" ondragover="f_dragover()" ondrop="f_drop()">
+        여기에 이미지를 끌어다 놓아주세요~
+    </div>
+    <script>
+        var v_lty = document.getElementById("id_lty");
+        function f_dragover() {
+            // 여기는 기본적으로 막아줘야 함
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        function f_drop() {
+            // 끌고 온 파일 정보
+            // console.log(event.dataTransfer.files);
+            var v_file = event.dataTransfer.files[0];
+            var v_fileReader = new FileReader();
+            v_fileReader.readAsDataURL(v_file);
+            v_fileReader.onload = function(){
+                var v_img = document.createElement("img");
+                v_img.src = v_fileReader.result;
+                v_img.width = 200;
+                v_img.height = 200;
+                v_lty.innerHTML = ""; // 넣기전에 비워줌 그래야 마지막에 넣은 이미지가 보임
+                v_lty.appendChild(v_img);   // 문서 어딘가에 붙여줘야 눈에 보임
+            }
+         
+
+            // v_fileReader.onload = function(){
+            //     alert("체크2" + v_fileReader.result);
+            // }
+            // // 이게 먼저 실행됨 이런것을 비동기(ASynchronouse) 라고 부름
+            // alert("체크1" + v_fileReader.result); 
+        }
+
+        // 브라우져의 Drag & Drop 기본기능 막아버리기
+        window.addEventListener("dragover", function(){
+            event.preventDefault();  // 기본 이벤트 막아버리기
+            event.stopPropagation(); // 이벤트 전파 막기
+        });
+        window.addEventListener("drop",function(){
+            event.preventDefault();  // 기본 이벤트 막아버리기
+            event.stopPropagation(); // 이벤트 전파 막기
+        });
+    </script>
+</body>
+</html>

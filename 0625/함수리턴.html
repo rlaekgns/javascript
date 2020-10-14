@@ -1,0 +1,31 @@
+<meta charset="UTF-8">
+<script>
+    // 함수속에서 함수 리턴
+    // 비슷한 기능의 함수들을 함수그룹으로 묶어줌.(잘 사용하지는 않음)
+    function f_cal(p_op) {
+        if(p_op == "+"){
+            return function(p_arg1, p_arg2){
+                return p_arg1 + p_arg2;
+            }
+        }
+        if(p_op == "-"){
+            return function(p_arg1, p_arg2){
+                return p_arg1 - p_arg2;
+            }
+        }
+        if(p_op == "*"){
+            return function(p_arg1, p_arg2){
+                return p_arg1 * p_arg2;
+            }
+        }
+        if(p_op == "/"){
+            return function(p_arg1, p_arg2){
+                return p_arg1 / p_arg2;
+            }
+        }    
+    }
+    alert("두수 더하기 " + f_cal("+")(8, f_cal("-")(8, 3)));
+    alert("두수 빼기 " + f_cal("-")(8, 3));
+    alert("두수 곱하기 " + f_cal("*")(8, 3));
+    alert("두수 나누기 " + f_cal("/")(8, 3));
+</script>

@@ -1,0 +1,27 @@
+<meta charset="UTF-8">
+<script>
+    /* 
+        재귀호출 문제   기본은 하루가 지나면 자가복제기능 매일 작동
+        기간            터미네이터 숫자
+        0일             A
+        1일             A
+        2일             A A1
+        3일             A A2 A1
+        4일             A A3 A2 A1 A11
+        5일             A A4 A3 A2 A21 A1 A11 A12
+        문제 날짜를 매개변수로 넘기면 그 날짜의 터미네이터 숫자를 리턴하는
+        함수를 재귀호출을 이용하여 만들어주세요.
+
+        아주 유명한 문제
+        세번째부터 N = (N-1) + (N-2) 규칙이 보임, N=0,N=1 일때는 그냥 1
+        이거 풀고 오늘 중요한 거 많이 했으니 한번 정리해 봅시다.
+    */
+    function f_pibo(p_day) {
+        if(p_day == 0 || p_day == 1) return 1;
+
+        return f_pibo(p_day - 1) + f_pibo(p_day - 2);
+    }
+    for(var a_day=0; a_day <=10; a_day++){
+        alert(a_day + "일차: " + f_pibo(a_day) + "마리");
+    }
+</script>

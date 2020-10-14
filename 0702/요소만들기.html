@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <input id="id_btn" type=button value="추가">
+    <script>
+        var v_btn = document.getElementById("id_btn");
+        var v_container = document.getElementById("container");
+        /*
+        v_btn.onclick = function() {
+            var v_img = "<img src=images/IU7.jpg width=100 height=100>"
+            v_container.innerHTML += v_img;
+        }
+        */
+        // 연봉많이 받도록 개발자스럽게
+        v_btn.onclick = function() {
+            var v_img = document.createElement("img"); // 메모리상에 img객체를 만듬
+            v_img.setAttribute("src","images/SH1.jpg");
+            v_img.setAttribute("width", 100);   // 속성 값 write
+            alert(v_img.getAttribute("width")); // 속성 값 read
+            v_img.setAttribute("height", 100);
+            // 여기까지하면 눈에 안보임, 문서(html) 어디에 넣어줄지를 알려줘야 함
+
+            v_container.appendChild(v_img); // 이걸해야 눈에 보임
+        }
+    </script>
+</body>
+</html>

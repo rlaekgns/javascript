@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cl_dap {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+     <!-- 랜덤 정답: <input type=text id="id_jung" value=""><br>  -->
+    <hr>
+    <script>
+        var v_munSu = 5;
+        var v_choiceNum = 4;
+        var v_jungdaps = []; // 정답 담을 빈 배열
+        // 정답은 문제 수 만큼
+        for (var i = 1; i <= v_munSu; i++) {
+            v_jungdaps[v_jungdaps.length] = Math.floor(Math.random() * 4) + 1;
+        }
+        // document.getElementById("id_jung").value = v_jungdaps;
+
+        for (var v_mun = 1; v_mun <= v_munSu; v_mun++) {
+            document.write("문제" + v_mun + "<br>");
+            for (var i = 1; i <= v_choiceNum; i++) {
+                var v_lineStr = i + "<input type=radio name=nm_mun" + v_mun + " value=" + i + ">";
+                document.write(v_lineStr);
+            }
+            document.write("<input class=cl_dap type=text name=nm_hidden value=" + v_jungdaps[v_mun-1] + " size=2>")
+            document.write("<br>");
+        }
+    </script>
+    점수<input id="id_score" type=text value="" size=5>
+    <input type=button value="채점" onclick="f_score()">
+    <script>
+        function f_score() {
+            var v_userDaps = []; // 사용자가 선택한 답을 담을 배열
+            for (var j = 1; j <= v_munSu; j++) { // 문제수 만큼 루프
+                // 라디오 그룹(4개씩)
+                var v_munRdo = document.getElementsByName("nm_mun" + j);
+                for (var i = 0; i < v_munRdo.length; i++) {
+                    if (v_munRdo[i].checked) {
+                        v_userDaps[v_userDaps.length] = v_munRdo[i].value;
+                    }
+                }
+            }
+            var v_cnt = 0; // 맞은 갯수
+            var v_dapTxts = document.getElementsByName("nm_hidden");
+            for (var i = 0; i < v_munSu; i++) {
+                v_dapTxts[i].style.display = "inline-block"; // 눈에 보이게
+                if (v_jungdaps[i] == v_userDaps[i]) {
+                    v_dapTxts[i].style.backgroundColor="blue";
+                    v_cnt++; // 맞은 갯수 증가
+                }else{
+                    v_dapTxts[i].style.backgroundColor="red";
+                }
+
+            }
+            // 점수  맞은갯수/문제수 * 100
+            document.getElementById("id_score").value = v_cnt / v_munSu * 100
+        }
+
+    </script>
+
+</body>
+
+</html>

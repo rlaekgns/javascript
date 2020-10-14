@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id_disp" style="border: 1px solid red; height: 100px;"></div>
+    이름<input id="id_name" type="text" value=""><br>
+    별명<input id="id_alias" type="text" value=""><br>
+    <input type="button" value="추가" onclick="f_add()">
+    <input type="button" value="읽기" onclick="f_read()">
+    <input type="button" value="수정" onclick="f_mod()">
+    <input type="button" value="삭제" onclick="f_del()">
+<script>
+    // localstorage는 문자열밖에 저장이 안됨!!!
+    // key값을 관계형 DB의 테이블명으로, json타입을 레코드처럼 사용해서 효용성을 높이려 함
+    var v_tblName = "lty";
+    var v_name = document.getElementById("id_name");
+    var v_alias = document.getElementById("id_alias");
+    var v_arrVals = []; // record를 담을 배열, 이것이 table역할
+    // 객체지향언어에서는 배열이 하나의 객체역할을하고 json이 레코드 역할을 함
+    function f_add(){
+        // VO 만들기
+        var v_saram = {};
+        v_saram.name = v_name.value;
+        v_saram.alias = v_alias.value;
+
+        v_arrVals.push(v_saram);    // 배열에 json을 추가
+
+        // 키 값이 같으면 내용을 덮어씌우므로 배열로 하면 배열에 추가가 됨
+        localStorage.setItem(v_tblName, JSON.stringify(v_arrVals));
+    }
+    
+    var v_disp = document.getElementById("id_disp");
+    function f_read(){
+        var v_schName = v_name.value;   // localstorage에서 찾으려는 이름
+        // localStorage에서 가져오면 문자열이기 때문에 parse로 다시 배열로 바꿔줌
+        var v_arrDatas = JSON.parse(localStorage.getItem(v_tblName));
+        for(var i=0; i<v_arrDatas.length; i++){
+            if(v_arrDatas[i].name == v_schName){
+                var v_str = "이름:" + v_arrDatas[i].name + "<br>";
+                v_str += "별명:" + v_arrDatas[i].alias + "를 찾았습니당<br>";
+                v_disp.innerHTML = v_str;
+                break;
+            }
+        }
+    }
+    function f_mod(){
+        var v_schName = v_name.value;   // localstorage에서 찾으려는 이름
+        var v_modAlias = v_alias.value; // 바꿔쓰려는 별명
+        var v_arrDatas = JSON.parse(localStorage.getItem(v_tblName));
+        for(var i=0; i<v_arrDatas.length; i++){
+            if(v_arrDatas[i].name == v_schName){
+                v_arrDatas[i].alias = v_modAlias;   // 별명 값을 바꿔 줌
+                break;
+            }
+        }   // 여기까지 하면 메모리상의 배열에서만 값이 바뀌어서, localstorage에는 반영이 안됨
+        // localStorage에 바뀐 배열내용을 저장
+        localStorage.setItem(v_tblName, JSON.stringify(v_arrDatas));
+    }
+    function f_del(){
+        var v_schName = v_name.value;
+        var v_arrDatas = JSON.parse(localStorage.getItem(v_tblName));
+        for(var i=0; i<v_arrDatas.length; i++){
+            if(v_arrDatas[i].name == v_schName){
+                v_arrDatas.splice(i,1);    // 배열 요소 지우기, 만드려면 귀찮으니 기억해야 함
+                break;
+            }
+        }
+        // 지운 배열로 덮어 써주면 끝
+        localStorage.setItem(v_tblName, JSON.stringify(v_arrDatas));
+    }
+</script>
+</body>
+</html>

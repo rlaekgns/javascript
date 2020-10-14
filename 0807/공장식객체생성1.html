@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // 자바의 ArrayList를 만들어보기
+    // add(value), get(index), set(indexm value),
+    // remove(index), clear(), size()
+
+    var ArrayList = function(){
+        this.length = 0;
+    }
+    ArrayList.prototype.add = function(p_value){
+        this[this.length] = p_value;
+        this.length++;
+    }
+    ArrayList.prototype.get = function(p_index){
+        return this[p_index];
+    }
+    ArrayList.prototype.set = function(p_index, p_value){
+        this[p_index] = p_value;
+    }
+    ArrayList.prototype.remove = function(p_index){
+        //delete this[p_index];  /*delete명령 주의, 배열에서는 값만 사라짐 */
+        // 중간 index값이 떠버리면 괴로버용
+        for(var i=p_index; i< (this.length-1); i++){
+            this[i] = this[i+1];
+        }
+        delete this[this.length-1];  // 땡겨서 마지막 거 지우기
+        this.length--;
+    }
+    ArrayList.prototype.clear = function(){
+        /* 숫자값 문자열 속성만 삭제 ㅠㅠ  NaN이 타입이 Number로 인식ㅠㅠ 
+            for(var v_attr in this){
+                if(!isNaN(parseInt(v_attr))){
+                    delete this[v_attr];
+                }
+            this.length  = 0;
+            }
+        */
+    
+    /* 중간값을 지우면 for문에 문제가 생기나, remove 수정 */
+    for(var i=0; i<this.length; i++){  // 속성 갯수만큼
+        delete this[i];  
+    }
+    this.length = 0;
+    }
+    ArrayList.prototype.size = function(){
+        return this.length;
+    }
+    // Test
+    var v_test = new ArrayList();
+    v_test.add("이태영");
+    v_test.add("최승주");
+    v_test.add("서나리");
+    v_test.add("임이랑");
+    // add 확인
+    console.log(v_test);
+    // get 확인
+    alert(v_test.get(3));
+    // set 확인
+    v_test.set(3, "박성연");
+    alert(v_test.get(3));
+    // size 확인
+    alert(v_test.size());
+    // remove 확인
+    v_test.remove(3);
+    console.log(v_test);
+    // clear 확인
+    v_test.clear();
+    console.log(v_test);
+    
+</script>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        window.onmousedown = function(){
+            if(event.button==2){ // 0번 왼쪽, 1번 가운데, 2번 오른쪽
+                alert("뭐냐 넌 어림없당!");
+            }
+        }
+        //ContextMenu 막기
+        window.addEventListener("contextmenu",function(){
+            event.preventDefault(); //기본 이벤트 막아버리기
+            // event.stopPropagation(); // 이벤트 전파막기
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // mongoDB(객체지향DB로 유명), 오라클은 RDBMS
+    // 비정형데이타에 적합       , 정형데이타에 적합
+    // localStorage의 제약사항 현재는 문자열만 저장 가능!!
+    /*
+    var v_lty = {
+        "name":"이태영",
+        "age":100
+    };
+    */
+    // JSON 유틸리티 객체가 조금 품질이 떨어져서 문자열을 객체로 변환할 때는 
+    // 해당 문자열의 바깥쪽이 '', 안쪽이 ""로 되어 있어야 함
+    // var v_lty = '{"name":"이태영","age":100}'; // -> 그냥 JSON형식을 한 문자열
+    var v_lty = {};
+    v_lty.name="이태영";
+    v_lty.age=100;
+    
+    v_lty = JSON.stringify(v_lty); // JSON을 문자열로 변환
+    alert(typeof(v_lty));   // v_lty 데이타 타입확인
+
+    // v_lty = JSON.parse(v_lty);  // 문자열을 JSON으로 변환, 문자열 내용이 JSON 형식이어야 함!
+    alert(v_lty.age);   //?
+
+    /*
+    // localStorage에 저장, JSON <-> 문자열 변환 유틸리티 객체 JSON
+    v_lty = JSON.stringify(v_lty);  // JSON을 문자열로 변환 localStoratge는 문자열만 저장 가능하므로
+    alert(v_lty.name);  //?
+    localStorage.setItem("key값",v_lty);
+    */
+</script>

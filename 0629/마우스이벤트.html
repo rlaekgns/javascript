@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper {
+            width: 50px;
+            height: 20px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper" onmouseover="f_over()" onmouseout="f_out()">
+
+    </div>
+    <script>
+        var v_wrapper = document.getElementById("wrapper");
+        var v_timerID1; // 선언을 함수 밖에서 하면 전역변수
+        var v_timerID2;
+        function f_over() {
+            // console.log("pppp"+v_wrapper.style.width+"ppp"); // 빈 공백임을 확인
+            if(!v_wrapper.style.width) {
+                v_wrapper.style.width = "50px"; // 강제 초기화
+            }
+            clearTimeout(v_timerID2);
+            v_wrapper.style.width = parseInt(v_wrapper.style.width) + 10 + "px";
+            v_wrapper.innerHTML = "늘어난다";
+            v_timerID1 = setTimeout(f_over,300);
+            // console.log("마우스가 올라왔어요.");
+        }
+        function f_out() {
+            // over되었을 때 커지는 것 멈추기
+            clearTimeout(v_timerID1); // setTimeout이 발생시킨 타이머 클리어!
+            v_wrapper.style.width = parseInt(v_wrapper.style.width) - 10 + "px";
+            v_wrapper.innerHTML = "줄어든다";
+            v_timerID2 = setTimeout(f_out,300);
+            // console.log("마우스가 떠났어요!");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 보안상의 이유로 사용자 컴퓨터에 파일을 쓰는 것은 불가
+        읽기는 사용자가 선택해주는 파일만 읽기 가능! -->\
+    <img src="#" id="id_sajin" width=100 height=100 alt="이미지 있엉?"><br>
+    <input type=file id="id_select" value="" accept=".jpg,.jpeg,.png,.gif" onchange="f_file()">
+    <script>
+        // preview 이런식으로밖에 사용되지 않으므로 이 파일을 잘 가지고 있으면 고민 안해도 됨!
+        var v_file = document.getElementById("id_select");
+        function f_file() {
+            // files는 file객체들을 가진 배열이라고 생각하면 좋음
+            console.log(v_file.files[0].name);     // files 속성 눈으로 확인!
+            var v_file2 = v_file.files[0];         // file 객체는 뽑아냄
+            var v_fileReader = new FileReader();   // file 읽어줄 사람 필요
+            // v_fileReader.readAsText(v_file2);   // 텍스트 파일을 읽기
+            v_fileReader.readAsDataURL(v_file2);   //이미지 파일 읽기, 가장 많이 씀
+            v_fileReader.onload = function() {
+                // 다 읽고나면 result라는 속성에 그 값을 담아줌
+            document.getElementById("id_sajin").src = v_fileReader.result;
+            // alert(v_fileReader.result);
+            }
+        }
+    </script>
+</body>
+</html>

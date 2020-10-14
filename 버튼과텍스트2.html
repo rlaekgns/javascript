@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    블랙<input type=text id="id_txt1" value=""><br>
+    핑크<input type=text id="id_txt2" value=""><br>
+    <input type=button value="복사" onclick="f_copy()">
+    <script>
+        var v_txt1 = document.getElementById("id_txt1");
+        var v_txt2 = document.getElementById("id_txt2");
+        function f_copy(){
+            // document.getElementById("id_txt1").value = document.getElementById("id_txt2").value;
+            v_txt1.value = v_txt2.value;    
+        }
+        
+    </script>
+</body>
+</html>

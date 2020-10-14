@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="id_form">
+        이름<input type=text name="nm_name" value="이태연"><br>
+        별명1<input type=text name="nm_al1" value="바보1"><br>
+        별명2<input type=text name="nm_al2" value="바보2"><br>
+        별명3<input type=text name="nm_al3" value="금연실패"><br>
+        별명4<input type=text name="nm_al4" value="금주실패"><br>
+        별명5<input type=text name="nm_al5" value="계속실패"><br>
+        별명6<input type=text name="nm_al6" value="실패왕"><br>
+        별명7<input type=text name="nm_al7" value="시행착오왕"><br>
+        별명8<input type=text name="nm_al8" value="암거나왕"><br>
+    </form>
+    <script>
+        // ajax post 방식
+        var v_xhr = new XMLHttpRequest();
+        v_xhr.open("post", "check.php", true);
+        // post 방식에서 data를 전송할 때는 send에 매개변수로 넘겨줌
+        // "application/x-www-form-urlencoded"
+        
+        // 전송 encoding방식을 default값으로 바꿔줘야 함, send전에
+        // FormData생성자에 form객체를 넘기면, 자동으로 name=value&name...
+        var v_formData = new FormData(document.getElementById("id_form"));
+        // v_formData.append("nm_name","lty");
+
+        // api-key 받아서 data서비스 받는 사이트는 header에
+        // 그들만의 특별한 정보(인증을위함)를 header에 쓰라고 하니
+        // setRequestHeader 메소드 잊지 않기
+        // v_xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");        
+        v_xhr.send(v_formData);
+        v_xhr.onreadystatechange = function(){
+            if(v_xhr.readyState == 4 && v_xhr.status == 200){
+                alert(v_xhr.responseText);
+            }
+        }
+    </script>
+</body>
+</html>

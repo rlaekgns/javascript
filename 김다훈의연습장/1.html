@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Heroic Features - Start Bootstrap Template</title>
+  <!-- Bootstrap core CSS -->
+  <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="./css/heroic-features.css" rel="stylesheet">
+  <style>
+    #id_scene {
+        margin: 100px auto;
+        width: 400px;
+        height: 400px;
+        /* border: 1px solid red; */
+        perspective: 1000px;    /* 장면에서의 거리 */
+        perspective-origin: right top;   /* 어느쪽에서 바로 보느냥? */
+    }
+    #id_cube {
+        position: relative; /* 부모 영역으로 사용 */
+        width: 50px;
+        height: 50px;
+        /* border: 1px solid black; */
+        transform-style: preserve-3d;   /* 3d 설정, 자식들에게 z축 동작 지정이 가능해짐 */
+    }
+    .common {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        border: 1px solid blue;
+    }
+    #id_top {
+        background-color: rgba(255,0,0,1);
+        transform: rotateX(90deg) translateZ(25px);
+    }
+    #id_front {
+        background-color: rgba(255, 255, 255, 1);
+        transform: translateZ(25px);
+    }
+    #id_right {
+        background-color: rgba(0, 255, 0, 1);
+        transform: rotateY(90deg) translateZ(25px);
+    }
+    #id_back {
+        background-color: rgba(0, 0, 255, 1);
+        transform: translateZ(-25px);
+    }
+    #id_left {
+        background-color: rgba(0, 255, 255, 1);
+        transform: rotateY(-90deg) translateZ(25px);
+    }
+    #id_bottom {
+        background-color: rgba(255, 255, 0, 1);
+        transform: rotateX(90deg) translateZ(-25px);
+    }
+</style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">ProJect KDH</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Content -->
+  <div class="container">
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+      <h1 class="display-3">A Warm Welcome!</h1>
+      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+      <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
+    </header>
+     <!-- stage scene camera -->
+     <input type="button" value="start" class="btn btn-primary btn-lg" onclick="f_start()">
+     <input type="button" value="stop" class="btn btn-primary btn-lg" onclick="f_stop()">
+     <div id="id_scene">
+         <div id="id_cube" style="display: inline-block;">
+             <div class="common" id="id_top">1</div>
+             <div class="common" id="id_front">2</div>
+             <div class="common" id="id_right">3</div>
+             <div class="common" id="id_back">4</div>
+             <div class="common" id="id_left">5</div>
+             <div class="common" id="id_bottom">6</div>
+         </div>
+     </div>
+     <script>
+      var v_cube = document.getElementById("id_cube");
+      var v_scene = document.getElementById("id_scene");
+      var v_deg = 0;
+      var v_copyDeg = 0;
+      var v_timer;
+      function f_startB(){
+          f_rot();
+      }
+
+      // 이런 함수를 소프트웨어 디자인패턴에서 Proxy(디자인) 패턴이라고 부름
+      var v_isRun = false;
+      var v_arr = []; // 생성된 cube를 담을 배열
+      v_arr.push(v_cube);
+          var v_copyCube = v_cube.cloneNode(true);
+          v_scene.appendChild(v_copyCube);
+          v_arr.push(v_copyCube);  // 복사해서 만든 cube도 배열에 담아버림
+      function f_start(){
+
+          if(!v_isRun){
+              f_rot();
+          }
+      }
+      
+      function f_stop(){
+          clearTimeout(v_timer);
+      }
+
+      function f_rot(){
+          v_deg = (v_deg + Math.ceil(Math.random() * 10)) % 360;
+          v_copyDeg = (v_copyDeg - Math.ceil(Math.random() * 10)) % 360;
+          for(var i=0; i<v_arr.length; i++){
+              v_cube.style.transform = "rotateX(" + v_copyDeg + "deg) rotateY("
+                                       + v_deg + "deg) rotateZ(" + v_deg + "deg)";
+              v_copyCube.style.transform = "rotateX(" + v_deg + "deg) rotateY("
+                                       + v_copyDeg + "deg) rotateZ(" + v_copyDeg + "deg)";
+          }
+          v_timer = setTimeout(f_rot, 60/1000);
+      }
+  </script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="./vendor/jquery/jquery.min.js"></script>
+  <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

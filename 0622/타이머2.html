@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type=button value="고고!" onclick="f_go()">
+    <input type=button value="멈춰!" onclick="f_stop()">
+    <div id="id_disp"></div>
+    <script>
+        var v_disp = document.getElementById("id_disp");
+        var v_timer1;
+        function f_dami(){
+            v_disp.innerHTML += "그만하세요....<br>";
+            v_timer1 = setTimeout(f_dami,1000); // 재귀호출 
+        }
+        function f_go(){
+            f_dami();
+        }
+        function f_stop(){
+            clearTimeout(v_timer1); // setTimeout으로 만들어진 타이버id값을 넘김
+        }
+    </script>
+</body>
+</html>

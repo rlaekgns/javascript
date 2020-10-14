@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // localstorage 브라우져 저장소
+    // offline 상태에서도 사용자에게 online인 것처럼 눈속임 하려고 만듬
+    // 현재는 cookie보다 용량이 크고 사용법이 편해서 cookie 대체로 사용되고 있음
+    localStorage.setItem("내맘대로 키값","value값");
+    localStorage.setItem("key1","value1");
+    localStorage.setItem("key1","이건 어떻게"); // key값이 같으면 덮어씀!
+    localStorage.key1 = "흐흐흐";
+    // localStorage.removeItem("key1"); // 속성(키) key1 지우기
+    delete localStorage.key1;    // 객체 속성 지울때 delete 위 내용과 같음 잘 안쓰는데 관종들이 씀
+    // alert(localStorage.getItem("key1"));  // <- 있어보이려고 메소드 사용
+    // alert(localStorage.key1);
+    // var csj = localStorage; // localStroage가 너무 길면 그냥 변수에 담아도됨 localStorage는 객체니까 담을수 있음
+    // alert(csj["key1"]);  // 배열식 접근법 위 방법이 되면 무조건 이 방법도 됨
+    // alert(localStorage.length);
+    // localStorage.clear();   // localStorage에 있는 값 싹 지우기
+    // alert(localStorage.key(1)); //? 왜?, 단지 순서를 보장하지 않음 (순서가 뒤죽박죽)
+    /*
+    for(var attr in localStorage){ // 배열의 속성을 알기 위한 for in 문 잘쓰면 매뉴얼이 따로 필요없다.
+        alert(attr + ":" + localStorage[attr]); 
+    }
+    */
+</script>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: inline-block;
+        }
+        #id_menu, #id_menu2 {
+            width: 100px;
+            border: 1px solid black;
+        }
+        #id_sub, #id_sub2 {
+            display: none; /* 공간도 차지 안하고, 보이지도 않음 */
+        }
+    </style>
+</head>
+<body>
+    <div id="id_menu" onmouseover="f_show()" onmouseout="f_none()">
+        <div>메인메뉴</div>
+        <div id="id_sub">
+            <a href="#">네이버</a><br>
+            <a href="#">다음</a><br>
+            <a href="#">넥스트</a><br>
+        </div>
+    </div>
+    <div id="id_menu2" onmousedown="f_down()">
+        <div>메인메뉴2</div>
+        <div id="id_sub2">
+            <a href="#">네이버</a><br>
+            <a href="#">다음</a><br>
+            <a href="#">넥스트</a><br>
+        </div>
+    </div>
+    <script>
+        var v_sub = document.getElementById("id_sub");
+        var v_sub1 = document.getElementById("id_sub2");
+        var v_isShow = false; // 안보이는 상태를 false로 설정
+        function f_down() {
+            // 이벤트 객체 출현
+            // alert(event.button); /* 왼쪽: 0, 가운데: 1, 오른쪽: 2 */
+            if(event.button == 0){
+                if(!v_isShow){
+                    v_sub1.style.display="inline-block";
+                    v_isShow = true;
+                } else {
+                    v_sub1.style.display="none";
+                    v_isShow = false;
+                }
+            }
+        }
+        function f_none() {
+            v_sub.style.display="none"
+        }
+        function f_show() {
+            v_sub.style.display="inline-block"
+        }
+       
+    </script>
+</body>
+</html>

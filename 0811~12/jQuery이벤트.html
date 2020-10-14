@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="id_btn" value="나 버튼이얌 눌렁!">
+    <div>류정은</div>
+    <div>김아름</div>
+    <div>한창희</div>
+    <div>김지원</div>
+    <script>
+        $("div").css("border","1px solid black").on("click",function(){
+            console.log(this);  
+            // alert(this.innerHTML);
+            // jQuery객체가 아닌것에 jQuery 메소드를 사용하고프면 $()로 묶어서 jQuery객체로 바꾸어준당
+            // jQuery랑 자바스크립트 잘 쓰는 사람들의 최고의 기술!!!!!
+            console.log($(this));
+            // alert($(this).html()); // 가능 안가능? 불가능!, jQuery 생성자를 통해서 만들어지지 않았기 때문
+        });
+        // jQuery 이벤트 등록법
+        // document.getElementById("id_btn").onclick = function(){alert("나 눌렀닝?")}
+        /*
+        $("#id_btn").click(function(){
+            alert("나 눌렀닝? 반가웡");
+        });
+        */
+        
+        $("#id_btn").on("click",function(){
+            alert("이렇게 쓰는 게 권장 방식이얌");
+        });
+        /* 중요 메소드 체이닝을 안쓰면 더 무거워진당 */
+        $("선택자").css("어쩌구 저쩌구").css("...").attr("...");   //한번 선택할걸 계속활용
+        $("선택자").css("어쩌구 저쩌구");
+        $("선택자").css("...");
+        $("선택자").attr("...");
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    var v_json = {
+        "aaa":"aaa",    // 속성 추가
+        "bbb":"흥",     // 속성 추가
+        "msg":function(p_msg){  // 메소드 추가
+            alert("넘어온 값은:" + p_msg);
+        }
+    }; // 빈 객체(json) 생성
+    /*
+    // 속성추가, 속성명은 내 맘대로, 데이터도 내 맘대로
+    v_json.aaa = "aaa";
+    v_json.bbb = "흥";
+    v_json.arr = ["1","2","3"];
+    // 메소드 추가, 메소드명 내 맘대로, 매개변수 받을지 말지 내 맘대로
+    v_json.msg = function(p_msg){
+        alert("넘어온 값은:" + p_msg);
+    }
+    */
+    v_json.msg("이태영 흥치피");    // 메소드 콜
+</script>

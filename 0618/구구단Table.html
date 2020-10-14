@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <div id="id_disp"></div>
+    <script>
+        var v_disp = document.getElementById("id_disp"); 
+        var v_dan = prompt("단을 입력해 주세요.","5");  //사용자 입력 창 (두번째 매개변수 값은 초기 값)
+        // alert(v_dan) // 취소 값 확인
+        if(!v_dan){
+            v_dan = 2
+        }
+        
+        var v_str = "";
+        for(var i=1; i<=9; i++){
+             v_str = v_str + "<tr><td>" + v_dan + " X " + i + " = " + (v_dan*i) +"</td></tr>";
+        }
+        v_disp.innerHTML = "<table border=2>"+ v_str +"</table>";
+      
+    </script>
+</body>
+</html>

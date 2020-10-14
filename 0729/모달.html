@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_modal{
+            position: fixed; /* 위치 고정 */
+            left: 0px; top: 0px;
+            width: 100vw;
+            height: 100vh;   /* position fixed 일때는 %도 먹음 */
+            z-index: 272;   /* layer로 띄우기 */
+            display: none;  /* 첨엔 안 보였다가 뿅 나타나게 */
+            background-color: rgba(255, 0, 0, 0.5);
+        }
+        #id_body{
+            margin: 10px auto; /* 대충 가운데 정렬 */
+            width: 70%; /* 넓이 부모의 70% */
+            height: 200px; 
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <!-- modal, modaless -->
+    <input type="button" value="모달창띄우기" onclick="f_modalShow()">
+    <input type="button" value="그냥 버튼" onclick="f_check()">
+    <div id="id_modal">
+        <!-- 여기 안에 필요한 걸 만듬 -->
+        <div id="id_body">
+            <input id="id_end" type="button" value="모달창닫기">
+        </div>
+    </div>
+    <script>
+        var v_modalWin = document.getElementById("id_modal");
+        var v_modalEnd = document.getElementById("id_end");
+        v_modalEnd.onclick = function(){
+            v_modalWin.style.display="none";
+        }
+        function f_modalShow(){
+            v_modalWin.style.display="block";
+        }
+        function f_check(){
+            alert("나 눌렀냥");
+        }
+    </script>
+</body>
+</html>

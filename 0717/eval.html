@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_txt {
+            width: 300px;
+            height: 50px;
+            font-size: 1.3em;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="id_txt" value="">
+    <input type="button" value="계산" id="id_btn">
+    <script>
+        var v_txt = document.getElementById("id_txt");
+        var v_btn = document.getElementById("id_btn");
+        // 매개변수가 함수로 넘어가는 것을 콜백 함수라고 한다.
+        v_btn.addEventListener("click",function(){
+            v_txt.value = eval(v_txt.value);    // 한줄로 계산기 완성
+        });
+
+        // eval 함수, 악용사례가 있어 권장되진 않지만, 잘 쓰면 유용
+        // eval 함수는 넘겨진 문자열을 스크립트엔진으로 해석 실행시켜줌
+
+        // var v_txt = "3 + 4 - 3 * 5";    // 이것은 문자열
+        // alert(eval(v_txt));     // 문자열 인데 숫자형으로 계산이 됨
+        // alert(eval("document.getElementById('id_btn')"));
+    </script>
+</body>
+</html>

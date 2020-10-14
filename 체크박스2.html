@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    당신의 취미는(3개까지만)<br>
+    독서<input type="checkbox" name="nm_hobby" value="reading" onclick="f_ck(this)">
+    영화<input type="checkbox" name="nm_hobby" value="movie" onclick="f_ck(this)">
+    음악<input type="checkbox" name="nm_hobby" value="music" onclick="f_ck(this)"><br>
+    낚시<input type="checkbox" name="nm_hobby" value="fishing" onclick="f_ck(this)">
+    게임<input type="checkbox" name="nm_hobby" value="game" onclick="f_ck(this)">
+    골프<input type="checkbox" name="nm_hobby" value="golf" onclick="f_ck(this)"><br>
+    <script>
+        var v_ckboxs = document.getElementsByName("nm_hobby");
+        function f_ck(p_index){
+            if(f_ckCnt() > 3){
+                alert("3개까지만 선택해주세요.");
+                // v_ckboxs[p_index].checked = false;  // 마지막으로 체크를 한 박스를 강제로 풀어줌
+                p_index.checked =false;
+            }
+
+        }
+        function f_ckCnt(){
+            var v_cnt = 0;
+            for(var i=0; i<v_ckboxs.length; i++){
+                if(v_ckboxs[i].checked){
+                    v_cnt++;
+                }
+            }
+            return v_cnt;
+        }
+    </script>
+</body>
+</html>

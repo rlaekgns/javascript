@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nemoSty {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border: 1px solid black;
+        }
+        .nemoSpace {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border: 1px solid white;
+        }
+    </style>
+</head>
+<body>
+    <!-- 전각문자 / 반각문자 height/width 2height/width -->
+    <input type=button value=">삼각형" onclick="f_insNemo()">
+    <input type="button" value="<삼각형" onclick="f_insNemo1()">
+    <input type="button" value="<>삼각형" onclick="f_insNemo2()">
+    <div id="container"></div>
+    <script>
+        var v_hexaNum=[]; // 16진수를 담을 배열, 0~9, a,b,c,d,e,f
+        for(var i=0; i<=9; i++){
+            v_hexaNum[v_hexaNum.length] = i;
+        }
+        v_hexaNum[v_hexaNum.length] = "a";
+        v_hexaNum[v_hexaNum.length] = "b";
+        v_hexaNum[v_hexaNum.length] = "c";
+        v_hexaNum[v_hexaNum.length] = "d";
+        v_hexaNum[v_hexaNum.length] = "e";
+        v_hexaNum[v_hexaNum.length] = "f";
+
+        // 배열에 잘 담겼는지 확인용
+        // alert(v_hexaNum);
+
+        function f_hexaNum() {
+            var v_ranIndex = Math.floor(Math.random()*v_hexaNum.length);
+            return v_hexaNum[v_ranIndex];
+        }
+        function f_ranColor2() {
+            var v_hexaColor = "#";
+            for(var i=1; i<=6; i++){
+                v_hexaColor += f_hexaNum();
+            }
+            return v_hexaColor;  // 완성된 16진수 문자열 리턴
+        }
+        var v_con = document.getElementById("container");
+        // 네모 1개 만드는 함수
+        function f_nemo(p_arg) {
+            var v_div = document.createElement("div");
+            if(p_arg){
+                v_div.setAttribute("class","nemoSty");
+                v_div.style.backgroundColor = f_ranColor2(); // 배경색 랜덤
+            } else {
+                v_div.setAttribute("class","nemoSpace");
+            }
+            return v_div;
+        }
+        // 네모를 화면에 넣는 함수
+        function f_insNemo() {
+            for(var i=1; i<=10; i++){
+                for(var j=1; j<=i; j++){
+                    v_con.appendChild(f_nemo("1"));
+                }
+                v_con.innerHTML += "<br>";
+            }
+        }
+        function f_insNemo1(){
+            for(var i=10; i>=1; i--){
+                for(var j=1; j<i; j++){
+                    v_con.appendChild(f_nemo(""));
+                }
+                for(var u=1; u<=10-i+1; u++){
+                    v_con.appendChild(f_nemo("1"));
+                }
+                v_con.innerHTML +="<br>";
+            }
+        }
+        function f_insNemo2() {
+            for(var i=1; i<=10; i++){
+                for(var j=1; j<=10-i; j++){
+                    v_con.appendChild(f_nemo(""));
+                }
+                for(var k=1; k<=i*2-1; k++){
+                    v_con.appendChild(f_nemo("1"));
+                }
+                v_con.innerHTML += "<br>";
+            }
+        }
+    </script>
+</body>
+</html>

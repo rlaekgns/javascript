@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 페이지 새로고침 (곧 방문자가 방문할 때 마다 다른색이 나오게)
+        function f_ranNum(){
+            return Math.floor(Math.random() * 256); // 0~255 return
+        }
+        function f_ranColor(){
+            return "rgb(" + f_ranNum() + "," + f_ranNum() + "," + f_ranNum() + ")"
+        }
+        var v_hexaNum=[]; // 16진수를 담을 배열, 0~9, a,b,c,d,e,f
+        for(var i=0; i<=9; i++){
+            v_hexaNum[v_hexaNum.length] = i;
+        }
+        v_hexaNum[v_hexaNum.length] = "a";
+        v_hexaNum[v_hexaNum.length] = "b";
+        v_hexaNum[v_hexaNum.length] = "c";
+        v_hexaNum[v_hexaNum.length] = "d";
+        v_hexaNum[v_hexaNum.length] = "e";
+        v_hexaNum[v_hexaNum.length] = "f";
+
+        // 배열에 잘 담겼는지 확인용
+        // alert(v_hexaNum);
+
+        function f_hexaNum() {
+            var v_ranIndex = Math.floor(Math.random()*v_hexaNum.length);
+            return v_hexaNum[v_ranIndex];
+        }
+        function f_ranColor2() {
+            var v_hexaColor = "#";
+            for(var i=1; i<=6; i++){
+                v_hexaColor += f_hexaNum();
+            }
+            return v_hexaColor;  // 완성된 16진수 문자열 리턴
+        }
+
+        function f_myBack() {
+            // body와 head는 문서에 하나밖에 없어야 하므로 id없이 접근 가능
+            // 색깔줄때 rgb 함수 사용가능(실제 내부적으로 사용됨)
+            // 24비트 16 * M 
+            // document.body.style.backgroundColor = f_ranColor();
+            // alert(f_ranColor2()); // 숫자 확인
+            document.body.style.backgroundColor = f_ranColor2();
+            setTimeout(f_myBack,1000);
+        }
+        window.onload = f_myBack;
+    </script>
+</body>
+</html>

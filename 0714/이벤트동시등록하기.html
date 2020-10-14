@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="1">
+    <input type="button" value="2">
+    <input type="button" value="3">
+    <input type="button" value="4">
+    <input type="button" value="5">
+    <script>
+        var v_btns = document.querySelectorAll("input[type=button]");
+        
+        function f_ckEvent(event){
+            console.log(event.clientX);
+            console.log(event.clientY);
+        }
+
+        v_btns[0].onclick = f_ckEvent; // 자동으로 첫번째 매개변수에 event 객체를 넘김
+
+        /*
+        // call,apply 와 bind의 차이를 꼭 구별!
+        function f_msg(p_msg){
+            alert(p_msg);
+        }
+        v_btns[0].onclick = f_msg.bind(null,"이것이 첫번째 매개변수!");
+        */
+        
+        // console.log(v_btns);
+        /*
+        for(var i=0; i<v_btns.length; i++){     // call, apply, bind
+            v_btns[i].addEventListener("click",f_ck.bind(null,v_btns[i].value));
+        }
+
+        function f_ck(p_val){
+            alert("this:"+this);
+            alert(p_val);
+        }
+        */
+        // f_ck.call(["최","승","주"],"흥");
+        // f_ck.bind(["최","승","주"],"흥");
+        // 함수 포인터만 return, 내부적으로 새로운 함수를 생성해서 그 이름만(함수 포인터) 리턴
+    </script>
+</body>
+</html>

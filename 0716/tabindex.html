@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            height: 20px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" tabindex="1" autofocus value="자동포커스"><br>
+    <input type="text" tabindex="3" value="자동포커스"><br>
+    <input type="text" tabindex="2" value="자동포커스"><br>
+    <input type="text" tabindex="-1" value="자동포커스"><br> <!-- tabindex = -1은 focus 거부 -->
+    <input type="text" tabindex="5" value="자동포커스"><br>
+    <div tabindex="0">흐흐흐</div> <!-- tabindex = 0는 원래 focus를 받을 수 없는 것에 focus를 주고 싶을 때 사용 -->
+</body>
+</html>

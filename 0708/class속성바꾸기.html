@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .aaa {
+            background-color: red;
+        }
+
+        .bbb {
+            background-color: blue;
+        }
+
+        .ccc {
+            color: mediumblue;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="id_lty" class="aaa">이태영만만세</div>
+    <input type="button" value="클래스바꾸기" onclick="f_chClass()">
+    <input type="button" value="클래스추가하기" onclick="f_addClass()">
+    <input type="button" value="클래스삭제" onclick="f_removeClass()">
+    <script>
+        var v_div = document.getElementById("id_lty");
+        // alert(v_div.class);     // class는 이미 예약된 키워드라서 undefined 출력됨
+        // alert(v_div.className);  // =  alert(v_div.getAttribute("class"));
+        function f_chClass() {
+            v_div.className = "bbb";
+        }
+        function f_addClass() {
+            // v_div.className += " ccc";
+            v_div.classList.add("ccc");
+        }
+        function f_removeClass() {
+            // ccc를 다시 빼기
+            var v_remClass = "ccc";
+            v_div.classList.remove(v_remClass);
+            /*
+            var v_strClass = v_div.className;
+            var v_indexNum = v_strClass.indexOf(v_remClass);
+            if (v_indexNum != -1) {
+                alert("ppp" + v_strClass.substring(0, v_indexNum) + "ppp");
+            }
+            */
+        }
+
+    </script>
+</body>
+
+</html>

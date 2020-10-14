@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jsp.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var v_title = request.getParameter("nm_title");
+        while(v_title.indexOf("+") != -1){
+            v_title = v_title.replace("+", " ");
+        }
+        var v_writer = request.getParameter("nm_writer");
+        var v_pass = request.getParameter("nm_pass");
+        var v_category = request.getParameter("nm_category");
+        var v_content = request.getParameter("nm_content");
+        while(v_content.indexOf("+") != -1){
+            v_content = v_content.replace("+"," ");
+        }
+
+        var v_tblName = "게시판";   // key값 임의로 정한 테이블명
+        
+        var v_recode = {};  // 받아온 값 전부를 1개의 JSON으로 묶기위한 json
+        v_recode.title = v_title;
+        v_recode.writer = v_writer;
+        v_recode.pass = v_pass;
+        v_recode.category = v_category;
+        v_recode.content = v_content;
+
+        if(!localStorage.getItem(v_tblName)){
+            // 처음 데이터가 들어갈 경우
+            var v_arrData = [];
+            v_recode.num = 1;   //primary key로 쓸 고유값
+            v_arrData.push(v_recode);
+            localStorage.setItem(v_tblName, JSON.stringify(v_arrData));
+        }else{
+            // 이미 데이터가 있을 경우
+            var v_arrData = JSON.parse(localStorage.getItem(v_tblName)); // 있는 데이터를 가져오기
+            v_recode.num = v_arrData[v_arrData.length -1].num + 1;
+            v_arrData.push(v_recode);
+            localStorage.setItem(v_tblName, JSON.stringify(v_arrData));
+        }
+        alert("게시물이 등록 되었습니다.");
+        location.href = "./free.html";   // 목록으로 이동
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var up = 3;
+        var down = -2;
+        var distance = 0;
+        function f_up(p_sec){
+            var result =0;
+            for(var i=1; i<=p_sec; i++){
+                if(i%2 == 0){
+                    distance = down;
+                }else{
+                    distance = up;
+                }
+                result += distance ;
+            }
+            alert("로제는 " + result + "cm 올라갔습니다");
+        }
+        f_up(6);
+        function f_up2(p_dis){
+            var sec = 1;
+            var result =0;
+            for(;"참";){
+                if(sec%2 == 0){
+                    distance = down;
+                }else{
+                    distance = up;
+                }
+                result += distance;
+                if(sec == p_dis){
+                    break;
+                }
+                sec++;
+            }
+            alert("로제는" +result+"cm만큼 올라가기위해"+sec+"초 동안 등반했습니다.")
+        }
+        f_up2(6);
+    
+    </script>
+</body>
+</html>

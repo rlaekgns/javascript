@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_clock {
+            width: 100px;
+            height: 100px;
+            border: 1px solid blue;
+            background-color: black;
+            color: yellowgreen;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div id="id_clock"></div>
+    <script>
+        // javascript Date객체는 Java의 것을 그냥 벤치마킹했다고 알려져있음.
+        // 클라이언트 컴퓨터 시간을 일겅오면, 통일되지 않은 시간을 읽어옴.
+        // 서버쪽 시간으로 세팅하지 않으면 큰 의미가 없음.
+        // 달력등의 컴포넌트를 만드는 회사가 아니면 Date 객체는 클라이언트보단 서버쪽에서 처리하는 것이 유리.
+        var v_clock = document.getElementById("id_clock");
+        var v_input = confirm("태영씨는 남자요 여자요?"); // confirm은 yes or no 잘 안씀
+        alert(v_input);
+        function f_clock(){
+            var v_today = new Date(); // 시스템의 현재 날짜 시간을 읽어옴.
+            var v_hour = v_today.getHours();
+            var v_minute = v_today.getMinutes();
+            var v_second = v_today.getSeconds();
+            var v_timeMsg = v_hour + ":" + v_minute + ":" + v_second;
+            v_clock.innerHTML = v_timeMsg;
+            setTimeout(f_clock,1000);   // 1초 마다 다시 부르기
+        }
+        window.onload = f_clock; // 페이지 로딩이 완료되면 시계 콜!
+    </script>
+</body>
+</html>

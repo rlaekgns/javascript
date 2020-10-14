@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // docunment[html 문서를 가리키고]의 부모? window[브라우저를 가리킴]
+        // 브라우저기반(화면) 자바스크립트의 최상위 객체는 window
+        // document -> 실제는 window.document 최상위 객체라 생략하고 썼었음
+
+        // 변수 선언 -> 실제는 속성 선언이었음
+        // var myName = "이태영";
+        // window.myName = "최승주";
+        // alert(window.myName);
+        /*
+        function myFunc (msg) { // 실제는 window객체의 method를 추가 작성하고 있었음
+            alert(msg);
+        }
+        */
+        var myFunc = function(msg) {   // 또다른 함수 선언법
+            alert(msg);                // 외국인들은 이걸 더 좋아함!
+        }
+
+        // 함수 콜
+        window.myFunc("헬로!");
+    </script>
+</body>
+</html>

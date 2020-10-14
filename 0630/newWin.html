@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type=text id="new_txt" value=""><br>
+    <input type=button value="오프너에게 전달" onclick="f_opener()">
+    <input type=button value="창닫기" onclick="f_close2()">
+    <script>
+        function f_close2() {
+            window.close();
+            opener.v_newWin = null; // 열어준 창의 전역변수에 접근
+        }
+        // 열어준 창을 가리키는 키워드가 필요!
+        // 병따개 opener라고 부름
+        function f_opener() {
+            // opener.parent --> frameset
+            opener.parent.frames[1].document.getElementById("frm1Txt").value = document.getElementById("new_txt").value;
+            opener.parent.frames[2].document.getElementById("frm2Txt").value = document.getElementById("new_txt").value;
+            // opener.document.getElementById("old_txt").value = document.getElementById("new_txt").value;
+
+
+        }
+        // onload 이벤트의 반대 이벤트 onunload
+        // 정말 많이 악용되어서 거의 웬만한 기능의 사용불가
+        window.onunload = function(){
+            opener.v_newWin = null;
+        }
+    </script>
+</body>
+</html>

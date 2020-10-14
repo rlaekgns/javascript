@@ -1,0 +1,23 @@
+<meta charset="UTF-8">
+<script>
+    //JSON JavaScript Object Notation 엄청 x 100000 중요
+    // BigData에서 data 포맷으로 많이 사용됨!, xml 물러가랑
+    // var v_json = {"name":"정종안","age":"100","easy":["E","A","S","Y"]};  // 빈객체 선언
+    var v_json = {};
+    v_json = [];         //배열도 객체라서 참
+
+    if(v_json){          //object는 전부 참(truthy)
+        alert("뜰까용?");
+    }
+
+    v_json.name = "정종안";
+    v_json.age = 10;
+    v_json.easy = ["E","A","S","Y"];
+    
+    // alert(v_json.name);
+    alert(v_json["name"]);
+    // alert(v_json.age);
+    alert(v_json["age"]);
+    // alert(v_json.easy[3]);
+    alert(v_json["easy"][3]);
+</script>

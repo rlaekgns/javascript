@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    var v_arr = [3,8,1,6,9,2,3,2];
+    // 위 배열 요소중에서 최소값을 찾아 출력하시오.
+    var v_min = v_arr[0]; // 첫번째 값이 최소값이라고 가정!
+    for(var i=1;i<v_arr.length;i++){
+        console.log("i= ",i,"v_arr[i]= ",v_arr[i]); // 출력문을 잘 이용하면 값의 변화를 눈으로 볼 수 있음!
+        if(v_min > v_arr[i]){
+            console.log("현재 v_min= ",v_min," v_arr[i]= ",v_arr[i]);
+            v_min = v_arr[i];  // 가정이 틀렸으므로 바꾸어 줌!
+        }
+    }
+    var v_max = v_arr[0];
+    for(var i=1;i<v_arr.length;i++){
+        if(v_max < v_arr[i]){
+            v_max = v_arr[i];
+        }
+    }
+    alert(v_min);
+    alert(v_max);
+</script>

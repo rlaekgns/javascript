@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: inline-block;
+            width: 200px;
+            height: 100px;
+            border: 1px solid red;
+            vertical-align: top;
+        }
+        select {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <select size="5" multiple id="id_sel1">
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+        </select>
+    </div>
+    <div>
+        <input type="button" value=">" onclick="f_move()"><br>
+        <input type="button" value=">>" onclick="f_moveAll()"><br>
+    </div>
+    <div>
+        <select size="5" id="id_sel2">
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select>
+    </div>
+    <input type="text" id="id_txt" value=""><input type="button" value="추가" onclick="f_add()">
+    <script>
+        var v_sel1 = document.getElementById("id_sel1");
+        var v_sel2 = document.getElementById("id_sel2");
+        var v_txt = document.querySelector("#id_txt");
+        function f_add(){
+            var v_option = document.createElement("option");
+            v_option.innerHTML = v_txt.value;
+            v_sel1.appendChild(v_option);
+        }
+        // 선택된 것만 이동하기
+        // 이미 존재하는 객체를 다른 곳에 child로 붙이면 이동한다고 했음!
+        /*
+        function f_move(){
+            for(var i=0; i<v_sel1.options.length; i++){
+                if(v_sel1.options[i].selected){
+                    v_sel2.appendChild(v_sel1.options[i]);  // 선택된 걸 오른쪽으로 이동
+                    i--;    // 뒤에 것이 앞으로 당겨지므로, i값도 증가 못하게
+                }
+            }
+        } 
+        */
+        /*    
+        function f_moveAll(){
+            for(var i=0; i<v_sel1.options.length;){
+                v_sel2.appendChild(v_sel1.options[0]);
+                console.log(i,v_sel1.options.length);
+            }
+        }
+        */
+        function f_toArray(p_arg){      // ArrayLike를 Array로 바꾸는 함수
+            var v_arr = [];
+            for(var i=0; i<p_arg.length; i++){
+                v_arr[i] = p_arg[i];
+            }
+            return v_arr;
+        }
+        var v_myOptions;
+        
+        function f_moveAll(){
+            v_myOptions = f_toArray(v_sel1.options);
+            for(var i=0; i<v_myOptions.length; i++){
+                v_sel2.appendChild(v_myOptions[i]);
+            }
+        }
+
+        function f_move(){
+            v_myOptions = f_toArray(v_sel1.options);
+            for(var i=0; i<v_myOptions.length; i++){
+                if(v_myOptions[i].selected){
+                    v_sel2.appendChild(v_myOptions[i]);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

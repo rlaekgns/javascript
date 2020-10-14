@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap core CSS -->
+    <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <select name="nm_local" id="id_local">
+        <option value="5011025000">한림읍</option>
+        <option value="5011025300">애월읍</option>
+        <option value="5011025600">구좌읍</option>
+        <option value="5011025900" selected>조천읍</option>
+        <option value="5011031000">한경면</option>
+        <option value="5011032000">추자면</option>
+        <option value="5011033000">우도면</option>
+        <option value="5011051000">일도1동</option>
+    </select>
+    <input type="button" value="검색" onclick="f_search()">
+    <div id="id_disp" style="text-align: center;"></div>
+    <script>
+        var v_disp = document.getElementById("id_disp");
+        var v_local = document.getElementById("id_local");
+        
+        function f_search(){
+            // console.log(v_local.value); 
+            var v_ajax = new XMLHttpRequest();
+            v_ajax.open("get", "around.php?zone="+v_local.value, true);
+            v_ajax.send();
+            
+            v_ajax.addEventListener("readystatechange", function(){
+                if(v_ajax.readyState == 4 && v_ajax.status == 200){
+                    console.log(JSON.parse(v_ajax.responseText).channel.item.description.body.data);
+                    var v_data = JSON.parse(v_ajax.responseText).channel.item.description.body.data;
+                    var v_tblStr = "<table class='table table-striped table-hover'>";
+                    v_tblStr += "<th>시간</th><th>날씨</th><th>온도</th><th>습도</th>";
+
+                    for(var i=0; i<v_data.length; i++){
+                        v_tblStr += "<tr>";
+                        v_tblStr += "<td>" + v_data[i].hour + "</td>";
+                        v_tblStr += "<td>" + v_data[i].wfKor + "</td>";
+                        v_tblStr += "<td>" + v_data[i].temp + "</td>";
+                        v_tblStr += "<td>" + v_data[i].reh + "%</td>";
+                        v_tblStr += "</tr>";
+                    }
+                    v_tblStr += "</table>";
+                    v_disp.innerHTML = v_tblStr;
+                }
+            });
+        }
+        </script>
+</body>
+</html>

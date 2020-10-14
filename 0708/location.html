@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    사이트 <input id="id_site" type="text" value=""><br>
+    <input id="id_btn" type="button" value="사이트 이동">
+    <script>
+        var v_btn = document.getElementById("id_btn");
+        var v_site = document.getElementById("id_site");
+        v_btn.onclick = function(){
+            // 주소표시줄을 컨트롤하는 객체 location
+            // 중요속성 href, 중요메소드 replace, reload는 권장하지 않음
+            // get방식은 url에 직접 ?를 붙여서 만들어줘도 됨!
+            // location.href = "test2.php?nm_aidi=superman";
+            location.replace("test2.php?nm_kkk=ltyMonster&nm_qqq=csjMonster");
+            // 밖으로 같은 기능으로 보이나, replace는 cache를 쓰지 않음
+        }
+    </script>
+</body>
+</html>

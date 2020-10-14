@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="2" id="id_tbl">
+        <tr><td>이름</td><td>별명</td></tr>
+        <tr><td>이태영</td><td>잠탱이</td></tr>
+    </table>
+    <input type="button" value="테이블복사" id="id_cp">
+    <script>
+        var v_btn = document.getElementById("id_cp");
+        var v_tbl = document.getElementById("id_tbl")
+        v_btn.addEventListener("click",function(){
+            // 특정 element 복사
+            // var v_copiedTable = v_tbl.cloneNode(); // 복사명령 cloneNode 얕은 복사
+            var v_copiedTable = v_tbl.cloneNode(true); // 복사명령 cloneNode 깊은 복사 
+            document.body.appendChild(v_copiedTable);
+        })
+    </script>
+</body>
+</html>

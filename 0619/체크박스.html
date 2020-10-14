@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    당신의 취미는(3개까지만)<br>
+    독서<input type="checkbox" name="nm_hobby" value="reading">
+    영화<input type="checkbox" name="nm_hobby" value="movie">
+    음악<input type="checkbox" name="nm_hobby" value="music"><br>
+    낚시<input type="checkbox" name="nm_hobby" value="fishing">
+    게임<input type="checkbox" name="nm_hobby" value="game">
+    골프<input type="checkbox" name="nm_hobby" value="golf"><br>
+    <input type=button value="당신의 취미는" onclick="f_hobby()"><br>
+    <input type=text id="id_hobby" value="">
+    <script>
+        var v_ckboxs = document.getElementsByName("nm_hobby");
+        // var v_txt = document.getElementById("id_hobby");
+        function f_hobby(){
+            var v_length = v_ckboxs.length;
+            var v_rsltArr = []; //빈 배열
+            for(var i=0; i<v_length; i++){
+                if(v_ckboxs[i].checked){
+                    // alert(v_ckboxs[i].value)
+                    // v_txt.value = v_rsltArr[v_rsltArr.length] = v_ckboxs[i].value;
+                    v_rsltArr[v_rsltArr.length] = v_ckboxs[i].value;
+                }
+            }
+            if(v_rsltArr.length > 3){
+                alert("3개만 선택해주세요.");
+                return;             //종료
+            }
+            // alert(v_rsltArr); // 결과 확인
+            document.getElementById("id_hobby").value = v_rsltArr;
+        }
+    </script>
+</body>
+</html>

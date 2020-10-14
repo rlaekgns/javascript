@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #parent{
+            position: relative;
+            left: 100px;
+            top: 100px;
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            background-image: url(../images/IU1.jpg);
+            background-size: 200px 200px;
+            border-radius: 50%;
+        }
+        #nemo {
+            overflow: hidden;
+            position: absolute;
+            left: 100px;
+            width:100px;
+            height:100px;
+        }
+        #circle {
+            position: absolute;
+            left: -100px;
+            width:200px;
+            height:200px;
+            border-radius: 50%;
+            background-color: red;
+            opacity: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div id="nemo">
+            <div id="circle"></div>
+        </div>
+    </div>
+
+    <script>
+        var v_nemo = document.getElementById("nemo");
+        v_nemo.style.transformOrigin = "left bottom"
+        var v_gakdo = 0;
+        function f_rotate(){
+            v_gakdo = (v_gakdo + 10) % 360;
+            v_nemo.style.transform = "rotate(" + v_gakdo + "deg)";
+            setTimeout(f_rotate, 200); 
+        }
+        f_rotate();
+    </script>
+</body>
+</html>

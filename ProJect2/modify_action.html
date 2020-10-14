@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jsp.js"></script>
+    <title>Document</title>
+     <!-- Bootstrap core CSS -->
+     <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+     <!-- Custom styles for this template -->
+     <link href="./css/heroic-features.css" rel="stylesheet">
+</head>
+<body>
+    <script>
+        var v_gNum = request.getParameter("nm_num");
+        var v_title = request.getParameter("nm_title");
+        while(v_title.indexOf("+") != -1){
+            v_title = v_title.replace("+"," ");
+        }
+        var v_pass = request.getParameter("nm_pass");
+        var v_category = request.getParameter("nm_category");
+        var v_content = request.getParameter("nm_content");
+        while(v_content.indexOf("+") != -1){
+            v_content = v_content.replace("+"," ");
+        }
+
+        var v_tblName = "게시판";   // key값 임의로 정한 테이블명
+
+        var v_recode = {};  // 받아온 값 전부를 1개의 JSON으로 묶기위한 json
+        v_recode.title = v_title;
+        v_recode.category = v_category;
+        v_recode.content = v_content;
+
+        // 수정하려는 글 찾기 (num이용)
+        var v_arrData = JSON.parse(localStorage.getItem(v_tblName));
+
+
+        for(var i=0; i<v_arrData.length; i++){
+            if(v_arrData[i].num == v_gNum){
+                v_arrData[i].title = v_title;
+                v_arrData[i].category = v_category;
+                v_arrData[i].content = v_content;
+            }
+        }
+        // localStorage에 실제로 저장
+        localStorage.setItem(v_tblName, JSON.stringify(v_arrData));
+
+       alert("해당글이 수정되었습니다.");
+       location.href = "./free.html";
+    </script>
+</body>
+</html>

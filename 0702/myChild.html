@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="id_lty" value="이태영"><br>
+    <input type=button value="눌렁" onclick="f_trans()">
+    <script>
+        function f_trans() {
+            // 여기서 tip: 최상위 부모를 가리키는 예약어 top
+            top.document.getElementById("id_txt").value =
+             document.getElementById("id_lty").value;
+             /*
+            window.parent.document.getElementById("id_txt").value =
+             document.getElementById("id_lty").value;
+             */
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cl_child {
+            display: inline-block;
+        }
+
+        #id_parent {
+            position: relative;
+            left: 300px;
+            width: 100px;
+            height: 100px;
+            border: 10px groove black;
+            overflow: hidden; /* 중요한 속성 */
+        }
+        #id_row1 {
+            position: absolute;
+            width: 420px;
+            height: 100px;
+        }
+        #id_row2 {
+            position: absolute;
+            width: 420px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type=button value="전자앨범 판매" onclick="f_mv()">
+    <div id="id_parent">
+        <div id="id_row1">
+            <div class="cl_child"><img src="../images/IU1.jpg" width=100 height=100></div>
+            <div class="cl_child"><img src="images/YZ2.jpg" width=100 height=100></div>
+            <div class="cl_child"><img src="images/YZ3.jpg" width=100 height=100></div>
+            <div class="cl_child"><img src="images/YZ4.jpg" width=100 height=100></div>
+        </div>
+        <div id="id_row2">
+            <div class="cl_child"><img src="images/IU1.jpg" width=100 height=100></div>
+            <div class="cl_child"><img src="images/IU2.jpg" width=100 height=100></div>
+            <div class="cl_child"><img src="images/IU3.jpg" width=100 height=100></div>
+            <div class="cl_child"><img src="images/IU4.jpg" width=100 height=100></div>
+        </div>
+    </div>
+    <script>
+        var v_row1 = document.getElementById("id_row1");
+        var v_row2 = document.getElementById("id_row2");
+        var v_mvW = 10; // 한번 클릭에 움직일 값
+        function f_mv() {
+            // inline style로 초기화 되지 않았다면 빈공백값으로 읽힘, 공백은 falase
+            if(!v_row1.style.left) { // 초기화 되지 않았다면
+                v_row1.style.left = "0px";      // 강제 초기화
+                v_row2.style.left = "420px";    // 강제 초기화
+            }
+         
+            v_row1.style.left = parseInt(v_row1.style.left) - v_mvW + "px"; //v_row1.style.left = 인라인 스타일값 밖에 못가져옴
+            v_row2.style.left = parseInt(v_row2.style.left) - v_mvW + "px";
+            
+            var v_row1Left = parseInt(v_row1.style.left);
+            var v_row2Left = parseInt(v_row2.style.left);
+            if(v_row1Left <= -420){
+                v_row1.style.left = "420px"
+            }
+            if(v_row2Left <= -420){
+                v_row2.style.left = "420px"
+            }
+            setTimeout(f_mv, 300);
+        }
+        // row1이 부모를 벗어나면 row2 뒤에 붙고
+        // row2가 부모를 벗어나면 row1 뒤에 붙는 방식으로 구현해보세요.
+    </script>
+</body>
+
+</html>

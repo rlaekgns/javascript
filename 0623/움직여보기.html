@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_ball {
+            position: absolute; /* 움직이려면 relative나 absolute여야 함 */
+            width: 100px;
+            height: 100px;
+            left: 100px;
+            top: 100px;
+            /*
+            right: 20px;
+            bottom: 30px;
+            */
+            border-radius: 50px 50px; /* width height의 절반값이면 원이 만들어짐 */
+            background-color: violet;
+        }
+    </style>
+</head>
+<body>
+    <input type=button value="움직여봐" onclick="f_mv1()">
+    <div id="id_ball" style="left: 60px; top: 60px;"></div>
+    <script>
+        var v_ball = document.getElementById("id_ball");
+        function f_mv1(){
+            v_ball.style.left = parseInt(v_ball.style.left) + 10 + "px";
+            setTimeout(f_mv1,500);
+        }
+        function f_mv(){
+            //style에 접근
+            // alert(parseInt(v_ball.style.left)); // 문자열 시작에서부터 숫자만 빼줌
+            v_ball.style.left = parseInt(v_ball.style.left) + 10 + "px"; // 단위를 빼먹으면 동작 안함!
+            /*
+            alert(v_ball.style.left);    // 추천 방식
+            alert(v_ball.style["left"]); // 배열식 접근법
+            alert(v_ball.style.top);
+            alert(v_ball.style["top"]);
+            */
+        }
+    </script>
+</body>
+</html>

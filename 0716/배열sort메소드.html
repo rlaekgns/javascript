@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    /* 버블 정렬
+    var v_arr = [5,3,1,2,9,6];
+    v_arr.mySort = function(f_callback){
+        // alert(this);    // this? -> v_arr
+        for(var i=0; i<this.length; i++){
+            for(var j=i+1; j<this.length; j++){
+                if(this[i] > this[j]){
+                    var v_temp = this[i];
+                    this[i] = this[j];
+                    this[j] = v_temp;
+                }
+            }
+        }
+    }
+    v_arr.mySort();
+    */
+   /* callback 함수는 시대적으로 중요한 부분이니 가끔 눈으로 봐서 낯설지 않게 익혀둡니다. */
+    var v_arr = [5,3,1,2,9,6];
+    v_arr.mySort = function(f_callback){
+        // alert(this);    // this? -> v_arr
+        for(var i=0; i<this.length; i++){
+            for(var j=i+1; j<this.length; j++){
+                if(f_callback(this[i], this[j]) > 0){   // 0보다 크면 오름차순, 0보다 작으면 내림차순
+                    var v_temp = this[i];
+                    this[i] = this[j];
+                    this[j] = v_temp;
+                }
+            }
+        }
+    }
+    v_arr.mySort(function(aa,bb){
+        return aa-bb;
+    });
+    alert(v_arr);
+
+    // alert(v_arr.sort()); // 오름차순 정렬
+    /*
+    v_arr.sort(function(a,b){   // sort 메소드에 callback함수 사용
+        return b-a;  // a-b 는 오름차순 정렬 , b-a는 내림차순 정렬
+    });
+    alert(v_arr);
+    */
+</script>

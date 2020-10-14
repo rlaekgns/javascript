@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+    <script>
+
+            var v_xhr = new XMLHttpRequest();
+
+            v_xhr.open("get", "around.php", true);
+            v_xhr.send();
+            
+            v_xhr.addEventListener("readystatechange", function(){
+                if(v_xhr.readyState == 4 && v_xhr.status == 200){
+                    console.log(JSON.parse(v_xhr.responseText));
+                }
+            });
+                    
+        
+    </script>
+    

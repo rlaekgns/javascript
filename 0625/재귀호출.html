@@ -1,0 +1,28 @@
+<meta charset="UTF-8">
+<script>
+    function f_sum(p_end) {
+        var v_sum = 0;
+        for (var i = 1; i <=p_end; i++) {
+            v_sum += i;
+        }
+        return v_sum;
+    }
+    // alert(f_sum(10));   // 1~10까지의 합
+    // 재귀호출은 함수안에서 함수를 부르는 함수
+    // 1~10 까지의 합이라면 10 + 9 + 8 + .... + 1;
+    // 한때 가독성이 떨어진다고 해서 사용을 자제하자는 분위기 였었지만
+    // 성능이 좋아서, 필요에 의한 선택의 문제(관짝에서 나옴)
+    function f_jsum(p_endNum) {
+        if(p_endNum == 1) {
+            return 1;
+        }
+        return p_endNum * f_jsum(p_endNum - 1); // 그 유명한 팩토리얼 재귀호출함수 (+)를 (*)로만 바꿈
+    }
+    /*
+        return 4 + f_jsum(3)
+        retrun 4 + 3 + f_jsum(2)
+        return 4 + 3 + 2 + f_jsum(1)
+        return 4 + 3 + 2 + 1
+    */
+    alert(f_jsum(5));
+</script>

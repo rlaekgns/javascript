@@ -1,0 +1,19 @@
+<meta charset="UTF-8">
+<script>
+    // 복사(copy) 와 참조(reference) 이해 안하면 안 프로그래머!
+    // 원시타입과 객체타입에서 구분됨!
+    var v_aa = "272";
+    var v_bb = v_aa;  // 값의 복사 이유는 테이터타입이 원시타입이라서
+    v_bb = "337";
+    // alert(v_aa); // 272
+    var v_ref = ["박","성","연"];
+    var v_aoa = v_ref; // 값의 참조 Object에 적용, 메모리를 아껴쓰려는 꼼수!
+    v_aoa[1] = "흥";
+    v_ref[2] = "치";
+    // alert(v_aoa); // 박,흥,치
+
+    var v_check = {"aaa":"bbb"};
+    v_check = ["kkk","jjj"];
+    // ? {"aaa":"bbb"}는 어디로? 메모리에 존재, 가리키는 끈이 없을 뿐
+
+</script>

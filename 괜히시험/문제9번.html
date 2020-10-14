@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select id="id_sel1" size=4 onchange="f_first()">
+    </select>
+    <select id="id_sel2" size=4 style="width:80px" onchange="f_second()">
+    </select>
+    <select id="id_sel3" size=4 style="width:80px">
+    </select>
+    <script>
+        var v_grp1 = ["영업부", "관리부"];
+
+        var v_grp12 = [
+            ["국내영업", "해외영업", "마구영업"],
+            ["인사관리", "구매관리", "자금관리"]
+        ];
+
+        var v_grp123 = [
+            [
+                ["임나연", "유정연", "박지효"],
+                ["김다현", "손채영", "박로제"],
+                ["태리사", "김제니", "김지수"]
+            ],
+            [
+                ["김남준", "김석진"],
+                ["민윤기", "정호석", "전정국"],
+                ["박지민", "김태형"]
+            ]
+        ];
+
+
+        var v_str = "<option>선택하세요</option>";
+        for (var i = 0; i < v_grp1.length; i++) {
+            v_str += "<option value=" + i + " >" + v_grp1[i] + "</option>";
+        }
+        document.getElementById("id_sel1").innerHTML = v_str;
+        
+        var v_sel1 = document.getElementById("id_sel1");
+        var v_sel2 = document.getElementById("id_sel2");
+        var v_sel3 = document.getElementById("id_sel3");
+        function f_first() {
+            //코드 추가
+            var v_sel1Val = v_sel1.value;
+            if(v_sel1Val=="선택하세요") return;  // 선택하세요 문자열 클릭하면 그냥 함수 종료
+            var v_sebuS  =  v_grp12[v_sel1Val]; // 2차원 배열에서 뽑아냈기 때문에 1차원 배열
+            v_sel2.innerHTML = "";              // 추가하기 전에 클리엉
+            var v_option = document.createElement("option");
+            var v_str = "<option>선택하세요</option>";
+            document.getElementById("id_sel2").innerHTML = v_str;
+            for(var i=0; i< v_sebuS.length; i++){
+                var v_option = document.createElement("option"); // option 생성
+                v_option.value = i;                              // value 설정
+                v_option.innerHTML = v_sebuS[i];                  // 태그사이 값 설정(눈에 보이는)
+                v_sel2.appendChild(v_option);                     // select에 붙이기
+            }
+        }
+
+        function f_second() {
+            //코드 추가
+            var v_sel1Val = v_sel1.value;
+            var v_sel2Val = v_sel2.value;
+            var v_sebuS1 = v_grp123[v_sel1Val][v_sel2Val];
+            v_sel3.innerHTML = "";
+            var v_option = document.createElement("option");
+            var v_str = "<option>선택하세요</option>";
+            document.getElementById("id_sel3").innerHTML = v_str;
+            for(var i=0; i<v_sebuS1.length; i++){
+                var v_option1 = document.createElement("option");
+                v_option1.value = i;
+                v_option1.innerHTML = v_sebuS1[i];
+                v_sel3.appendChild(v_option1);
+            }
+        }
+    </script>
+</body>
+</html>

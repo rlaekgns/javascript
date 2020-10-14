@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<style>
+    * {
+            margin: 0 0;
+    }
+    #parent{
+        position: relative;
+        margin: 0px auto;
+        width: 500px;
+        height: 500px;
+        border: 1px solid blue;
+    }
+    #id_btn{
+        position: absolute;
+        left: 200px;
+        top: 460px;
+    }
+    .cl_num {
+        position: absolute;
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border: 2px solid black;
+        text-align: center;
+        line-height: 50px;
+        /* 글자들 수직 중앙정렬 */
+    }
+</style>
+
+<body>
+    <div id="parent">
+        <div id="num0" class="cl_num">?</div>
+        <div id="num1" class="cl_num">?</div>
+        <div id="num2" class="cl_num">?</div>
+        <div id="num3" class="cl_num">?</div>
+        <div id="num4" class="cl_num">?</div>
+        <div id="num5" class="cl_num">?</div><br>
+        <input type=button id="id_btn" value="로또번호발생" onclick="f_lotto()">
+    </div>
+</body>
+<script>
+    var v_left = 48;
+    var v_top = 100;
+    for(var i=0; i<6; i++){
+        var v_idnum = document.getElementById("num"+i);
+        v_idnum.style.left = v_left + "px";
+        v_left += 70;
+        v_idnum.style.top = v_top + "px";
+    }
+    function f_ranNum(p_start, p_end) {
+        return Math.round(Math.random() * (p_end - p_start)) + p_start;
+    }
+    var v_divs = document.getElementsByClassName("cl_num");
+    function f_lotto() {
+        var v_lottoNums = []; 
+        for (; "로또번호발생은무한루핑";) {
+            if (v_lottoNums.length == 6) {
+                break;
+            }
+        var v_num = f_ranNum(1, 45);   // 랜덤 숫자 발생
+        var v_check = false;  
+            for (var i = 0; i < v_lottoNums.length; i++) {
+                if (v_lottoNums[i] == v_num) {
+                    v_check = true;         
+                    break;                
+                }                              
+            }
+            if (!v_check) {
+                v_lottoNums[v_lottoNums.length] = v_num;
+            }
+        }
+        for (var i = 0; i < v_lottoNums.length; i++) {
+            v_divs[i].innerHTML = v_lottoNums[i];  
+            v_divs[i].style.top = -60 + "px";
+        }
+        f_fall(0);
+    }
+    
+    var v_set;
+    function f_fall(num){
+        v_divs[num].style.top= parseInt(v_divs[num].style.top)+10+"px";
+        if(parseInt(v_divs[num].style.top)>=200){
+            num++;
+        }
+        if(num>=6) {
+            clearTimeout(v_set);
+            return;
+        }
+        v_set=setTimeout(f_fall.bind(null,num),5);
+    }
+</script>

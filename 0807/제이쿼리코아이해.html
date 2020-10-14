@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>흥!</div>
+    <div>칫!</div>
+    <div class="lds">뿡!</div>
+    <div class="lds">컥!</div>
+    <div>헉!</div>
+    <script>
+        /*
+            객체 : 정봉경
+            메소드 ( return 정봉경)
+            정봉경.메소드().메소드()
+        */
+        // document.querySelectorAll("css 선택자")
+        // new를 없애기 위해 중간자를 만들어 줌
+        var vaa = "ppp"; // = -> window.vaa = ""
+        (function(p_win){
+            var v_global = p_win;   // p_win 특급개발자용
+            var factory = function(p_selector){
+                return new myDom(p_selector);
+            }
+            var myDom = function(p_selector){
+                var v_elems = document.querySelectorAll(p_selector);
+                this.length = v_elems.length;
+                for(var i=0; i<this.length; i++){
+                    this[i] = v_elems[i];
+                }
+            }
+            window.$ = factory; // 전역변수 $에 factory를 참조시킴
+            factory.fn = myDom.prototype;
+        })(window);
+
+        $.fn.each = function(f_callback){
+            for(var i=0; i<this.length; i++){
+                f_callback(i,this[i]);  // 이 부분이 중요
+            }
+            return this;
+        }
+        // length만큼 불러 재낌
+        $("div").each(function(p_index,p_item){
+            if(p_index == 4){
+                p_item.innerHTML = "<h1>이태연 만세</h1>";
+            }
+            //alert(p_index + " : " + p_item.innerHTML);
+        }).each(function(p_index, p_item){
+            p_item.innerHTML = "<h3>" + p_item.innerHTML + "</h3>"
+        });
+
+        $(".lds").each(function(p_index, p_item){
+                p_item.innerHTML = "<h1>나 다솔선생이냥" + p_index + "</h1>";
+        });
+        /*
+        // 핵심코드 밖에서 자유롭게 메소드 추가
+        $.fn.msg = function(p_msg){
+            alert(p_msg);
+            return this;     // 이 줄 한개로 메소드 체이닝 완성
+            // return문이 없다는 건 되돌려주는 값이 없다는 것
+        }
+        // var v_divs = new myDom("div");
+        // var v_divs = factory("div");
+        var v_divs = $("div");
+        v_divs.msg("흥칫뿡").msg("ㅏㅏㅏㅏ").msg("빠라빠라 빠빠");
+
+        console.log(v_divs.msg("흥칫뿡"));
+        console.log(v_divs);
+        */
+    </script>
+</body>
+</html>

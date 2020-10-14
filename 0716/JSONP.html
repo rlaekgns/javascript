@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        // json형식의 데이터를 넘겨주고 있었음
+        // Open API, jsonp(json padding)
+        var v_imgUrls;  // 전역 변수 선언
+        function jsonFlickrFeed(p_json) {
+            v_imgUrls = p_json.items;
+            f_disp();   // 화면에 뿌리는 함수
+        }
+        function f_disp(){
+            document.getElementById("id_disp").innerHTML = "";  // 내용 클리어!
+            if(!v_imgUrls.length){
+                document.getElementById("id_disp").innerHTML = "찾는 이미지 없어!";
+                return;
+            }
+            for(var i=0; i<v_imgUrls.length; i++){
+                var v_img = document.createElement("img");
+                v_img.src = v_imgUrls[i].media.m
+                v_img.width = 200;
+                v_img.height = 200;
+                document.getElementById("id_disp").appendChild(v_img);
+            }
+        }
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="id_search" value="">
+    <input type="button" id="id_btn" value="검색해볼까낭">
+    <div id="id_disp"></div>
+    <!-- 플리커 사이트에서 받아온 이미지URL로 id_disp에 이미지를 출력해보세용 -->
+    <script>
+        var v_txtBox = document.getElementById("id_search");
+        var v_btn = document.getElementById("id_btn");
+        v_btn.onclick = f_sch;
+        var v_flikrUrl = "https://www.flickr.com/services/feeds/photos_public.gne?tags=";
+        function f_sch(){
+            var v_scriptTag = document.getElementById("lty");
+            // alert(v_scriptTag.length);
+            if(v_scriptTag) { // null이 아닐때만 곧 있을 때만
+                document.head.removeChild(v_scriptTag);
+            }
+            var v_schURL = v_flikrUrl + v_txtBox.value + "&format=json";
+            // 스크립트 태그를 만들어줌
+            var v_script = document.createElement("script");
+            v_script.setAttribute("id","lty");  // 넣을때 스티커를 붙입시다.
+            v_script.src = v_schURL;
+            document.head.appendChild(v_script);
+        }
+        // 고양이 이미지 만들기 함수
+        /*
+        function f_sch() {
+            for (var i = 0; i < v_imgUrls.length; i++) {
+                // console.log(v_items[i].media.m);
+                // 이미지 만들기
+                var v_img = document.createElement("img");
+                v_img.src = v_imgUrls[i].media.m;
+                v_img.width = 200;
+                v_img.height = 200;
+                document.getElementById("id_disp").appendChild(v_img);
+            }
+        }
+        */
+    </script>
+</body>
+
+</html>

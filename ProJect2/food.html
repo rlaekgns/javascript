@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관광지</title>
+    <link href="./css/place.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="ex-layout">
+        <div class="gnb">
+            <header>
+                <a href="./main.html">제주도 소개 사이트</a>
+            </header>
+            <nav>
+                <div id="dropdown">
+                    <ul>
+                        <li onmouseover="f_show()" onmouseout="f_none()">
+                            <button id="dropbtn1" class=dropbtn>관광</button>
+                            <div id="dropdown-content1" class="dropdown-content">
+                                <a href="./place.html">관광지</a><br>
+                                <a href="./festival.html">축제</a>
+                            </div>
+                        </li>
+                        <li  onmouseover="f_show()" onmouseout="f_none()">
+                            <button id="dropbtn2" class=dropbtn>숙박</button>
+                            <div id="dropdown-content2" class="dropdown-content">
+                                <a href="./motel.html">모텔</a><br>
+                                <a href="./hotel.html">리조트&호텔</a><br>
+                                <a href="./guesthouse.html">게스트하우스</a>
+                            </div>
+                        </li>
+                        <li  onmouseover="f_show()" onmouseout="f_none()">
+                            <button id="dropbtn3" class=dropbtn>먹거리</button>
+                            <div id="dropdown-content3" class="dropdown-content">
+                                <a href="./food.html">맛집소개</a><br>
+                                <a href="./specialties.html">특산물소개</a>
+                            </div>
+                        </li>
+                        <li  onmouseover="f_show()" onmouseout="f_none()">
+                            <button id="dropbtn4" class=dropbtn>자유게시판</button>
+                            <div id="dropdown-content4" class="dropdown-content">
+                                <a href="./free.html">자유소통방</a><br>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="main">
+            <div class="nav1">▶ 먹거리 ▶ 맛집소개
+            </div>
+            <div class="content">
+                <div class="left">
+                    <ul>
+                        <li><a href="./food.html"> ▶ 맛집소개</a></li>
+                        <li><a href="./specialties.html">  특산물소개</a></li>
+                    </ul>
+                </div>
+                <div class="center">
+                    <table align="center">
+                        <tr>
+                            <td><img src="./images/상춘재.jpg" width="500px" height="200px"></td>
+                            <td width="100px"></td>
+                            <td width="500px" height="200px">설명</td>
+                        </tr>
+                        <tr height="50px"></tr>
+                        <tr>
+                            <td><img src="./images/선흘곶.jpg" width="500px" height="200px"></td>
+                            <td width="100px"></td>
+                            <td width="500px" height="200px">설명</td>
+                        </tr>
+                        <tr height="50px"></tr>
+                        <tr>
+                            <td><img src="./images/남양수산.jpg" width="500px" height="200px"></td>
+                            <td width="100px"></td>
+                            <td width="500px" height="200px">설명</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var v_drct1 = document.getElementById("dropdown-content1");
+        var v_drct2 = document.getElementById("dropdown-content2");
+        var v_drct3 = document.getElementById("dropdown-content3");
+        var v_drct4 = document.getElementById("dropdown-content4");
+        function f_none() {
+            v_drct1.style.display="none";
+            v_drct2.style.display="none";
+            v_drct3.style.display="none";
+            v_drct4.style.display="none";
+        }
+        function f_show() {
+            v_drct1.style.display="block";
+            v_drct2.style.display="block";
+            v_drct3.style.display="block";
+            v_drct4.style.display="block";
+        }
+    </script>
+    </body>
+</html>

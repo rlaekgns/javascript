@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    /* 아래 항상쓰는 ajax 모양
+    var v_ajax = new XMLHttpRequest();
+    v_ajax.open("메소드","URL",true);
+    v_ajax.send("전달값: get방식일때 비워두거나 null씀");
+
+    v_ajax.onreadystatechange = function(){
+        if(v_ajax.readyState == 4 && v_ajax.status == 200){
+            // 받은 데이타 처리
+            v_ajax.responseText
+        }
+    }
+    */
+
+   // 바뀌는 부분만 일반화를 시켜봅시다. JSON을 이용
+
+    var $ = {};  // _ 와 $는 변수명으로 쓸 수 있음.
+    $.ajax = function(p_json){
+        var v_ajax = new XMLHttpRequest();
+        v_ajax.open(p_json.method,p_json.url,true);
+        v_ajax.send();
+
+        v_ajax.onreadystatechange = function(){
+            if(v_ajax.readyState == 4 && v_ajax.status == 200){
+                p_json.success(v_ajax.responseText);
+            }
+        }  
+    }
+    // 만들었으니 확인해보기
+    var p_data = {};
+    p_data.method = "get";
+    p_data.url = "../AJAX/data.csv";
+    p_data.success = function(p_msg){
+        alert("흥" + p_msg);
+    }
+    $.ajax(p_data);
+
+    // jQuery 아작스
+    $.ajax({
+        "method":"get",
+        "url":"../AJAX/data.csv",
+        "success":function(p_data){
+            alert("넘겨받은 값은:" + p_data + "입니다.");
+        }
+    });
+</script>

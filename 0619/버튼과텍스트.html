@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- readonly vs disabled / readonly는 값을 서버로 전송 가능 -->
+    <input type=text id="id_txt" value="난 텍스트"><br>
+    <input type=button value="눌러봐" onclick="f_click()">
+    <script>
+        var v_text = document.getElementById("id_txt");           // 참조
+        var v_txtValue = document.getElementById("id_txt").value; // 복사
+        function f_click(){
+            // alert(v_txtvalue);
+            console.log(v_text.type);
+            console.log(v_txtValue);
+            // v_txtvalue = "흥치핑!";   // 그냥 문자열 변수의 값을 바꾼 것
+            // alert(document.getElementById("id_txt").value);
+            // document.getElementById("id_txt").value = "김피탕!";
+        }
+    </script>
+</body>
+</html>

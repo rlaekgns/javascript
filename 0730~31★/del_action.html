@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script src="../js/jsp.js"></script>
+<script>
+    // 사용자가 지우려고 선택한 num 받아오기
+    var v_nums = request.getParameterValues("nm_delNum");   // 배열
+    // alert("확인:" + v_nums);
+    var v_tblName = "볼품게시";
+
+    // localStorage에 저장된 데이타 가져오기
+    var v_dataArrs = JSON.parse(localStorage.getItem(v_tblName));
+    
+    // 배열에서 받아온 v_nums값과 일치하는 글 삭제하기
+    for(var i=0; i<v_nums.length; i++){
+        var v_delNum = v_nums[i];
+        for(var j=0; j<v_dataArrs.length; j++){
+            if(v_dataArrs[j].num == v_delNum){
+                v_dataArrs.splice(j,1);
+                j--;        // 지웠을땐 j값 증가 못하게, 뒷놈이 앞으로
+            }   
+        }
+    }
+
+    // 변경된 배열 덮어쓰기로 저장
+    localStorage.setItem(v_tblName, JSON.stringify(v_dataArrs));
+    location.replace("list.html");  // 눈으로 편하게 확인하기 위해서
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+    <script>
+        // 여기서 문제 반복문을 한번만 써서 아래와 똑같은 결과를 만들어 보세요
+        // 반복문 1번 쓰는 거 외에 제약 사항 없음
+        // 1 -> 6 -> 1, 6이 경계점(방향전환), 방향변수(상태변수)필요
+        var i=1;
+        var v_direction = true;  // true가 +방향, false는 -방향
+        for(; i>=1 && i<=6; ){   // i값은 1에서 6사이
+            document.write("<h"+i+">난 최고의 프로그래머다</h"+i+">");
+            if(i==6){
+                v_direction = false;
+            }
+            if(v_direction){
+                i++;
+            }else{
+                i--;
+            }
+        }
+        // for(var i=5; i>=1; i--){
+        //     document.write("<h"+i+">난 최고의 프로그래머다</h"+i+">");
+        // }
+    </script>
+    </center> <!-- 빨간색으로 나오는 것은 권장되지 않음을 의미 deprecated 호환성 때문에 남겨둔것 -->
+</body>
+</html>

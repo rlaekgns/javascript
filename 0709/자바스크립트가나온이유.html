@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 자바스크립트가 처음 나온 이유는 사용작 ㅏ얼토당토 않은 값을 쓰고 전송버튼을
+        누르면 그 값이 제대로 된 값이 서버쪽에서 계속 체크해야되는, 곧 서버에 부하가
+        너무 많이 걸리는 문제를 막기 위함 -->
+    <h1>웰컴 투 이태영 월드</h1>
+    <!-- form의 onsubmit 이벤트는 전송 직전에 발생하며, 전송여부를 컨트롤 할 수 있게 함 -->
+    <form action="../0708/test.php" method="GET" onsubmit="return f_yesOrNo()">
+        <table border="1">
+            <tr>
+                <td>아이디</td>
+                <td><input id="id_aidi" type="text" name="nm_aidi" value="lty"></td>
+            </tr>
+            <tr>
+                <td>암호</td>
+                <td><input id="id_password" type="password" name="nm_password" value="1111"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="로그인"></td>
+                <td><input type="reset" value="다시쓸랭"></td> <!-- reset 지우는게 아니라 초기값으로 되돌려준다. -->
+            </tr>
+        </table>
+    </form>
+    <script>
+        var v_aidi = document.getElementById("id_aidi");
+        var v_password = document.getElementById("id_password");
+        function f_yesOrNo(){
+            if(v_aidi.value.trim() == ""){
+                alert("너 어이디 없냥? 그럼 가입먼저 행 바보얌");
+                return false; // 전송 거부
+            }
+            if(v_password.value.trim() == "") {
+                alert("너 암호 어쨋냥? 고객센터에 문의해랑 ㅠㅠ");
+                return false; // 전송 거부
+            }
+            return true;
+        }
+        
+
+    </script>
+</body>
+</html>

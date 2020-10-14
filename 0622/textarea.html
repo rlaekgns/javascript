@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type=button value="눌렁" onclick="f_ta()">
+    <textarea id="id_ta" rows=10 cols=30>난 여기에 써야 보여요</textarea>
+    <script>
+        var v_ta = document.getElementById("id_ta");
+        function f_ta(){
+            alert(v_ta.value); // 현재 값 확인
+            v_ta.value += "안녕 난 아이유라고해\n"; // 값 쓰기
+        }
+    </script>
+</body>
+</html>

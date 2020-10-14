@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_disp{
+            width:1000px;
+            height:400px;
+            border:2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <input type=button value="구구단 전부 출력(테이블형태로)" onclick="f_gugu()">
+
+    <div id="id_disp"></div>
+<script>
+    var v_disp = document.getElementById("id_disp");
+    function f_gugu(){
+        var v_tbl;
+        var v_tr="";
+        for(var i=2; i<=9; i++){
+            v_tr = v_tr+"<td>"+p_dan(i)+"</td>";
+        }
+        v_tbl = "<table border=2><tr>"+v_tr+"</tr></table>"
+        v_disp.innerHTML = v_tbl;
+    }
+    function p_dan(p_number){
+        var v_str = "<tr><td> " + p_number+"단" + "</td></tr>";
+        for(var i=1; i<=9; i++){
+            v_str += "<tr><td>" + p_number + " X " + i + " = " + (p_number*i) +"</td></tr>";
+        }
+        return "<table border=1>"+v_str+"</table>";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // this를 컨트롤하는 함수 call, apply, bind(특별 함수포인터를 리턴, 눈에 안보임)
+    function f_jbk(p_arg1, p_arg2){
+        console.log(this.name, this.age, p_arg1, p_arg2);
+    }
+    // f_jbk("aaa", "bbb");    //this? -> window
+    var v_jbk = {"name":"정봉경","age":"백살"};
+    // this를 v_jbk로 바꾸고 싶당
+    // f_jbk.call(v_jbk, "흥", "칫");  // this = v_jbk
+    // f_jbk.apply(v_jbk,["흥","칫"]); // 윗 라인과 동일
+    f_jbk.bind(v_jbk,"흥","칫")();
+    // bind함수는 함수포인터를 리턴하기 때문에 함수 이름만 쓴거랑 같은 효과
+    // v_func();
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // prime 넘버 구하기 (소수)
+        // 1과 그 자신으로만 나누어 떨어지는 수, 1은 소수에서 제외
+        var v_primeNums = [];
+        function f_prime(p_endNum) {
+            // 작성
+            for (var i = 2; i <=p_endNum; i++) {
+                if (isPrime(i)) {
+                    v_primeNums[v_primeNums.length] = i;
+                }
+            }
+        }
+        f_prime(10);
+        alert(v_primeNums);
+
+        function isPrime(p_num) {
+            var v_prime = true;
+            for (i = 2; i <= p_num - 1; i++) {
+                if (p_num % i == 0) {
+                    v_prime = false;  // 소수가 아니라고 결정
+                    break;            // 더이상 체크할 필요 없음
+                }
+            }
+            return v_prime;           // 소수면 true 리턴,아니면 false 리턴
+        }
+        alert(isPrime(11));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 함수안에서 자기 자신을 부르는 것을 재귀호출이라고 부름
+        // 면접때 가끔 물어봄
+        /*
+        function f_dami(){
+            alert("나 좀 불러줘!");
+            setTimeout(f_dami,2000); // 함수명, 시간(1000분의 1초)
+        }
+        f_dami();
+        */
+       
+        function f_dami(){
+            alert("나 좀 불러줘!");
+        }
+        setTimeout(f_dami,2000); // 함수명, 시간(1000분의 1초), 비동기 함수
+        alert("누가 먼저 불릴까?"); // <- 먼저 실행됨
+    </script>
+</body>
+</html>

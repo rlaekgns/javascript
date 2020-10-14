@@ -1,0 +1,23 @@
+<meta charset="UTF-8">
+<script>
+    // 자바랑 자바스크립트는 아무 상관이 없어요
+    "use strict" // 조금 엄격하게 체크하는 모드 변수 앞에 var 붙여줘야 오류가 안남
+    var aaa = "난 문자열"; // ""문자열 
+    var bbb = '흥치핑';    // ''문자열
+    var ccc = '쌍따옴표" 넣었어요'; //문자열 안에 "" 넣고 싶으면 밖을 작은 따옴표로
+    
+    var ddd = 337;        // 숫자형
+    var eee = "272";
+    var fff = eee + ddd;  // 문자열 더하기 우선 문자열 붙이기
+    // ddd - eee 문자열 연산에 마이너스는 없음 - , / , * 는 문자열이 무조건 숫자로 바뀌어야함
+    alert(ddd - eee);
+    //형변환
+    eee = eee - 0;        // -0, *1, /1 은 숫자형으로 변환
+    alert(typeof(eee));
+    eee = eee + "";       // 숫자랑 문자가 더하면 문자열 더하기가 우선이여서 문자형으로 변환
+    alert(typeof(eee));
+
+    alert("aaa" - 100);   // NaN Not A Number = 숫자가 아니다라는 메세지를 돌려줌
+
+
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <img src="../images/IU4.jpg">
+    <img src="../images/IU5.jpg">
+    <img src="../images/IU6.jpg">
+    <div>정봉경 흥</div>
+    <div>김수정 치</div>
+    <div>정종안 피</div>
+    <script>
+        // style속성 제어 메소드 css
+        // alert($("div").css("color"));    // 읽기
+        // $("div").css("color","yellow").css("backgroundColor","black");    // 값 쓰기
+        $("div").css({
+            "color" : "black",
+            "backgroundColor" : "yellow"
+        });
+
+        $("div").css("fontSize",function(p_inx, p_str){
+            if(p_inx == 1){
+                return "5em";
+            }
+            return "0.5em";
+        }).css("color",function(p_inx, p_str){
+            if(p_inx == 1){
+                return "blue";
+            }
+            return "skyblue";
+        });
+
+        // 속성제어 메소드 attr
+        // alert($("img").attr("src")); // 속성값 읽기
+        // $("img").attr("src", "../images/SH1.jpg"); // 속성명에 값 주기
+        $("img").attr("src", function(p_inx, p_str){
+            // alert(p_inx + " : " + p_str);
+            if(p_inx == 1){
+                return "../images/YZ1.jpg";
+            }
+            return p_str;
+        });
+        /*
+        $("img").attr({
+            "width" : "200",
+            "height" : "100"
+        })
+        */
+       $("img").attr("width", "200").attr("height", "100");
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* cssRules[0] */
+        .lty {
+            background-color: black;
+        }
+        /* cssRulse[1] */
+        .lty {
+            color: pink;
+        }
+    </style>
+    <link rel="stylesheet" href="css/myStyle.css">
+    <style>
+        .csj {
+            font-size: 2em;
+            background-color: pink;
+        }
+        div {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+        }
+        .ftSize {
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="bgBlue ftSize">이태영 바보</div><br>
+    <input type=button value="내외부스타일시트 접근" onclick="f_style()">
+    <script>
+        function f_searchSelector(p_selector) {
+            var v_stySheets = document.styleSheets;
+            for(var i=0; i<v_stySheets.length; i++){
+                var v_cssRules = v_stySheets[i].cssRules;
+                for(j=0; j<v_cssRules.length; j++){
+                    if(v_cssRules[j].selectorText == p_selector) {
+                        return v_cssRules[j];
+                    }
+                }
+            }
+        }
+        // alert(f_searchSelector(".bgBlue").cssText);  // 찾으려는 선택자값을 넘김
+        // 내외부 스타일시트 접근법은 일반적인 회사에서는 사용되지 않고
+        // 전문 프론트엔드 컴포턴트나 라이브러리를 만드는 회사에서 사용되고 있음
+        // cssRules밑으로 속성 3개를 많이 사용 cssText, selectorText, style 
+        function f_style() {
+            // f_searchSelector(".bgBlue") = document.styleSheets[1].cssRules[5]                 
+            f_searchSelector(".bgBlue").style.backgroundColor="magenta";
+            f_searchSelector(".ftSize").style.fontSize="2em";
+            // document.styleSheets[1].cssRules[5].style.backgroundColor="orange";
+        //    alert(document.styleSheets[2].cssRules[0].style.fontSize); 
+            // 규칙 전체 내용
+            // alert(document.styleSheets[2].cssRules[0].cssText);
+            // 선택자
+            // alert(document.styleSheets[2].cssRules[0].selectorText);
+            // alert(document.styleSheets[1].cssRules[2].style.color);
+        }
+    </script>
+</body>
+</html>

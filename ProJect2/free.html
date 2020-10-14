@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jsp.js"></script>
+    <link href="./css/main.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="ex-layout">
+        <div class="gnb">
+            <!-- <img id="id_img" src="./images/jeju.jpg" alt="" width="1900px" height="350px"> -->
+            <header>
+                <a href="./main.html">제주도 소개 사이트</a>
+            </header>
+            <nav>
+                <div id="dropdown">
+                    <ul>
+                        <li onmouseover="f_show()" onmouseout="f_none()">
+                            <button id="dropbtn1" class=dropbtn>관광</button>
+                            <div id="dropdown-content1" class="dropdown-content">
+                                <a href="./place.html">관광지</a><br>
+                                <a href="./festival.html">축제</a>
+                            </div>
+                        </li>
+                        <li  onmouseover="f_show()" onmouseout="f_none()">
+                            <button id="dropbtn2" class=dropbtn>숙박</button>
+                            <div id="dropdown-content2" class="dropdown-content">
+                                <a href="./motel.html">모텔</a><br>
+                                <a href="./hotel.html">리조트&호텔</a><br>
+                                <a href="./guesthouse.html">게스트하우스</a>
+                            </div>
+                        </li>
+                        <li  onmouseover="f_show()" onmouseout="f_none()">
+                            <button id="dropbtn3" class=dropbtn>먹거리</button>
+                            <div id="dropdown-content3" class="dropdown-content">
+                                <a href="./food.html">맛집소개</a><br>
+                                <a href="./specialties.html">특산물소개</a>
+                            </div>
+                        </li>
+                        <li  onmouseover="f_show()" onmouseout="f_none()">
+                            <button id="dropbtn4" class=dropbtn>자유게시판</button>
+                            <div id="dropdown-content4" class="dropdown-content">
+                                <a href="./free.html">자유게시판</a><br>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    <div  style="text-align: center; background-color: white;">
+        <h3>자유 게시판</h3>
+        <div style="text-align: right;">
+            <input id="id_searchText" type="text" value="">
+            <input type="button"  value="검색" onclick="f_search()">
+        </div>
+        <p class="lead" id="id_p"></p>
+        <a href="./write.html" class="btn btn-primary btn-lg">게시물 작성</a>
+    </div>
+    <script>
+        var v_p = document.getElementById("id_p");
+        var v_pgNum = request.getParameter("pg_num");
+        var v_curPage = 1; // 현재 페이지이며 디폴트 값
+        if (v_pgNum) {
+            v_curPage = v_pgNum;
+        }
+
+        // localStorage 내용 읽어와서 출력하기
+        var v_tblName = "게시판";
+        var v_arrDatas = JSON.parse(localStorage.getItem(v_tblName));
+        // document.write("<h1>형편없는 게시판</h1>");
+
+        // 페이지 나누기, 페이지당 10개, 전체 페이지 수 = 전체 글수 / 페이지당 글수
+        var v_pgPGSu = 10;
+        var v_totalGSu = v_arrDatas.length;
+        var v_totalPG = Math.ceil(v_totalGSu / v_pgPGSu);
+
+        var v_startNum = (v_curPage - 1) * v_pgPGSu; // 페이지별 스타트 글넘버 배열 index
+        var v_endNum = v_startNum + v_pgPGSu;
+
+        // 마지막 페이지의 마지막 글 넘버
+        if (v_endNum > (v_arrDatas.length)) {
+            v_endNum = v_arrDatas.length;
+        }
+
+        var v_tblStr = "<table class='table table-striped table-hover'>";
+        v_tblStr += "<tr><th>글번</th><th>제목</th><th>작성자</th><th>분류</th></tr>";
+        for (var i = v_startNum; i < v_endNum; i++) {
+            v_tblStr += "<tr>";
+            v_tblStr += "<td>" + v_arrDatas[i].num + "</td>";
+            v_tblStr += "<td><a href='./read.html?g_num=" + v_arrDatas[i].num + "'>" + v_arrDatas[i].title + "</td>";
+            v_tblStr += "<td>" + v_arrDatas[i].writer + "</td>";
+            v_tblStr += "<td>" + v_arrDatas[i].category + "</td>";
+            v_tblStr += "</tr>";
+        }
+        v_tblStr += "</table>";
+        // 사용자 페이지 클릭 모양 만들어주기
+        for (var v_page = 1; v_page <= v_totalPG; v_page++) {
+            if (v_page == v_curPage) {
+                v_tblStr += "<a style='font-size:1.5em;color:blue' href='freeboardList.html?pg_num=" + v_page + "'>" + v_page + "</a>";
+            } else {
+                v_tblStr += "<a href='./free.html?pg_num=" + v_page + "'>" + v_page + "</a>";
+            }
+            v_tblStr += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+        }
+
+        v_p.innerHTML = v_tblStr;
+
+        var v_searchText = document.getElementById("id_searchText");
+        function f_search(){
+            var p_value = v_searchText.value;
+             v_tblStr = "<table class='table table-striped table-hover'>";
+                v_tblStr += "<tr><th>글번</th><th>제목</th><th>작성자</th><th>분류</th></tr>";
+            for(var i=v_startNum; i<v_endNum; i++){
+                if(v_arrDatas[i].title.indexOf(p_value) != -1){
+                        v_tblStr += "<tr>";
+                        v_tblStr += "<td>" + v_arrDatas[i].num + "</td>";
+                        v_tblStr += "<td><a href='./read.html?g_num=" + v_arrDatas[i].num + "'>" + v_arrDatas[i].title + "</td>";
+                        v_tblStr += "<td>" + v_arrDatas[i].writer + "</td>";
+                        v_tblStr += "<td>" + v_arrDatas[i].category + "</td>";
+                        v_tblStr += "<tr>"             
+                }
+            }
+            v_tblStr += "</table>";
+            for (var v_page = 1; v_page <= v_totalPG; v_page++) {
+            if (v_page == v_curPage) {
+                v_tblStr += "<a style='font-size:1.5em;color:blue' href='freeboardList.html?pg_num=" + v_page + "'>" + v_page + "</a>";
+            } else {
+                v_tblStr += "<a href='./free.html?pg_num=" + v_page + "'>" + v_page + "</a>";
+            }
+            v_tblStr += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+            }
+            v_p.innerHTML = v_tblStr;
+        }
+
+        var v_drct1 = document.getElementById("dropdown-content1");
+        var v_drct2 = document.getElementById("dropdown-content2");
+        var v_drct3 = document.getElementById("dropdown-content3");
+        var v_drct4 = document.getElementById("dropdown-content4");
+        function f_none() {
+            v_drct1.style.display="none";
+            v_drct2.style.display="none";
+            v_drct3.style.display="none";
+            v_drct4.style.display="none";
+        }
+        function f_show() {
+            v_drct1.style.display="block";
+            v_drct2.style.display="block";
+            v_drct3.style.display="block";
+            v_drct4.style.display="block";
+        }
+    </script>
+</body>
+
+</html>

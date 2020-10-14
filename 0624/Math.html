@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function f_ranSu(p_start, p_end){
+            return Math.round(Math.random()*(p_end - p_start)) + p_start;
+        }
+
+        for(var i=1; i<=10; i++){
+            alert(f_ranSu(50,100));
+        }
+        
+        // 동적페이지 구현을 위해 setTimeout과 Math.random을 많이 사용
+        // cpu 클락 카운트를 이용, 실제 그런지는 정확하지 않음!
+        // Math.cile(올림), Math.round(반올림), Math.floor(버림), Math.PI(파이)
+        // for(var i=1; i<=10; i++){
+            // 1 ~ 10 까지 발생?
+            // alert(Math.ceil(Math.random()*10)); // 랜덤숫자 발생 0 <= ? < 10
+            // 0 ~ 35 까지
+            // alert(Math.round(Math.random()*35));
+            // 65 ~ 100 까지
+            // alert(Math.round(Math.random()*35 + 65));
+
+            // 곡선 움직임 구현을 원하면 삼각함수를 이해하고 있어야 함, sin, cos
+        // }
+            // alert(Math.sin(Math.PI/2));
+            // alert(Math.cos(Math.PI/2));
+    </script>
+    <script>
+        // 아직 만들어지지 않은 것을 접근해서 null값이 나옴
+        // alert("첫번째:" + document.getElementById("id_imsi"));
+    </script>
+    <div id="id_imsi">그냥 태그</div>
+    <!-- 스크립트태그를 관례적으로 여기(/body)에 쓰는 이유 -->
+    <script>
+        // alert("두번째:" + document.getElementById("id_imsi"));
+    </script>
+</body>
+</html>

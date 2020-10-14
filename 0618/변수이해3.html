@@ -1,0 +1,19 @@
+<meta charset="UTF-8">
+<script>
+    // 배열 -> 자바스크립트 배열은 제약사항이 없음!, 엄쳥 중요
+    // 제일 중요한 속성은 length
+    var v_arr = ["aaa",3,4,"kkk"]; // 빈 배열 선언, 배열은 객체(Object) 임
+    // alert("갯수는"+v_arr.length);
+    // alert(v_arr[0]);               // 인덱스 번호는 0번부터
+    var v_arr1 =[];
+    for(var i=0; i<10; i++){
+        // v_arr1[i] = (i+1);     // 이것은 별로 좋은 방법이 아님!, 초보티가 남
+        v_arr1[v_arr1.length] = (i+1);  // 초보티가 안나는 연봉 더 달라는 표현
+    }
+    // alert(v_arr1[v_arr1.length -1]);       // 배열값 확인
+    var A = ["bbb","ccc",272,{"alias":"roze"}];
+    var v_arr2 = ["aaa", A];
+    // var v_arr2 = ["aaa", ["bbb","ccc",272]];  // 배열속의 배열
+    // alert(v_arr2[1][1]);
+    alert(v_arr2[1][3].alias);  //v_arr2[3] ---> {"alias":"roze"}
+</script>

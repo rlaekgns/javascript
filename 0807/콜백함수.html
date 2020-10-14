@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // 콜백함수 함수의 매개변수로 넘어가는 함수
+
+    function f_parent(p_funct){
+        for(var i=1; i<=10; i++){
+            p_funct("칫"+i);  // ()가 함수를 받는다
+        }
+    }
+
+    var myfunc = function(p_msg){
+        alert(p_msg);
+    }
+    f_parent(myfunc);
+
+    /*
+    f_parent(function(p_msg){
+        alert(p_msg);
+    });
+    */
+</script>

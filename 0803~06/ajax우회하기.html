@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<body>
+    <input type="text" id="id_search" value=""><br>
+    <input type="button" value="구글뉴스검색" onclick="f_search()">
+    <div id="id_disp"></div>
+</body>
+    <script>
+        var v_disp = document.getElementById("id_disp");
+        var v_schWord = document.getElementById("id_search");
+        function f_search(){
+            var v_xhr = new XMLHttpRequest();
+            // ajax는 대부분 same-origin정책으로 인해 다른 사이트(도메인)의 정보를 못가져옴
+            // 이때 사용하는 방법이 내 서버를 경유해서 데이터를 받음
+            v_xhr.open("get", "around.php?search="+v_schWord.value, true);
+            v_xhr.send();
+            
+            v_xhr.addEventListener("readystatechange", function(){
+                if(v_xhr.readyState == 4 && v_xhr.status == 200){
+                    console.log(JSON.parse(v_xhr.responseText));
+                    var v_items = JSON.parse(v_xhr.responseText).channel.item;
+                    var v_tblStr = "<table id='id_tbl' border=1>";
+                    for(var i=0; i<v_items.length; i++){
+                        v_tblStr += "<tr>";
+                        v_tblStr += "<td>" + (i+1) + "</td>";
+                        v_tblStr += "<td><a href='" + v_items[i].link + "'>" + v_items[i].title + "</td>";
+                        v_tblStr += "</tr>"
+                    }
+                    v_tblStr += "</table>"
+                    v_disp.innerHTML = v_tblStr;
+                    
+                    // table에 접근하려면 요기서부터
+                    var v_table = document.getElementById("id_tbl");
+                    var v_tbody = v_table.children[0];
+                    var v_tr = v_tbody.children;
+
+                    function f_regEvent(p_index){
+                        v_tr[p_index].onmouseover = function(){
+                            v_tr[p_index].style.backgroundColor = "pink";
+                        }
+                        v_tr[p_index].onmouseout = function(){
+                            v_tr[p_index].style.backgroundColor = "black";
+                        }
+                    }
+                    for(var i=0; i<v_tr.length; i++){
+                        // 이벤트 등록에 반복문 i값의 영향 피하기, 별도 함수
+                        f_regEvent(i);
+                    }
+                    /*
+                    for(var i=0; i<v_tr.length; i++){
+                        v_tr[i].addEventListener("mouseover",function(){
+                            this.style.backgroundColor = "yellow";
+                        });
+                        v_tr[i].addEventListener("mouseout",function(){
+                            this.style.backgroundColor = "white";
+                        });
+                    }
+                    */
+                }
+            })
+        }
+        
+    </script>

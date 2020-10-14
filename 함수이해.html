@@ -1,0 +1,42 @@
+<meta charset="UTF-8">
+<script>
+    // f(x) = x * x
+    // 함수 선언
+    // 반복되는 코드(사회적), 한번 어렵게 짰는데 다시 하라면 못 할것 같은거(개인적)
+    // 매개변수 타입은 뭐든 상관없음!
+    
+    var v_json = {};  // 빈객체 생성
+    v_json.name = "최승주";
+    v_json.age = "100";
+
+    function f_json(p_json){
+        alert(p_json.name);
+        alert(p_json.age);
+    }
+    
+    f_json(v_json);
+    
+    
+    /*
+    function f_msg(){
+        alert("안녕")
+    }
+    
+    function f_msg2(p_func){  // 이런게 되는 언어를 first class 언어라 부름
+        p_func();
+    }
+
+    f_msg2(f_msg); // 함수포인터(fp)를 매개변수로 넘김!
+                   // ()를 붙이는 실수를 많이 함, 함수 이름만 넘김
+    */
+    /*
+    function f_start(p_arg, p_arg2, p_arr){
+        alert(p_arr);
+        // alert("배열 2번째 값은" + p_arr[1]);
+        alert("넘어온 값은=" + p_arg + p_arg2);
+        alert("나 함수야!");
+    }
+    var v_arr = ["A","B","C"]
+    f_start("흥치피",272); // 함수 콜
+    */
+</script>

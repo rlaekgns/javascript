@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    당신의 취미는(3개까지만)<br>
+    독서<input type="checkbox" name="nm_hobby" value="reading" onclick="f_ck(this)">
+    영화<input type="checkbox" name="nm_hobby" value="movie" onclick="f_ck(this)">
+    음악<input type="checkbox" name="nm_hobby" value="music" onclick="f_ck(this)"><br>
+    낚시<input type="checkbox" name="nm_hobby" value="fishing" onclick="f_ck(this)">
+    게임<input type="checkbox" name="nm_hobby" value="game" onclick="f_ck(this)">
+    골프<input type="checkbox" name="nm_hobby" value="golf" onclick="f_ck(this)"><br>
+    <script>
+        var v_ckboxs = document.getElementsByName("nm_hobby");
+        var v_ckCnt = 0; // 최초에 체크된 체크박스 갯수
+        var v_limitCnt = 3; // 3개까지만 허락
+        function f_ck(p_this){
+            if(p_this.checked){
+                v_ckCnt++;
+                alert(v_ckCnt);  // 눈으로 확인
+            }else{
+                v_ckCnt--;
+                alert(v_ckCnt)
+            }
+            if(v_ckCnt > v_limitCnt){
+                alert(v_limitCnt + "개 까지만 가능합니다");
+                p_this.checked = false;  // 강제로 체크해제시킴!
+                v_ckCnt--;  // 강제로 해제했으므로 1개 마이너스
+            }
+
+        }
+    </script>
+</body>
+</html>

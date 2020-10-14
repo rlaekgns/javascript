@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_parent {
+            position: relative;
+            left: 30px;
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+        }
+        #id_child1 {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 0px;
+            top: 0px;
+            border: 2px dashed pink;
+        }
+        #id_child2 {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border: 2px solid black;
+            left: 50px;
+        }
+        /*
+            부모가 relative고 자식이 absolute이면
+            자식은 부모 왼쪽모서리를 기준으로 움직인다. ---> 중요
+            아주 많이 쓰는 레이아웃 패턴
+        */
+
+    </style>
+</head>
+<body>
+    <div id="id_parent">
+        <div id="id_child1"></div>
+        <div id="id_child2"></div>
+    </div>
+</body>
+</html>

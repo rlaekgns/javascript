@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    JS<input type="checkbox" value="js">
+    JSP<input type="checkbox" value="jsp">
+    JAVA<input type="checkbox" value="java">
+    <select multiple size=4>
+        <option value="js">JS</option>
+        <option value="jsp">JSP</option>
+        <option value="java">JAVA</option>
+    </select>
+    <input type="button" value="눌렁">
+    <script>
+        // 주로 attr 메소드를 쓰는데, 아래 같은 경우만 prop 메소드를 씁니당
+        // prop는 attr이 일부 속성에 대해 원하는 값을 리턴해주지 않아서 만들어졌음
+        // 값을 읽는 경우에만 사용
+        $("input[type=button]").click(function(){
+            // select의 option중에 선택된 것만 가져오기
+            $("select > option:selected").each(function(p_inx, p_it){
+                console.log(p_it);
+                alert(p_inx + " : " + $(p_it).val());
+            });
+            /* 체크박스 체크된 것만 가져오깅
+            $("input[type=checkbox]:checked").each(function(p_index, p_item){
+                alert(p_index + " : " + $(p_item).val());
+            });
+            */
+            // alert($("input[type=checkbox]").eq(0).attr("checked"));  // undefined
+            // alert($("input[type=checkbox]").eq(0).prop("checked"));  // false
+            // alert($("input[type=checkbox]").eq(1).prop("disabled")); // false
+            // alert($("input[type=checkbox]").eq(1).attr("disabled")); // undefined
+            // $("input[type=checkbox]").eq(2).attr("checked", true);
+            // alert($("input[type=checkbox]").eq(2).prop("checked"));
+        });
+    </script>
+</body>
+</html>

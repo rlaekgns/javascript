@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nemoSty {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border: 1px solid black;
+        }
+        .nemoSpace {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border: 1px solid white;
+        }
+    </style>
+</head>
+<body>
+    <!-- 전각문자 / 반각문자 height/width 2height/width -->
+    <input type=button value="눌렁!!" onclick="f_insNemo()">
+    <div id="container"></div>
+    <script>
+        var v_hexaNum=[]; // 16진수를 담을 배열, 0~9, a,b,c,d,e,f
+        for(var i=0; i<=9; i++){
+            v_hexaNum[v_hexaNum.length] = i;
+        }
+        v_hexaNum[v_hexaNum.length] = "a";
+        v_hexaNum[v_hexaNum.length] = "b";
+        v_hexaNum[v_hexaNum.length] = "c";
+        v_hexaNum[v_hexaNum.length] = "d";
+        v_hexaNum[v_hexaNum.length] = "e";
+        v_hexaNum[v_hexaNum.length] = "f";
+
+        // 배열에 잘 담겼는지 확인용
+        // alert(v_hexaNum);
+
+        function f_hexaNum() {
+            var v_ranIndex = Math.floor(Math.random()*v_hexaNum.length);
+            return v_hexaNum[v_ranIndex];
+        }
+        function f_ranColor2() {
+            var v_hexaColor = "#";
+            for(var i=1; i<=6; i++){
+                v_hexaColor += f_hexaNum();
+            }
+            return v_hexaColor;  // 완성된 16진수 문자열 리턴
+        }
+        var v_con = document.getElementById("container");
+        // 네모 1개 만드는 함수
+        function f_nemo(p_arg) {
+            var v_div = document.createElement("div");
+            if(p_arg){
+                v_div.setAttribute("class","nemoSty");
+                v_div.style.backgroundColor = f_ranColor2(); // 배경색 랜덤
+            } else {
+                v_div.setAttribute("class","nemoSpace");
+            }
+            return v_div;
+        }
+        // 네모를 화면에 넣는 함수
+        function f_insNemo() {
+            
+            // /* 첫 줄 */
+            // for(var i=1; i<=8; i++){        // 빈 네모 8개
+            //     v_con.appendChild(f_nemo(""));
+            // }
+            // v_con.appendChild(f_nemo("1")); // 색깔 네모 1개
+            // v_con.innerHTML += "<br>"; // 엔터키
+            
+            // /* 2번 줄 */
+            // for(var i=1; i<=7; i++){
+            //     v_con.appendChild(f_nemo(""));
+            // }
+            // for(var i=1; i<=2; i++){
+            //     v_con.appendChild(f_nemo("1"))
+            // }
+            // v_con.innerHTML += "<br>";
+            
+            for(var i=10; i>=1; i--){
+                for(var j=1; j<i; j++){
+                    v_con.appendChild(f_nemo(""));
+                }
+                for(var u=1; u<=10-i+1; u++){
+                    v_con.appendChild(f_nemo("1"));
+                }
+                v_con.innerHTML += "<br>";
+            }
+            
+            /*
+            var v_row = 10;
+            for(var i=1; i<=v_row; i++){
+                for(var j=1; j<=i; j++){
+                    v_con.appendChild(f_nemo("2"));
+                }
+                v_con.innerHTML += "<br>"
+            }
+            */
+            /*
+            // 1개 넣고 줄 바꾸기
+            v_con.appendChild(f_nemo());
+            v_con.innerHTML += "<br>";
+            // 2개 넣고 줄 바꾸기
+            for(var i=1; i<=2; i++){
+                v_con.appendChild(f_nemo());
+            }
+            v_con.innerHTML += "<br>";
+            // 3개 넣고 줄 바꾸기
+            for(var i=1; i<=3; i++){
+                v_con.appendChild(f_nemo());
+            }
+            v_con.innerHTML += "<br>";
+            */
+        }
+    </script>
+</body>
+</html>

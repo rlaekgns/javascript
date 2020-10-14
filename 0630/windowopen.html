@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type=button value="새창열기" onclick="f_newOpen()"><br>
+    <input type=text id="old_txt" value=""><br>
+    <input type=button value="새창에 값 전달" onclick="f_newTo()">
+    <input type=button value="새창 닫기" onclick="f_newClose()">
+    <input type=button value="체크" onclick="f_check()">
+    <input type=button value="나를 닫기" onclick="f_close()">
+    <script>
+        function f_close() {
+            window.close();
+            // 스크립트로 열지 않은 창은 스크립트로 닫을 수 없음
+            // 일부 악용하는 사이트가 있어 제한을 걸었음
+        }
+        var v_newWin = null;
+        function f_check() {
+            console.log(v_newWin);  // return 값이 뭔지 확인용
+        }
+        function f_newClose() {
+            v_newWin.close();
+            v_newWin = null;
+        }
+        function f_newTo() {
+            v_newWin.document.getElementById("new_txt").value = document.getElementById("old_txt").value;
+        }
+        // window.open(URL, NAME, Attribute);
+        var f_newOpen = function() {
+            // 두번째 매개변수에 이름을 주면 새로뜨는 창을 1개로 유지할 수 있음
+            // open을 범용사이트에는 자제해서 사용하고
+            // 내부네트워크 프로그램에는 편하게 씀!
+            // open은 열린창을 가리키는 참조값을 리턴해 줌
+            if(!v_newWin){
+                v_newWin = window.open("newWin.html", "", "left=100,top=100,width=300, height=200");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/jskeyWords.js"></script>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0 0;
+        }
+        #wrapper {
+            position: relative;
+            margin: 0px auto;
+            width: 500px;
+            height: 500px;
+            background-color: cornsilk;
+            border: 1px solid black;
+        }
+
+        #id_cont {
+            position: absolute;
+            width: 500px;
+            height: 50px;
+            left: 0px;
+            top: 450px;
+            border: 1px solid red;
+            z-index: 100;
+            background-color: crimson;
+        }
+
+        #id_disp {
+            position: relative;
+            height: 450px;
+            border: 1px solid blue;
+            z-index: 10;
+        }
+        .divBox {
+            position: absolute;
+            width: 50px;
+            height: 20px;
+            border: 1px solid green;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="id_disp"></div>
+        <div id="id_cont">
+            <input type=text id="id_input" value="">
+            <input type=button id="id_start" value="시작">
+            <input type="button" id="id_stop" value="잠시멈춤">
+        </div>
+    </div>
+    <script>
+        //v_keyWords
+        var v_input = document.getElementById("id_input");
+        var v_stop = document.getElementById("id_stop");
+        var v_timer1, v_timer2;     // 전역변수로 선언
+
+        v_stop.onclick =function(){
+            clearTimeout(v_timer1);
+            clearTimeout(v_timer2);
+            v_isStart = false;      // 다시 시작버튼 누를 수 있게
+        }
+        function f_keyDown(){
+            if(event.key=="Enter"){
+                for(var i=0; i<v_onDiv.length; i++){
+                    if(v_onDiv[i].innerHTML == v_input.value){
+                        v_onDiv[i].style.top = "-30px";   // 다시 화면 밖으로
+                        v_onDiv.splice(i,1);  // index i번 부터 1개 삭제
+                    }
+                }
+                v_input.value ="";     // 사용자가 다시 빨리 입력할 수 있도록 비워줌
+            }
+        }
+        v_input.addEventListener("keydown",f_keyDown);
+        var v_disp = document.getElementById("id_disp");
+        var v_start = document.getElementById("id_start") // 버튼시작 변수
+        // 버튼 클릭
+        var v_selTime = 1000;       // 글자 선택 리사이클 시간
+        var v_mvTime = 500;         // 움직임 리사이클 시간
+        var v_onDiv = [];  // 선택과 이동을 연결시켜 줄 배열!
+        function f_selWord(){
+            var v_gulja = document.getElementById("lty" + Math.ceil((Math.random() * v_keyWords.length)));
+            v_gulja.style.left = Math.ceil(Math.random() * 330) + "px";       // 떨어지기 시작 위치 랜덤!
+            v_onDiv[v_onDiv.length] = v_gulja;
+            v_timer1 = setTimeout(f_selWord,v_selTime);
+        }
+        function f_ranColor(){
+            var v_color = "rgb(";
+            v_color += Math.round(Math.random() * 255) + ",";
+            v_color += Math.round(Math.random() * 255) + ",";
+            v_color += Math.round(Math.random() * 255) + ")";
+            return v_color;
+        }
+        function f_move(){
+            for(var i=0; i<v_onDiv.length; i++){
+                var v_speed = Math.floor(Math.random()*20) + 10;    // 랜덤 스피드
+                v_onDiv[i].style.top = parseInt(v_onDiv[i].style.top) + v_speed + "px";
+                v_onDiv[i].style.color = f_ranColor();              // 랜덤 글자색
+                v_onDiv[i].style.backgroundColor = f_ranColor();    // 랜덤 배경색
+                // v_onDiv[i].style.transform = "rotate(" + Math.floor(Math.random()*360) + "deg)";
+                if(parseInt(v_onDiv[i].style.top) > 450){
+                    v_onDiv[i].style.top = "-30px";   // 다시 화면 밖으로
+                    v_onDiv.splice(i,1);  // index i번 부터 1개 삭제
+                }
+            }
+            v_timer2 = setTimeout(f_move, v_mvTime);
+        }
+
+        var v_isStart = false;
+        var v_isClkCount = 1;
+        function f_gogo(){
+            v_isClkCount++;
+            v_selTime = parseInt(v_selTime / v_isClkCount);
+            v_mvTime = parseInt(v_mvTime / v_isClkCount);
+
+            if(!v_isStart){
+                f_selWord();
+                f_move();
+                v_isStart = true;
+            }
+        }
+        v_start.onclick = f_gogo;
+
+        function f_init() {
+            for (var i = 0; i < v_keyWords.length; i++) {
+                var v_div = document.createElement("div");
+                v_div.setAttribute("id","lty"+(i+1));
+                v_div.setAttribute("class","divBox");
+                v_div.style.top = "-30px";             // 화면 밖으로
+                v_div.innerHTML = v_keyWords[i];
+                v_disp.appendChild(v_div);
+            }
+        }
+        window.onload = f_init;
+    </script>
+</body>
+
+</html>

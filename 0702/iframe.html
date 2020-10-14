@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- iframe은 원래 마이크로소프트에서 만들어서 IE에 넣어서 브라우져 시장을
+        점유하는데 큰 역할을 했던 태그로 현재는 표준태그로 자리잡아서
+        모든 브라우져에서 지원합니다. -->
+    <iframe id="id_myMovie" width="666" height="375" src="https://www.youtube.com/embed/D1PvIWdJ8xo?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <input type=button value="다음뮤비" onclick="f_next()">
+</body>
+<script>
+    var v_movieCodes = ["yqtCGojXEpM","TgOu00Mf3kI","nM0xDI5R50E"];
+    var v_myMovie = document.getElementById("id_myMovie");
+    var v_urlPre = "https://www.youtube.com/embed/";
+    var v_urlPost = "?autoplay=1";
+    var v_startIndex = 0;
+    function f_next() {
+        v_myMovie.src = v_urlPre + v_movieCodes[v_startIndex] + v_urlPost;
+        v_startIndex++;
+        if(v_startIndex >= v_movieCodes.length){
+            v_startIndex=0;
+        }
+        setTimeout(f_next,10000); // 영상실행시간을 알면 자동 리스트 플레이를 구현할수 있음
+    }
+</script>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innetHTML중요해요!</title>
+</head>
+<body>
+    <div id="id_na">
+        <div>흥</div>
+        <div id="id_child2">치</div>
+        <div>피</div>
+    </div>
+<script>
+    // 권장되는 스크립트 태그 위치
+    var v_div1 = document.getElementById("id_na");
+    var v_div2 = document.getElementById("id_child2");
+    console.log(v_div2.innerHTML);
+    v_div2.innerHTML = "<h1>뭐냐 넌?</h1>";
+    v_div1.innerHTML = '<img src="./images/IU5.jpg">';
+</script>    
+</body>
+</html>

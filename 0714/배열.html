@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    var v_arr =["이태영","최승주","임이랑"];
+
+    function f_arrInit(p_arr){
+        // p_arr = [];     // 배열을 매개변수로 받아서 초기화 하려면 안됨! -- 주의
+        p_arr[1] = "흥치피";    
+    }
+    f_arrInit(v_arr);
+    alert(v_arr);
+
+    // v_arr[v_arr.length] = "이태영만세1";
+    // v_arr[v_arr.length] = "이태영만세2";
+    v_arr.push("이태영만만세1");
+    v_arr.push("이태영만만세2");
+    v_arr.unshift("최승주만만세");  // 배열 맨처음(index 0)에 입력
+    // alert(v_arr.shift());
+    // alert(v_arr.pop());     // 마지막에 넣은 값을 꺼내서 return해줌
+    // alert(v_arr);           // 원본 배열에서 마지막 값이 사라진 걸 확인
+</script>
